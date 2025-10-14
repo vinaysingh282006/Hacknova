@@ -1,0 +1,30 @@
+{
+  "name": "EcoPulse",
+  "short_name": "EcoPulse",
+  "description": "Environmental Pollution Visualization Platform with Interactive 3D Data Exploration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#0ea5e9",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230ea5e9' width='100' height='100'/><text y='.9em' x='50%' text-anchor='middle' font-size='80' fill='white'>E</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230ea5e9' width='100' height='100'/><text y='.9em' x='50%' text-anchor='middle' font-size='80' fill='white'>E</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "environment", "visualization"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
+}

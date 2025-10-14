@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pollution - EcoPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="air.html" class="nav-link active text-eco-red">Air</a>
+                    <a href="water.html" class="nav-link">Water</a>
+                    <a href="light.html" class="nav-link">Light</a>
+                    <a href="presentation.html" class="nav-link">Demo</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- Hero -->
+        <section class="py-20 bg-gradient-to-br from-red-950 via-red-900/40 to-orange-950">
+            <div class="container mx-auto px-4 text-center">
+                <span class="badge badge-danger mb-4 inline-block shadow-lg shadow-red-500/50">Critical Issue</span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-[0_0_30px_rgba(239,68,68,0.6)]">Air <span class="text-eco-red">Pollution</span></h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    91% of the world breathes polluted air. Explore interactive 3D visualizations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12 bg-gradient-to-b from-gray-900 to-red-950/30">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- 3D Scene -->
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-4">3D Pollution Simulation</h3>
+                        <div class="relative bg-black rounded-lg scene-container" style="height: 500px;">
+                            <canvas id="air-3d-scene"></canvas>
+                            <div id="air-scene-loading" class="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex justify-between mb-2">
+                                <label>Pollution Level</label>
+                                <span id="air-pollution-value" class="text-eco-red font-bold">High (70%)</span>
+                            </div>
+                            <input type="range" id="air-pollution-slider" min="0" max="100" value="70" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Data Panel -->
+                    <div>
+                        <div class="card mb-6">
+                            <h3 class="text-2xl font-bold mb-4">Current Air Quality</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <div class="text-3xl font-bold text-eco-red">156</div>
+                                    <div class="text-sm text-gray-400">AQI Index</div>
+                                </div>
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <div class="text-3xl font-bold text-eco-orange">45.2</div>
+                                    <div class="text-sm text-gray-400">PM2.5 μg/m³</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="text-xl font-bold mb-4">🏭 Major Contributors</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-red-900/20 rounded-lg hover:bg-red-900/30 transition-colors">
+                                    <span>🏭 Industries</span>
+                                    <span class="text-eco-red font-bold">35%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-red-900/20 rounded-lg hover:bg-red-900/30 transition-colors">
+                                    <span>🚗 Vehicles</span>
+                                    <span class="text-eco-orange font-bold">28%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-red-900/20 rounded-lg hover:bg-red-900/30 transition-colors">
+                                    <span>⚡ Power Plants</span>
+                                    <span class="text-eco-orange font-bold">22%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-red-900/20 rounded-lg hover:bg-red-900/30 transition-colors">
+                                    <span>🌾 Agriculture</span>
+                                    <span class="text-eco-red font-bold">15%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-400">
+        <p>&copy; 2024 EcoPulse. Hackathon 2024</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/air-3d.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('air-pollution-slider');
+            const valueDisplay = document.getElementById('air-pollution-value');
+            
+            slider?.addEventListener('input', (e) => {
+                const value = e.target.value;
+                const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
+                valueDisplay.textContent = `${level} (${value}%)`;
+                window.airScene?.updatePollutionLevel(value);
+            });
+        });
+    </script>
+</body>
+</html>

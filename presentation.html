@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPulse Presentation - Hackathon 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .slide {
+            display: none;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        @media print {
+            .slide { display: flex !important; page-break-after: always; }
+            .controls { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Slide 1: Title -->
+    <section class="slide active items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-green-900/30">
+        <div class="text-center px-4">
+            <div class="mb-8">
+                <div class="w-24 h-24 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="text-6xl">🌍</span>
+                </div>
+            </div>
+            <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-eco-blue via-eco-green to-eco-blue bg-clip-text text-transparent">
+                EcoPulse
+            </h1>
+            <p class="text-3xl text-gray-300 mb-8">Environmental Pollution Visualization</p>
+            <p class="text-xl text-gray-400">Interactive 3D Data Exploration</p>
+            <div class="mt-12 text-gray-500">
+                <p>Hackathon 2024</p>
+                <p class="mt-2 text-sm">Press → or Space to continue</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Problem -->
+    <section class="slide items-center justify-center bg-gray-900">
+        <div class="container mx-auto px-8 max-w-5xl">
+            <h2 class="text-5xl font-bold mb-12 text-center">The <span class="text-eco-red">Problem</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-6xl font-bold text-eco-red mb-4">91%</div>
+                    <h3 class="text-2xl font-bold mb-3">Air Pollution</h3>
+                    <p class="text-gray-300">of people breathe polluted air worldwide</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-6xl font-bold text-eco-blue mb-4">2B</div>
+                    <h3 class="text-2xl font-bold mb-3">Water Crisis</h3>
+                    <p class="text-gray-300">lack access to safe drinking water</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-6xl font-bold text-eco-orange mb-4">80%</div>
+                    <h3 class="text-2xl font-bold mb-3">Light Pollution</h3>
+                    <p class="text-gray-300">cannot see the Milky Way anymore</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <p class="text-2xl text-gray-400">
+                    <span class="font-bold text-eco-red">7.8 million</span> deaths yearly from pollution
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Solution -->
+    <section class="slide items-center justify-center bg-gradient-to-br from-gray-900 to-blue-900/20">
+        <div class="container mx-auto px-8 max-w-5xl">
+            <h2 class="text-5xl font-bold mb-12 text-center">Our <span class="text-eco-green">Solution</span></h2>
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-eco-blue" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold">Interactive 3D Visualizations</h3>
+                    </div>
+                    <p class="text-gray-300">Three.js powered immersive scenes with real-time pollution data</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-eco-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold">Data Analytics</h3>
+                    </div>
+                    <p class="text-gray-300">Chart.js visualizations with regional comparisons and historical trends</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-eco-orange" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold">Mobile-First</h3>
+                    </div>
+                    <p class="text-gray-300">Responsive design with touch controls and PWA support</p>
+                </div>
+                <div class="card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-eco-purple" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold">Actionable Insights</h3>
+                    </div>
+                    <p class="text-gray-300">Mitigation strategies and AI-powered recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Tech Stack -->
+    <section class="slide items-center justify-center bg-gray-900">
+        <div class="container mx-auto px-8 max-w-5xl">
+            <h2 class="text-5xl font-bold mb-12 text-center">Built With <span class="text-eco-blue">Modern Tech</span></h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3 text-eco-blue">Three.js</h3>
+                    <p class="text-gray-400">3D Graphics & WebGL</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3 text-eco-green">Chart.js</h3>
+                    <p class="text-gray-400">Data Visualization</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3 text-eco-orange">Tailwind CSS</h3>
+                    <p class="text-gray-400">Modern Styling</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3">Vanilla JavaScript</h3>
+                    <p class="text-gray-400">No Framework Bloat</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3">PWA Ready</h3>
+                    <p class="text-gray-400">Offline Capable</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-2xl font-bold mb-3">WCAG AA</h3>
+                    <p class="text-gray-400">Fully Accessible</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <div class="inline-flex items-center gap-4 px-6 py-3 bg-gray-800 rounded-full">
+                    <span class="text-sm text-gray-400">Zero backend required</span>
+                    <span class="text-gray-600">•</span>
+                    <span class="text-sm text-gray-400">100% client-side</span>
+                    <span class="text-gray-600">•</span>
+                    <span class="text-sm text-gray-400">Deploy anywhere</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Call to Action -->
+    <section class="slide items-center justify-center bg-gradient-to-br from-gray-900 via-green-900/30 to-blue-900/30">
+        <div class="text-center px-4">
+            <h2 class="text-6xl font-bold mb-8">Let's Make an <span class="text-eco-green">Impact</span></h2>
+            <p class="text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                Awareness is the first step toward change. EcoPulse makes environmental data accessible to everyone.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                <a href="index.html" class="btn btn-primary px-8 py-4 text-xl">View Live Demo</a>
+                <a href="air.html" class="btn btn-outline px-8 py-4 text-xl">Explore Data</a>
+            </div>
+            <div class="text-gray-400">
+                <p class="text-lg mb-4">Thank you!</p>
+                <p>Hackathon 2024 • Environmental Data Initiative</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide Controls -->
+    <div class="controls fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-50 no-print">
+        <button id="prev-btn" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+            ← Prev
+        </button>
+        <div class="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg">
+            <span id="current-slide">1</span>
+            <span class="text-gray-500">/</span>
+            <span id="total-slides">5</span>
+        </div>
+        <button id="next-btn" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+            Next →
+        </button>
+    </div>
+
+    <!-- Navigation Helper -->
+    <div class="fixed top-4 right-4 text-sm text-gray-500 no-print">
+        Press ← → or Space • Ctrl+P to print
+    </div>
+
+    <script>
+        class PresentationController {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.totalSlides = this.slides.length;
+                
+                document.getElementById('total-slides').textContent = this.totalSlides;
+                this.setupControls();
+                this.setupKeyboard();
+            }
+
+            setupControls() {
+                document.getElementById('prev-btn').addEventListener('click', () => this.previousSlide());
+                document.getElementById('next-btn').addEventListener('click', () => this.nextSlide());
+            }
+
+            setupKeyboard() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.previousSlide();
+                    }
+                });
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            previousSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            goToSlide(index) {
+                this.slides[this.currentSlide].classList.remove('active');
+                this.currentSlide = index;
+                this.slides[this.currentSlide].classList.add('active');
+                document.getElementById('current-slide').textContent = this.currentSlide + 1;
+            }
+        }
+
+        new PresentationController();
+    </script>
+</body>
+</html>

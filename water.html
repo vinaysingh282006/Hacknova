@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Pollution - EcoPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="air.html" class="nav-link">Air</a>
+                    <a href="water.html" class="nav-link active text-eco-blue">Water</a>
+                    <a href="light.html" class="nav-link">Light</a>
+                    <a href="presentation.html" class="nav-link">Demo</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- Hero -->
+        <section class="py-20 bg-gradient-to-br from-blue-950 via-cyan-900/40 to-blue-900">
+            <div class="container mx-auto px-4 text-center">
+                <span class="badge badge-info mb-4 inline-block shadow-lg shadow-blue-500/50">Global Crisis</span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-[0_0_30px_rgba(14,165,233,0.6)]">Water <span class="text-eco-blue">Pollution</span></h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    2 billion people lack access to safely managed drinking water. Explore contamination data.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12 bg-gradient-to-b from-gray-900 to-blue-950/30">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Placeholder for 3D -->
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-4">Water Flow Simulation</h3>
+                        <div class="relative bg-black rounded-lg overflow-hidden scene-container" style="height: 500px;">
+                            <canvas id="water-3d-scene" class="w-full h-full"></canvas>
+                            <div id="water-scene-loading" class="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div class="spinner mx-auto mb-4"></div>
+                                    <p class="text-gray-300">Loading Water Simulation...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <div class="flex justify-between mb-2">
+                                <label>Contamination Level</label>
+                                <span id="water-contamination-value" class="text-eco-blue font-bold">High (65%)</span>
+                            </div>
+                            <input type="range" id="water-contamination-slider" min="0" max="100" value="65" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Data Panel -->
+                    <div>
+                        <div class="card mb-6">
+                            <h3 class="text-2xl font-bold mb-4">Current Water Quality</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <div class="text-3xl font-bold text-eco-blue">24.8</div>
+                                    <div class="text-sm text-gray-400">Chemicals mg/L</div>
+                                </div>
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <div class="text-3xl font-bold text-eco-orange">45.3</div>
+                                    <div class="text-sm text-gray-400">Microplastics/L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="text-xl font-bold mb-4">💧 Pollution Sources</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
+                                    <span>🏭 Industrial Waste</span>
+                                    <span class="text-eco-red font-bold">42%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
+                                    <span>🌾 Agricultural Runoff</span>
+                                    <span class="text-eco-orange font-bold">31%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
+                                    <span>🏘️ Urban Sewage</span>
+                                    <span class="text-eco-orange font-bold">18%</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
+                                    <span>♻️ Plastic Waste</span>
+                                    <span class="text-eco-blue font-bold">9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-400">
+        <p>&copy; 2024 EcoPulse. Hackathon 2024</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/water-3d.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('water-contamination-slider');
+            const valueDisplay = document.getElementById('water-contamination-value');
+            
+            slider?.addEventListener('input', (e) => {
+                const value = e.target.value;
+                const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
+                valueDisplay.textContent = `${level} (${value}%)`;
+                window.waterScene?.updateContaminationLevel(value);
+            });
+        });
+    </script>
+</body>
+</html>
