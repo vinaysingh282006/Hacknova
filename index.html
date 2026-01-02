@@ -453,9 +453,46 @@
             </div>
         </div>
     </footer>
+        <!-- Added scroll-to-top button -->
+    <button id="scroll-to-top" class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors" aria-label="Scroll to top" title="Back to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/main.js" defer></script>
+    <script>// Scroll to Top Functionality
+;(() => {
+  const scrollButton = document.getElementById("scroll-to-top")
+
+  if (!scrollButton) return
+
+  // Show/hide button based on scroll position
+  function toggleScrollButton() {
+    if (window.scrollY > 300) {
+      scrollButton.classList.add("visible")
+    } else {
+      scrollButton.classList.remove("visible")
+    }
+  }
+
+  // Smooth scroll to top
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
+  // Event listeners
+  window.addEventListener("scroll", toggleScrollButton, { passive: true })
+  scrollButton.addEventListener("click", scrollToTop)
+
+  // Initial check
+  toggleScrollButton()
+})()
+</script>
 </body>
 </html>
