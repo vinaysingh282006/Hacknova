@@ -26,7 +26,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -444,64 +447,69 @@
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="py-20 bg-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
-                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Advanced visualization technology meets environmental awareness
-                    </p>
-                </div>
+       <section class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
 
-                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                <path fill-rule="evenodd"
-                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
-                        <p class="text-gray-300">
-                            Immersive Three.js visualizations with real-time controls and camera navigation
-                        </p>
-                    </div>
+    <div class="text-center mb-16 scroll-reveal">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Advanced visualization technology meets environmental awareness
+      </p>
+    </div>
 
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Real Data</h3>
-                        <p class="text-gray-300">
-                            Based on WHO, EPA, and scientific research with regional breakdowns
-                        </p>
-                    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
-                        <p class="text-gray-300">
-                            Responsive design with touch controls, gestures, and PWA support
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Card 1 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
+        <p class="text-gray-300">
+          Immersive Three.js visualizations with real-time controls and camera navigation
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Real Data</h3>
+        <p class="text-gray-300">
+          Based on WHO, EPA, and scientific research with regional breakdowns
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
+        <p class="text-gray-300">
+          Responsive design with touch controls, gestures, and PWA support
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
         <!-- Reviews Section -->
         <section class="reviews-section scroll-reveal">
@@ -826,56 +834,98 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <!-- About -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
-                    <p class="text-gray-400 mb-4">
-                        Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
-                    </p>
-                </div>
+   <footer class="bg-gray-900 border-t border-gray-800 py-12">
+  <div class="container mx-auto px-4">
 
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="air.html" class="text-gray-400 hover:text-eco-blue transition-colors">Air
-                                Pollution</a></li>
-                        <li><a href="water.html" class="text-gray-400 hover:text-eco-blue transition-colors">Water
-                                Pollution</a></li>
-                        <li><a href="light.html" class="text-gray-400 hover:text-eco-blue transition-colors">Light
-                                Pollution</a></li>
-                        <li><a href="noise.html" class="text-gray-400 hover:text-eco-purple transition-colors">Noise
-                                Pollution</a></li>
-                        <li><a href="ai-prediction.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors">AI Prediction</a></li>
-                        <li><a href="presentation.html"
-                                class="text-gray-400 hover:text-eco-blue transition-colors">Presentation</a></li>
-                    </ul>
-                </div>
+    <!-- Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-12 mb-8 w-full text-center md:text-left">
 
-                <!-- Credits -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Technology</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Three.js for 3D Graphics</li>
-                        <li>Chart.js for Data Viz</li>
-                        <li>TensorFlow.js for AI</li>
-                        <li>Tailwind CSS Styling</li>
-                        <li>Vanilla JavaScript</li>
-                    </ul>
-                </div>
-            </div>
+      <!-- About -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">
+          <i class="fa-solid fa-leaf mr-2"></i>About EcoPulse
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Environmental awareness through interactive 3D data visualization.
+          Built for Hackathon 2024.
+        </p>
+      </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
-                <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
-            </div>
-        </div>
-    </footer>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">
+          <i class="fa-solid fa-link mr-2"></i>Quick Links
+        </h3>
+        <ul class="space-y-2">
+          <li class="flex justify-center md:justify-start">
+            <a href="air.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-wind"></i>Air Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="water.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-water"></i>Water Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="light.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-lightbulb"></i>Light Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="noise.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-purple transition-colors">
+              <i class="fa-solid fa-volume-high"></i>Noise Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="ai-prediction.html" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors">
+              <i class="fa-solid fa-brain"></i>AI Prediction
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="presentation.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-file-powerpoint"></i>Presentation
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technology -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">
+          <i class="fa-solid fa-microchip mr-2"></i>Technology
+        </h3>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-cube"></i>Three.js for 3D Graphics
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-chart-line"></i>Chart.js for Data Viz
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-robot"></i>TensorFlow.js for AI
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-palette"></i>Tailwind CSS Styling
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-brands fa-js"></i>Vanilla JavaScript
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+      <p>&copy; <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+    </div>
+
+  </div>
+</footer>
+
+
     <!-- Added scroll-to-top button -->
     <button id="scroll-to-top"
         class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors"
