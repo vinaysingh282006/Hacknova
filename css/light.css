@@ -1,0 +1,17 @@
+.cursor-dot-light {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background-color: #d8a4e4;
+}
+
+/* Size gradually decreases */
+.cursor-dot-light { width: 17px; height: 17px; }
+.cursor-dot-light:nth-child(2) { width: 16px; height: 16px; }
+.cursor-dot-light:nth-child(3) { width: 14px; height: 14px; }
+.cursor-dot-light:nth-child(4) { width: 12px; height: 12px; }
+.cursor-dot-light:nth-child(5) { width: 11px; height: 11px; }
+.cursor-dot-light:nth-child(6) { width: 10px; height: 10px; }
+.cursor-dot-light:nth-child(7) { width: 9px;  height: 9px;  }
+.cursor-dot-light:nth-child(8) { width: 8px;  height: 8px;  }
