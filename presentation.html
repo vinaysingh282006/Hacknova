@@ -40,6 +40,54 @@
     </style>
 
 </head>
+
+
+<nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active text-eco-blue font-medium">Home</a>
+                    <a href="air.html" class="nav-link hover:text-eco-red transition-colors">Air</a>
+                    <a href="water.html" class="nav-link hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="nav-link hover:text-eco-orange transition-colors">Light</a>
+                    <a href="noise.html" class="nav-link hover:text-eco-purple transition-colors">Noise</a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI</a>
+                    <a href="presentation.html" class="nav-link hover:text-eco-green transition-colors">Demo</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-eco-blue font-medium">Home</a>
+                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
+                <a href="water.html" class="block py-2 hover:text-eco-blue transition-colors">Water Pollution</a>
+                <a href="light.html" class="block py-2 hover:text-eco-orange transition-colors">Light Pollution</a>
+                <a href="noise.html" class="block py-2 hover:text-eco-purple transition-colors">Noise Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
+                <a href="presentation.html" class="block py-2 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    
 <body class="bg-gray-900 text-white">
     <!-- App Layout -->
     <div class="min-h-screen flex flex-col">
@@ -48,7 +96,7 @@
         </header>
 
         <!-- Slides Wrapper -->
-        <main class="slides-wrapper flex-1 overflow-y-auto">
+        <main class="slides-wrapper flex-1 overflow-y-auto pt-20">
             <!-- Slide 1: Title -->
             <section class="slide active items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-green-900/30">
                 <div class="text-center px-4">
@@ -57,14 +105,13 @@
                             <span class="text-6xl">🌍</span>
                         </div>
                     </div>
-                    <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-eco-blue via-eco-green to-eco-blue bg-clip-text text-transparent">
+                    <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-white via-eco-green to-white bg-clip-text text-transparent drop-shadow-lg">
                         EcoPulse
                     </h1>
                     <p class="text-3xl text-gray-300 mb-8">Environmental Pollution Visualization</p>
                     <p class="text-xl text-gray-400">Interactive 3D Data Exploration</p>
                     <div class="mt-12 text-gray-500">
                         <p>Hackathon 2024</p>
-                        <p class="mt-2 text-sm">Press → or Space to continue</p>
                     </div>
                 </div>
             </section>
@@ -539,6 +586,55 @@
     });
   });
     </script>
+
+<footer class="bg-gray-900 border-t border-gray-800 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+      
+      <!-- About -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
+        <p class="text-gray-400 max-w-sm">
+          Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col items-center md:items-start md:pl-40">
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-center">
+          <li><a href="air.html" class="footer-link">Air Pollution</a></li>
+          <li><a href="water.html" class="footer-link">Water Pollution</a></li>
+          <li><a href="light.html" class="footer-link">Light Pollution</a></li>
+          <li><a href="noise.html" class="footer-link">Noise Pollution</a></li>
+          <li><a href="ai-prediction.html" class="footer-link">AI Prediction</a></li>
+          <li><a href="presentation.html" class="footer-link">Presentation</a></li>
+        </ul>
+      </div>
+
+      <!-- Technology -->
+      <div class="flex flex-col items-center md:items-start md:pl-60 ">
+        <h3 class="text-xl font-bold mb-4">Technology</h3>
+        <ul class="space-y-2 text-gray-400 ">
+          <li>Three.js for 3D Graphics</li>
+          <li>Chart.js for Data Viz</li>
+          <li>TensorFlow.js for AI</li>
+          <li>Tailwind CSS</li>
+          <li>Vanilla JavaScript</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+      <p>© <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+    </div>
+
+  </div>
+</footer>
+
 </body>
 
 </html>
