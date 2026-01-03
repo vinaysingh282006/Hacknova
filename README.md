@@ -54,6 +54,20 @@ EcoPulse makes complex environmental data accessible through engaging 3D visuali
 
 ---
 
+## 📸 Visualization Preview
+
+Below are some visual previews of EcoPulse showcasing key data visualizations and interactive dashboards:
+
+### 🏠 Homepage Overview
+![EcoPulse Homepage](assets/screenshots/homepage.png)
+
+### 🌫️ Air Pollution Visualization
+![Air Pollution Visualization](assets/screenshots/air-visualization.png)
+
+### 💧 Pollution Predictor Visualization
+![Water Pollution Visualization](assets/screenshots/Pollution-predictor.png)
+
+
 ## 🌍💚 **ECO🌱PULSE — Where Technology Meets Sustainability**
 
 ### ⚡ The Future of Environmental Awareness, Visualized.
