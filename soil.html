@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Pollution - EcoPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                        'eco-brown': '#D97706', /* Amber-600 for Soil */
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(31, 41, 55, 0.85);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+        }
+
+        /* Custom Progress Bar Animation */
+        .progress-bar {
+            transition: width 1.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-['Inter']">
+    <nav
+        class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group">
+                        Air
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
+                        Water
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
+                    </a>
+
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group">
+                        Light
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
+                        Noise
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="soil.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
+                        Soil
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-brown"></span>
+                    </a>
+                    <a href="plastic.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
+                        Plastic
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-cyan"></span>
+                    </a>
+
+                    <a href="radioactive.html" class="text-gray-300 hover:text-eco-green transition-colors relative group">
+                        Radioactive
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-lime"></span>
+                    </a>
+
+
+                    
+
+                    <a href="presentation.html"
+                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                </div>
+
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Home</a>
+                <a href="air.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors">Air
+                    Pollution</a>
+                <a href="water.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Water
+                    Pollution</a>
+
+                <a href="light.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors">Light
+                    Pollution</a>
+                <a href="noise.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors">Noise
+                    Pollution</a>
+                <a href="soil.html"
+                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-brown font-medium border-l-4 border-eco-brown">Soil
+                    Pollution</a>
+                <a href="plastic.html" class="block py-2 text-gray-300 hover:text-eco-cyan">Plastic Pollution</a>
+
+               <a href="radioactive.html"
+                    class="block py-2 text-gray-300 hover:text-eco-orange">Radioactive
+                    Waste</a>
+
+
+
+
+                
+
+                <a href="presentation.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1637179709448-e03199d05f6e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Cracked dry soil" class="w-full h-full object-cover animate-fade-in">
+                <div class="absolute inset-0 bg-gray-900/45 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/10 to-transparent"></div>
+            </div>
+
+            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+                <span
+                    class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-amber-200 uppercase bg-amber-900/80 rounded-full border border-amber-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(217,119,6,0.3)]">
+                    Silent Crisis
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+                    Soil <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-200">Degradation</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                    33% of the Earth's soils are already degraded. <br>Explore the chemical composition beneath our
+                    feet.
+                </p>
+
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="document.getElementById('data-section').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-3 bg-eco-brown text-white rounded-full font-semibold hover:bg-amber-700 transition-all hover:scale-105 shadow-lg shadow-amber-500/30">
+                        Analyze Data
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="data-section" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up"
+                            style="animation-delay: 0.1s;">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-eco-brown" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                    Soil Composition Dashboard
+                                </h3>
+                                <div
+                                    class="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-700">
+                                    <span class="relative flex h-3 w-3">
+                                        <span
+                                            class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                                    </span>
+                                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wide">Live
+                                        Sensors</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800/40 rounded-xl p-6 border border-gray-700 space-y-8">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-medium text-gray-300">Nitrogen Depletion</span>
+                                        <span class="text-sm font-bold text-eco-brown">Critical (85%)</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
+                                        <div id="bar-nitrogen"
+                                            class="progress-bar bg-gradient-to-r from-orange-500 to-eco-brown h-4 rounded-full"
+                                            style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-medium text-gray-300">Soil Moisture Retention</span>
+                                        <span class="text-sm font-bold text-yellow-500">Low (32%)</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
+                                        <div id="bar-moisture"
+                                            class="progress-bar bg-gradient-to-r from-yellow-600 to-yellow-400 h-4 rounded-full"
+                                            style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm font-medium text-gray-300">Heavy Metal Contamination</span>
+                                        <span class="text-sm font-bold text-red-500">Detected (15%)</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
+                                        <div id="bar-metals"
+                                            class="progress-bar bg-gradient-to-r from-red-900 to-red-600 h-4 rounded-full"
+                                            style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-4 pt-4 mt-4 border-t border-gray-700/50">
+                                    <div class="text-center p-2 bg-gray-900/50 rounded-lg">
+                                        <div class="text-xs text-gray-500">pH Level</div>
+                                        <div class="text-lg font-bold text-white">4.8</div>
+                                        <div class="text-xs text-red-400">Acidic</div>
+                                    </div>
+                                    <div class="text-center p-2 bg-gray-900/50 rounded-lg">
+                                        <div class="text-xs text-gray-500">Salinity</div>
+                                        <div class="text-lg font-bold text-white">High</div>
+                                        <div class="text-xs text-orange-400">> 4 dS/m</div>
+                                    </div>
+                                    <div class="text-center p-2 bg-gray-900/50 rounded-lg">
+                                        <div class="text-xs text-gray-500">Organic Matter</div>
+                                        <div class="text-lg font-bold text-white">1.2%</div>
+                                        <div class="text-xs text-yellow-500">Very Low</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 bg-gray-900/50 p-5 rounded-xl border border-gray-700/50">
+                                <div class="flex justify-between mb-3">
+                                    <label class="text-sm font-medium text-gray-300">Fertilizer Intensity</label>
+                                    <span id="soil-pollution-value"
+                                        class="text-eco-brown font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">Heavy
+                                        (85%)</span>
+                                </div>
+                                <div class="relative w-full h-6 flex items-center">
+                                    <input type="range" id="soil-pollution-slider" min="0" max="100" value="85"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-brown hover:accent-amber-500 transition-all z-10">
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
+                                    <span>Organic</span>
+                                    <span>Industrial</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                                <svg class="w-5 h-5 text-eco-brown" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                                Erosion Metrics
+                            </h3>
+                            <div class="space-y-4">
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-brown/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Arable Land Lost</div>
+                                    <div class="flex items-baseline gap-2">
+                                        <div class="text-3xl font-bold text-eco-brown">24B</div>
+                                        <div class="text-xs text-gray-500">Tons/Year</div>
+                                    </div>
+                                    <div class="text-xs text-eco-red mt-2 flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                        </svg>
+                                        Irreversible Damage
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-brown/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Food Production Impact</div>
+                                    <div class="text-3xl font-bold text-white">-10%</div>
+                                    <div class="text-xs text-gray-500 mt-2">Projected by 2050</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                                <span>🌾</span> Ecosystem Impact
+                            </h3>
+                            <div class="space-y-3">
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🐛 Microbes</span>
+                                    <span
+                                        class="text-eco-brown font-bold text-sm bg-amber-500/10 px-2 py-1 rounded">Extinction</span>
+                                </div>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">💧 Groundwater</span>
+                                    <span
+                                        class="text-red-400 font-bold text-sm bg-red-500/10 px-2 py-1 rounded">Toxic</span>
+                                </div>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🚜 Crops</span>
+                                    <span
+                                        class="text-yellow-500 font-bold text-sm bg-yellow-500/10 px-2 py-1 rounded">Nutrient
+                                        Loss</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 EcoPulse. Environmental Monitoring System.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top"
+        class="fixed bottom-8 right-8 p-3 bg-eco-brown text-white rounded-full shadow-lg shadow-amber-500/20 opacity-0 invisible transition-all duration-300 hover:bg-amber-600 transform translate-y-4 hover:-translate-y-1 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script src="js/soil.js"></script>
+</body>
+
+</html>
