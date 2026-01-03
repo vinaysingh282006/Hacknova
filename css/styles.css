@@ -615,3 +615,21 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 
+/* ============================= */
+/* EcoPulse - Feature Cards */
+/* ============================= */
+
+.ecopulse-card {
+  border: 1px solid #374151; /* gray-700 */
+  border-radius: 0.75rem;   /* rounded-xl */
+  padding: 1.5rem;         /* p-6 */
+  background-color: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.ecopulse-card:hover {
+  border-color: #3b82f6; /* eco blue */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+}
