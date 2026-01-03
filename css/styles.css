@@ -615,3 +615,57 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 
+/* Footer mobile alignment */
+@media (max-width: 768px) {
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer ul li,
+  footer ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer h3 {
+    justify-content: center;
+  }
+}
+/* Final footer mobile centering fix */
+@media (max-width: 768px) {
+  footer ul {
+    align-items: center;
+  }
+
+  footer ul li {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer ul li a {
+    justify-content: center;
+    text-align: center;
+  }
+}
+/* ============================= */
+/* EcoPulse - Feature Cards */
+/* ============================= */
+
+.ecopulse-card {
+  border: 1px solid #374151; /* gray-700 */
+  border-radius: 0.75rem;   /* rounded-xl */
+  padding: 1.5rem;         /* p-6 */
+  background-color: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.ecopulse-card:hover {
+  border-color: #3b82f6; /* eco blue */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+}
