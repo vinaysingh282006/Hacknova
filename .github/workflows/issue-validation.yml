@@ -1,0 +1,191 @@
+name: Issue Validation
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+jobs:
+  validate-bug-report:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'bug')
+    steps:
+      - name: Validate bug report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body || "";
+            const title = issue.title || "";
+            
+            const errors = [];
+            const warnings = [];
+            
+            // Check title length
+            if (title.length < 10) {
+              errors.push("Title is too short. Please provide a descriptive title (at least 10 characters).");
+            }
+            
+            // Check body length
+            if (body.length < 50) {
+              errors.push("Description is too short. Please provide more details about the bug.");
+            }
+            
+            // Check for expected sections in bug reports
+            const expectedSections = [
+              { pattern: /steps to reproduce|how to reproduce|reproduction/i, name: "Steps to Reproduce" },
+              { pattern: /expected|should|supposed/i, name: "Expected Behavior" },
+              { pattern: /actual|instead|but/i, name: "Actual Behavior" }
+            ];
+            
+            for (const section of expectedSections) {
+              if (!section.pattern.test(body)) {
+                warnings.push(`Consider adding "${section.name}" section for better clarity.`);
+              }
+            }
+            
+            // Build response message
+            let message = "";
+            
+            if (errors.length > 0) {
+              message += "## ❌ Validation Errors\n\n";
+              errors.forEach(e => message += `- ${e}\n`);
+              message += "\nPlease update your issue to address these errors.\n\n";
+            }
+            
+            if (warnings.length > 0) {
+              message += "## ⚠️ Suggestions\n\n";
+              warnings.forEach(w => message += `- ${w}\n`);
+              message += "\n";
+            }
+            
+            if (errors.length === 0 && warnings.length === 0) {
+              message = "## ✅ Bug Report Validated\n\nThank you for submitting a well-structured bug report! A maintainer will review it soon.";
+            } else if (errors.length === 0) {
+              message = "## ✅ Bug Report Accepted\n\n" + message + "Your bug report has been accepted. Consider the suggestions above for future reports.";
+            }
+            
+            // Post comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: message
+            });
+            
+            if (errors.length > 0) {
+              core.setFailed("Bug report validation failed");
+            }
+
+  validate-feature-request:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'enhancement') || contains(github.event.issue.labels.*.name, 'feature')
+    steps:
+      - name: Validate feature request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body || "";
+            const title = issue.title || "";
+            
+            const errors = [];
+            const warnings = [];
+            
+            // Check title length
+            if (title.length < 10) {
+              errors.push("Title is too short. Please provide a descriptive title (at least 10 characters).");
+            }
+            
+            // Check body length
+            if (body.length < 30) {
+              errors.push("Description is too short. Please explain your feature request in more detail.");
+            }
+            
+            // Check for expected sections in feature requests
+            const expectedSections = [
+              { pattern: /problem|issue|pain point|currently/i, name: "Problem Statement" },
+              { pattern: /solution|propose|suggest|would like/i, name: "Proposed Solution" },
+              { pattern: /benefit|value|help|improve/i, name: "Benefits" }
+            ];
+            
+            for (const section of expectedSections) {
+              if (!section.pattern.test(body)) {
+                warnings.push(`Consider adding "${section.name}" section for better clarity.`);
+              }
+            }
+            
+            // Build response message
+            let message = "";
+            
+            if (errors.length > 0) {
+              message += "## ❌ Validation Errors\n\n";
+              errors.forEach(e => message += `- ${e}\n`);
+              message += "\nPlease update your issue to address these errors.\n\n";
+            }
+            
+            if (warnings.length > 0) {
+              message += "## ⚠️ Suggestions\n\n";
+              warnings.forEach(w => message += `- ${w}\n`);
+              message += "\n";
+            }
+            
+            if (errors.length === 0 && warnings.length === 0) {
+              message = "## ✅ Feature Request Validated\n\nThank you for submitting a well-structured feature request! A maintainer will review it soon.";
+            } else if (errors.length === 0) {
+              message = "## ✅ Feature Request Accepted\n\n" + message + "Your feature request has been accepted. Consider the suggestions above for future requests.";
+            }
+            
+            // Post comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: message
+            });
+            
+            if (errors.length > 0) {
+              core.setFailed("Feature request validation failed");
+            }
+
+  general-issue-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check issue quality
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const labels = issue.labels.map(l => l.name);
+            
+            // Skip if already has bug or feature label
+            if (labels.includes('bug') || labels.includes('enhancement') || labels.includes('feature')) {
+              console.log("Issue already categorized, skipping general check");
+              return;
+            }
+            
+            const body = issue.body || "";
+            const title = issue.title || "";
+            
+            // Auto-detect issue type based on keywords
+            const bugKeywords = /bug|error|crash|broken|fix|issue|problem|fail|not working/i;
+            const featureKeywords = /feature|enhancement|add|new|request|suggest|improve|would be nice/i;
+            
+            let suggestedLabel = null;
+            
+            if (bugKeywords.test(title) || bugKeywords.test(body)) {
+              suggestedLabel = "bug";
+            } else if (featureKeywords.test(title) || featureKeywords.test(body)) {
+              suggestedLabel = "enhancement";
+            }
+            
+            if (suggestedLabel) {
+              // Add suggested label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: [suggestedLabel]
+              });
+              
+              console.log(`Auto-labeled issue as: ${suggestedLabel}`);
+            }

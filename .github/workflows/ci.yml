@@ -1,0 +1,144 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install linting tools
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard eslint @eslint/js
+
+      - name: Create ESLint config
+        run: |
+          cat > eslint.config.mjs << 'EOF'
+          import js from "@eslint/js";
+          export default [
+            js.configs.recommended,
+            {
+              languageOptions: {
+                ecmaVersion: 2022,
+                sourceType: "module",
+                globals: {
+                  window: "readonly",
+                  document: "readonly",
+                  console: "readonly",
+                  setTimeout: "readonly",
+                  setInterval: "readonly",
+                  clearInterval: "readonly",
+                  clearTimeout: "readonly",
+                  requestAnimationFrame: "readonly",
+                  cancelAnimationFrame: "readonly",
+                  fetch: "readonly",
+                  THREE: "readonly",
+                  tailwind: "readonly",
+                  Chart: "readonly",
+                  gsap: "readonly",
+                  ScrollTrigger: "readonly",
+                  tf: "readonly"
+                }
+              },
+              rules: {
+                "no-unused-vars": "warn",
+                "no-undef": "error"
+              }
+            }
+          ];
+          EOF
+
+      - name: Create StyleLint config
+        run: |
+          cat > .stylelintrc.json << 'EOF'
+          {
+            "extends": "stylelint-config-standard",
+            "rules": {
+              "no-descending-specificity": null,
+              "selector-class-pattern": null,
+              "custom-property-pattern": null,
+              "keyframes-name-pattern": null,
+              "alpha-value-notation": null,
+              "color-function-notation": null
+            }
+          }
+          EOF
+
+      - name: Create HTMLHint config
+        run: |
+          cat > .htmlhintrc << 'EOF'
+          {
+            "tagname-lowercase": true,
+            "attr-lowercase": true,
+            "attr-value-double-quotes": true,
+            "doctype-first": true,
+            "tag-pair": true,
+            "spec-char-escape": false,
+            "id-unique": true,
+            "src-not-empty": true,
+            "attr-no-duplication": true,
+            "title-require": true
+          }
+          EOF
+
+      - name: Lint HTML files
+        run: htmlhint "*.html" --format compact || true
+
+      - name: Lint CSS files
+        run: stylelint "css/**/*.css" --formatter compact || true
+
+      - name: Lint JavaScript files
+        run: npx eslint "js/**/*.js" --format compact || true
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking for broken internal links..."
+          for file in *.html; do
+            echo "Checking $file..."
+            grep -oP 'href="[^"#][^"]*\.html"' "$file" 2>/dev/null | sed 's/href="//;s/"$//' | while read link; do
+              if [ ! -f "$link" ]; then
+                echo "⚠️ Broken link in $file: $link"
+              fi
+            done
+          done
+          echo "Link check complete"
+
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          echo "Checking required files..."
+          required_files=("index.html" "manifest.json" "css/styles.css" "js/main.js")
+          for file in "${required_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ $file is missing"
+              exit 1
+            fi
+          done
+
+      - name: Check manifest.json validity
+        run: |
+          echo "Validating manifest.json..."
+          if jq empty manifest.json 2>/dev/null; then
+            echo "✅ manifest.json is valid JSON"
+          else
+            echo "❌ manifest.json is invalid"
+            exit 1
+          fi
