@@ -31,6 +31,23 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'eco-green': '#10B981',
+          'eco-blue': '#3B82F6',
+          'eco-purple': '#8B5CF6',
+          'eco-orange': '#F97316',
+          'eco-red': '#EF4444',
+        }
+      }
+    }
+  }
+</script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 
@@ -57,6 +74,22 @@
         }
     }
 </script>
+<!-- Precautions Modal -->
+<div id="precaution-modal"
+     class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[9999]">
+
+  <div class="bg-gray-900 text-white max-w-lg w-[90%] rounded-2xl p-6 relative animate-fade-in">
+    
+    <button onclick="closePrecautions()"
+            class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">
+      ✖
+    </button>
+
+    <h2 id="precaution-title" class="text-2xl font-bold mb-4"></h2>
+
+    <ul id="precaution-content" class="space-y-3 text-gray-300"></ul>
+  </div>
+</div>
 
 <body class="bg-gray-900 text-white">
     <!-- Skip to Content Link for Accessibility -->
@@ -139,6 +172,13 @@
 
                 <!-- Floating Particles -->
                 <div class="hero-particles"></div>
+                <div class="precaution-buttons">
+  <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')">🔊 Noise Precautions</button>
+</div>
+
             </div>
 
             <!-- Hero Content -->
@@ -164,6 +204,13 @@
                         <a href="air.html" class="btn-primary">Explore Now</a>
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
+                    <div class="hero-load hero-delay-4 mt-6 flex flex-wrap gap-3 justify-center">
+  <button onclick="openPrecautions('air')" class="btn-outline">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')" class="btn-outline">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')" class="btn-outline">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')" class="btn-outline">🔊 Noise Precautions</button>
+</div>
+
 
                     <div class="hero-load hero-delay-4">
                         <a href="ai-prediction.html" class="btn-ai">
