@@ -7,10 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+        <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
     <style>
         .slide {
             display: none;
-            min-height: 100vh;
+            min-height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -18,391 +20,307 @@
             display: flex;
             opacity: 1;
         }
+
+        /* Layout fix */
+        .slides-wrapper {
+            flex: 1;
+            overflow-y: auto;
+        }
+
         @media print {
-            .slide { display: flex !important; page-break-after: always; }
-            .controls { display: none !important; }
+            .slide {
+                display: flex !important;
+                page-break-after: always;
+            }
+            .controls-section,
+            .nav-helper {
+                display: none !important;
+            }
         }
     </style>
+
 </head>
+
+
+<nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active text-eco-blue font-medium">Home</a>
+                    <a href="air.html" class="nav-link hover:text-eco-red transition-colors">Air</a>
+                    <a href="water.html" class="nav-link hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="nav-link hover:text-eco-orange transition-colors">Light</a>
+                    <a href="noise.html" class="nav-link hover:text-eco-purple transition-colors">Noise</a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI</a>
+                    <a href="presentation.html" class="nav-link hover:text-eco-green transition-colors">Demo</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-eco-blue font-medium">Home</a>
+                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
+                <a href="water.html" class="block py-2 hover:text-eco-blue transition-colors">Water Pollution</a>
+                <a href="light.html" class="block py-2 hover:text-eco-orange transition-colors">Light Pollution</a>
+                <a href="noise.html" class="block py-2 hover:text-eco-purple transition-colors">Noise Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
+                <a href="presentation.html" class="block py-2 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    
 <body class="bg-gray-900 text-white">
-    <!-- Slide 1: Title -->
-    <section class="slide active items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-green-900/30">
-        <div class="text-center px-4">
-            <div class="mb-8">
-                <div class="w-24 h-24 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="text-6xl">🌍</span>
-                </div>
-            </div>
-            <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-eco-blue via-eco-green to-eco-blue bg-clip-text text-transparent">
-                EcoPulse
-            </h1>
-            <p class="text-3xl text-gray-300 mb-8">Environmental Pollution Visualization</p>
-            <p class="text-xl text-gray-400">Interactive 3D Data Exploration</p>
-            <div class="mt-12 text-gray-500">
-                <p>Hackathon 2024</p>
-                <p class="mt-2 text-sm">Press → or Space to continue</p>
-            </div>
-        </div>
-    </section>
+    <!-- App Layout -->
+    <div class="min-h-screen flex flex-col">
+        <header class="nav-helper no-print text-sm text-gray-500 text-right px-4 py-2">
+            Press ← → or Space • Ctrl+P to print
+        </header>
 
-    <!-- Slide 2: Problem -->
-    <section class="slide items-center justify-center bg-gray-900">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">The <span class="text-eco-red">Problem</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card text-center">
-                    <div class="text-6xl font-bold text-eco-red mb-4">91%</div>
-                    <h3 class="text-2xl font-bold mb-3">Air Pollution</h3>
-                    <p class="text-gray-300">of people breathe polluted air worldwide</p>
+        <!-- Slides Wrapper -->
+        <main class="slides-wrapper flex-1 overflow-y-auto pt-20">
+            <!-- Slide 1: Title -->
+            <section class="slide active items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-green-900/30">
+                <div class="text-center px-4">
+                    <div class="mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-6xl">🌍</span>
+                        </div>
+                    </div>
+                    <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-white via-eco-green to-white bg-clip-text text-transparent drop-shadow-lg">
+                        EcoPulse
+                    </h1>
+                    <p class="text-3xl text-gray-300 mb-8">Environmental Pollution Visualization</p>
+                    <p class="text-xl text-gray-400">Interactive 3D Data Exploration</p>
+                    <div class="mt-12 text-gray-500">
+                        <p>Hackathon 2024</p>
+                    </div>
                 </div>
-                <div class="card text-center">
-                    <div class="text-6xl font-bold text-eco-blue mb-4">2B</div>
-                    <h3 class="text-2xl font-bold mb-3">Water Crisis</h3>
-                    <p class="text-gray-300">lack access to safe drinking water</p>
-                </div>
-                <div class="card text-center">
-                    <div class="text-6xl font-bold text-eco-orange mb-4">80%</div>
-                    <h3 class="text-2xl font-bold mb-3">Light Pollution</h3>
-                    <p class="text-gray-300">cannot see the Milky Way anymore</p>
-                </div>
-            </div>
-            <div class="mt-12 text-center">
-                <p class="text-2xl text-gray-400">
-                    <span class="font-bold text-eco-red">7.8 million</span> deaths yearly from pollution
-                </p>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Slide 3: Solution -->
-    <section class="slide items-center justify-center bg-gradient-to-br from-gray-900 to-blue-900/20">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Our <span class="text-eco-green">Solution</span></h2>
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-12 h-12 text-eco-blue" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                        </svg>
-                        <h3 class="text-2xl font-bold">Interactive 3D Visualizations</h3>
+            <!-- Slide 2: Problem -->
+            <section class="slide items-center justify-center bg-gray-900">
+                <div class="container mx-auto px-8 max-w-5xl">
+                    <h2 class="text-5xl font-bold mb-12 text-center">The <span class="text-eco-red">Problem</span></h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="card text-center">
+                            <div class="text-6xl font-bold text-eco-red mb-4">91%</div>
+                            <h3 class="text-2xl font-bold mb-3">Air Pollution</h3>
+                            <p class="text-gray-300">of people breathe polluted air worldwide</p>
+                        </div>
+                        <div class="card text-center">
+                            <div class="text-6xl font-bold text-eco-blue mb-4">2B</div>
+                            <h3 class="text-2xl font-bold mb-3">Water Crisis</h3>
+                            <p class="text-gray-300">lack access to safe drinking water</p>
+                        </div>
+                        <div class="card text-center">
+                            <div class="text-6xl font-bold text-eco-orange mb-4">80%</div>
+                            <h3 class="text-2xl font-bold mb-3">Light Pollution</h3>
+                            <p class="text-gray-300">cannot see the Milky Way anymore</p>
+                        </div>
                     </div>
-                    <p class="text-gray-300">Three.js powered immersive scenes with real-time pollution data</p>
-                </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-12 h-12 text-eco-green" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
-                        </svg>
-                        <h3 class="text-2xl font-bold">Data Analytics</h3>
+                    <div class="mt-12 text-center">
+                        <p class="text-2xl text-gray-400">
+                            <span class="font-bold text-eco-red">7.8 million</span> deaths yearly from pollution
+                        </p>
                     </div>
-                    <p class="text-gray-300">Chart.js visualizations with regional comparisons and historical trends</p>
                 </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-12 h-12 text-eco-orange" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
-                        </svg>
-                        <h3 class="text-2xl font-bold">Mobile-First</h3>
-                    </div>
-                    <p class="text-gray-300">Responsive design with touch controls and PWA support</p>
-                </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-12 h-12 text-eco-purple" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                        </svg>
-                        <h3 class="text-2xl font-bold">Actionable Insights</h3>
-                    </div>
-                    <p class="text-gray-300">Mitigation strategies and AI-powered recommendations</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Slide 4: Features Deep Dive -->
-    <section class="slide items-center justify-center bg-gradient-to-br from-red-950/30 via-gray-900 to-orange-950/30">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Features <span class="text-eco-red">Showcase</span></h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-4xl">🌫️</span>
-                        <h3 class="text-2xl font-bold text-eco-red">Air Pollution</h3>
+            <!-- Slide 3: Solution -->
+            <section class="slide items-center justify-center bg-gradient-to-br from-gray-900 to-blue-900/20">
+                <div class="container mx-auto px-8 max-w-5xl">
+                    <h2 class="text-5xl font-bold mb-12 text-center">Our <span class="text-eco-green">Solution</span></h2>
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <svg class="w-12 h-12 text-eco-blue" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <h3 class="text-2xl font-bold">Interactive 3D Visualizations</h3>
+                            </div>
+                            <p class="text-gray-300">Three.js powered immersive scenes with real-time pollution data</p>
+                        </div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <svg class="w-12 h-12 text-eco-green" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                                </svg>
+                                <h3 class="text-2xl font-bold">Data Analytics</h3>
+                            </div>
+                            <p class="text-gray-300">Chart.js visualizations with regional comparisons and historical trends</p>
+                        </div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <svg class="w-12 h-12 text-eco-orange" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+                                </svg>
+                                <h3 class="text-2xl font-bold">Mobile-First</h3>
+                            </div>
+                            <p class="text-gray-300">Responsive design with touch controls and PWA support</p>
+                        </div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <svg class="w-12 h-12 text-eco-purple" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <h3 class="text-2xl font-bold">Actionable Insights</h3>
+                            </div>
+                            <p class="text-gray-300">Mitigation strategies and AI-powered recommendations</p>
+                        </div>
                     </div>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ Particle-based smog simulation</li>
-                        <li>✓ Dynamic fog density adjustment</li>
-                        <li>✓ Interactive pollution level slider</li>
-                        <li>✓ Real-time AQI data display</li>
-                    </ul>
                 </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-4xl">💧</span>
-                        <h3 class="text-2xl font-bold text-eco-blue">Water Pollution</h3>
-                    </div>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ River flow visualization</li>
-                        <li>✓ Contamination particle tracking</li>
-                        <li>✓ Microplastics measurement</li>
-                        <li>✓ Water quality indicators</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-4xl">✨</span>
-                        <h3 class="text-2xl font-bold text-eco-orange">Light Pollution</h3>
-                    </div>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ Night sky simulation</li>
-                        <li>✓ Star visibility calculator</li>
-                        <li>✓ Light intensity controls</li>
-                        <li>✓ Ecological impact metrics</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-4xl">🔊</span>
-                        <h3 class="text-2xl font-bold text-eco-purple">Noise Pollution</h3>
-                    </div>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ Sound wave propagation</li>
-                        <li>✓ Decibel level visualization</li>
-                        <li>✓ Multiple noise sources</li>
-                        <li>✓ Health impact analysis</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Slide 5: Data & Analytics -->
-    <section class="slide items-center justify-center bg-gray-900">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Data <span class="text-eco-blue">Analytics</span></h2>
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-4 text-eco-green">Regional Coverage</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Asia</span>
-                            <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
-                                <div class="bg-eco-red h-full" style="width: 91%"></div>
+            <!-- Slide 4: Features Deep Dive -->
+            <section class="slide items-center justify-center bg-gradient-to-br from-red-950/30 via-gray-900 to-orange-950/30">
+                <div class="container mx-auto px-8 max-w-5xl">
+                    <h2 class="text-5xl font-bold mb-12 text-center">Features <span class="text-eco-red">Showcase</span></h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-4xl">🌫️</span>
+                                <h3 class="text-2xl font-bold text-eco-red">Air Pollution</h3>
                             </div>
+                            <ul class="space-y-2 text-gray-300">
+                                <li>✓ Particle-based smog simulation</li>
+                                <li>✓ Dynamic fog density adjustment</li>
+                                <li>✓ Interactive pollution level slider</li>
+                                <li>✓ Real-time AQI data display</li>
+                            </ul>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Africa</span>
-                            <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
-                                <div class="bg-eco-orange h-full" style="width: 88%"></div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-4xl">💧</span>
+                                <h3 class="text-2xl font-bold text-eco-blue">Water Pollution</h3>
                             </div>
+                            <ul class="space-y-2 text-gray-300">
+                                <li>✓ River flow visualization</li>
+                                <li>✓ Contamination particle tracking</li>
+                                <li>✓ Microplastics measurement</li>
+                                <li>✓ Water quality indicators</li>
+                            </ul>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Europe</span>
-                            <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
-                                <div class="bg-eco-blue h-full" style="width: 68%"></div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-4xl">✨</span>
+                                <h3 class="text-2xl font-bold text-eco-orange">Light Pollution</h3>
                             </div>
+                            <ul class="space-y-2 text-gray-300">
+                                <li>✓ Night sky simulation</li>
+                                <li>✓ Star visibility calculator</li>
+                                <li>✓ Light intensity controls</li>
+                                <li>✓ Ecological impact metrics</li>
+                            </ul>
                         </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Americas</span>
-                            <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
-                                <div class="bg-eco-green h-full" style="width: 73%"></div>
+                        <div class="card">
+                            <div class="flex items-center gap-4 mb-4">
+                                <span class="text-4xl">🔊</span>
+                                <h3 class="text-2xl font-bold text-eco-purple">Noise Pollution</h3>
                             </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-300">Oceania</span>
-                            <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
-                                <div class="bg-eco-purple h-full" style="width: 52%"></div>
-                            </div>
+                            <ul class="space-y-2 text-gray-300">
+                                <li>✓ Sound wave propagation</li>
+                                <li>✓ Decibel level visualization</li>
+                                <li>✓ Multiple noise sources</li>
+                                <li>✓ Health impact analysis</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-4 text-eco-orange">Historical Trends</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between">
-                            <span class="text-gray-400">2018</span>
-                            <span class="text-eco-red font-bold">6.85M deaths</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-400">2020</span>
-                            <span class="text-eco-orange font-bold">6.45M deaths</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-400">2022</span>
-                            <span class="text-eco-orange font-bold">6.89M deaths</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-400">2024</span>
-                            <span class="text-eco-blue font-bold">6.75M deaths</span>
-                        </div>
-                        <div class="mt-4 pt-4 border-t border-gray-700">
-                            <p class="text-sm text-gray-400">Trend: <span class="text-eco-green">Improving in some regions</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-gradient-to-r from-eco-blue/10 to-eco-green/10 border-eco-blue/30">
-                <div class="text-center">
-                    <p class="text-xl text-gray-300">Comprehensive data spanning <span class="text-eco-blue font-bold">2018-2024</span></p>
-                    <p class="text-gray-400 mt-2">Covering 6 continents, 195 countries, and 1000+ cities</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Slide 6: Mobile Experience -->
-    <section class="slide items-center justify-center bg-gradient-to-br from-purple-950/30 via-gray-900 to-blue-950/30">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Mobile-First <span class="text-eco-purple">Design</span></h2>
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div class="card text-center">
-                    <div class="text-5xl mb-4">📱</div>
-                    <h3 class="text-xl font-bold mb-3">Touch Optimized</h3>
-                    <p class="text-gray-400">44-48px touch targets for easy interaction</p>
-                </div>
-                <div class="card text-center">
-                    <div class="text-5xl mb-4">⚡</div>
-                    <h3 class="text-xl font-bold mb-3">Performance</h3>
-                    <p class="text-gray-400">Adaptive rendering maintains 60fps</p>
-                </div>
-                <div class="card text-center">
-                    <div class="text-5xl mb-4">📳</div>
-                    <h3 class="text-xl font-bold mb-3">Haptic Feedback</h3>
-                    <p class="text-gray-400">Vibration API for tactile response</p>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-4">Responsive Features</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ Fluid typography with clamp()</li>
-                        <li>✓ Touch gesture support</li>
-                        <li>✓ Reduced particle count on mobile</li>
-                        <li>✓ Debounced event handlers</li>
-                        <li>✓ Progressive Web App ready</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-4">Accessibility</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>✓ WCAG AA compliant</li>
-                        <li>✓ Screen reader support</li>
-                        <li>✓ Keyboard navigation</li>
-                        <li>✓ Reduced motion mode</li>
-                        <li>✓ High contrast mode</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Slide 7: Tech Stack -->
-    <section class="slide items-center justify-center bg-gray-900">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Built With <span class="text-eco-blue">Modern Tech</span></h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3 text-eco-blue">Three.js</h3>
-                    <p class="text-gray-400">3D Graphics & WebGL</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3 text-eco-green">Chart.js</h3>
-                    <p class="text-gray-400">Data Visualization</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3 text-eco-orange">Tailwind CSS</h3>
-                    <p class="text-gray-400">Modern Styling</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3">Vanilla JavaScript</h3>
-                    <p class="text-gray-400">No Framework Bloat</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3">PWA Ready</h3>
-                    <p class="text-gray-400">Offline Capable</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-2xl font-bold mb-3">WCAG AA</h3>
-                    <p class="text-gray-400">Fully Accessible</p>
-                </div>
-            </div>
-            <div class="mt-12 text-center">
-                <div class="inline-flex items-center gap-4 px-6 py-3 bg-gray-800 rounded-full">
-                    <span class="text-sm text-gray-400">Zero backend required</span>
-                    <span class="text-gray-600">•</span>
-                    <span class="text-sm text-gray-400">100% client-side</span>
-                    <span class="text-gray-600">•</span>
-                    <span class="text-sm text-gray-400">Deploy anywhere</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Slide 8: Impact & Future -->
-    <section class="slide items-center justify-center bg-gradient-to-br from-green-950/30 via-gray-900 to-teal-950/30">
-        <div class="container mx-auto px-8 max-w-5xl">
-            <h2 class="text-5xl font-bold mb-12 text-center">Impact & <span class="text-eco-green">Future</span></h2>
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-6 text-eco-blue">Current Impact</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-green text-2xl">✓</span>
-                            <div>
-                                <p class="font-bold">Educational Reach</p>
-                                <p class="text-sm text-gray-400">Making pollution data accessible to students & educators</p>
+            <!-- Slide 5: Data & Analytics -->
+            <section class="slide items-center justify-center bg-gray-900">
+                <div class="container mx-auto px-8 max-w-5xl">
+                    <h2 class="text-5xl font-bold mb-12 text-center">Data <span class="text-eco-blue">Analytics</span></h2>
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div class="card">
+                            <h3 class="text-2xl font-bold mb-4 text-eco-green">Regional Coverage</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Asia</span>
+                                    <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-eco-red h-full" style="width: 91%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Africa</span>
+                                    <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-eco-orange h-full" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Europe</span>
+                                    <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-eco-blue h-full" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Americas</span>
+                                    <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-eco-green h-full" style="width: 73%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300">Oceania</span>
+                                    <div class="w-48 bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div class="bg-eco-purple h-full" style="width: 52%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-green text-2xl">✓</span>
-                            <div>
-                                <p class="font-bold">Public Awareness</p>
-                                <p class="text-sm text-gray-400">Interactive visualizations increase understanding</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-green text-2xl">✓</span>
-                            <div>
-                                <p class="font-bold">Data-Driven Decisions</p>
-                                <p class="text-sm text-gray-400">Supporting policy makers with clear insights</p>
+                        <div class="card">
+                            <h3 class="text-2xl font-bold mb-4 text-eco-orange">Historical Trends</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">2018</span>
+                                    <span class="text-eco-red font-bold">6.85M deaths</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">2020</span>
+                                    <span class="text-eco-orange font-bold">6.45M deaths</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">2022</span>
+                                    <span class="text-eco-orange font-bold">6.89M deaths</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">2024</span>
+                                    <span class="text-eco-blue font-bold">6.75M deaths</span>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-gray-700">
+                                    <p class="text-sm text-gray-400">Trend: <span class="text-eco-green">Improving in some regions</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <h3 class="text-2xl font-bold mb-6 text-eco-purple">Future Roadmap</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-orange text-2xl">▶</span>
-                            <div>
-                                <p class="font-bold">Real-Time Data</p>
-                                <p class="text-sm text-gray-400">API integration for live pollution monitoring</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-orange text-2xl">▶</span>
-                            <div>
-                                <p class="font-bold">AI Predictions</p>
-                                <p class="text-sm text-gray-400">Machine learning for trend forecasting</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-eco-orange text-2xl">▶</span>
-                            <div>
-                                <p class="font-bold">Community Features</p>
-                                <p class="text-sm text-gray-400">User accounts, sharing, and collaboration tools</p>
-                            </div>
+                    <div class="card bg-gradient-to-r from-eco-blue/10 to-eco-green/10 border-eco-blue/30">
+                        <div class="text-center">
+                            <p class="text-xl text-gray-300">Comprehensive data spanning <span class="text-eco-blue font-bold">2018-2024</span></p>
+                            <p class="text-gray-400 mt-2">Covering 6 continents, 195 countries, and 1000+ cities</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card bg-gradient-to-r from-eco-blue/10 to-eco-purple/10 border-eco-blue/30 text-center">
-                <p class="text-2xl font-bold mb-2">Join Us in Making a Difference</p>
-                <p class="text-gray-400">Every visualization viewed is a step toward greater environmental awareness</p>
-            </div>
-        </div>
-    </section>
+            </section>
 
     <!-- Slide 9: Call to Action -->
     <section class="slide items-center justify-center bg-gradient-to-br from-gray-900 via-green-900/30 to-blue-900/30">
@@ -425,25 +343,7 @@
         </div>
     </section>
 
-    <!-- Slide Controls -->
-    <div class="controls fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-50 no-print">
-        <button id="prev-btn" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-            ← Prev
-        </button>
-        <div class="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg">
-            <span id="current-slide">1</span>
-            <span class="text-gray-500">/</span>
-            <span id="total-slides">9</span>
-        </div>
-        <button id="next-btn" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-            Next →
-        </button>
-    </div>
 
-    <!-- Navigation Helper -->
-    <div class="fixed top-4 right-4 text-sm text-gray-500 no-print">
-        Press ← → or Space • Ctrl+P to print
-    </div>
 
     <script>
         class PresentationController {
@@ -495,6 +395,67 @@
         }
 
         new PresentationController();
+
+         document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (!menuBtn || !mobileMenu) return;
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  });
     </script>
+
+<footer class="bg-gray-900 border-t border-gray-800 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+      
+      <!-- About -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
+        <p class="text-gray-400 max-w-sm">
+          Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col items-center md:items-start md:pl-40">
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-center">
+          <li><a href="air.html" class="footer-link">Air Pollution</a></li>
+          <li><a href="water.html" class="footer-link">Water Pollution</a></li>
+          <li><a href="light.html" class="footer-link">Light Pollution</a></li>
+          <li><a href="noise.html" class="footer-link">Noise Pollution</a></li>
+          <li><a href="ai-prediction.html" class="footer-link">AI Prediction</a></li>
+          <li><a href="presentation.html" class="footer-link">Presentation</a></li>
+        </ul>
+      </div>
+
+      <!-- Technology -->
+      <div class="flex flex-col items-center md:items-start md:pl-60 ">
+        <h3 class="text-xl font-bold mb-4">Technology</h3>
+        <ul class="space-y-2 text-gray-400 ">
+          <li>Three.js for 3D Graphics</li>
+          <li>Chart.js for Data Viz</li>
+          <li>TensorFlow.js for AI</li>
+          <li>Tailwind CSS</li>
+          <li>Vanilla JavaScript</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+      <p>© <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+    </div>
+
+  </div>
+</footer>
+
 </body>
+
 </html>
