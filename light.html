@@ -1,127 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Pollution - EcoPulse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/light.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for glassmorphism and animations that Tailwind might miss */
+        .glass-card {
+            background: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+
+<body class="bg-gray-900 text-white font-['Inter']">
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
+    
+    <nav
+        class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
                 </a>
-                <!-- Desktop Navigation -->
+
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="air.html" class="nav-link">Air</a>
-                    <a href="water.html" class="nav-link">Water</a>
-                    <a href="light.html" class="nav-link active text-eco-orange">Light</a>
-                    <a href="noise.html" class="nav-link">Noise</a>
-                    <a href="presentation.html" class="nav-link">Demo</a>
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group focus-outline" tabindex="0">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group focus-outline" tabindex="0">
+                        Air
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group focus-outline" tabindex="0">
+                        Water
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="light.html" class="text-eco-orange font-medium relative focus-outline" tabindex="0">
+                        Light
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-orange"></span>
+                    </a>
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group focus-outline" tabindex="0">
+                        Noise
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                        Prediction</a>
+                    <a href="presentation.html"
+                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2">
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
             <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block py-2 hover:text-eco-blue transition-colors">Home</a>
-                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
-                <a href="water.html" class="block py-2 hover:text-eco-blue transition-colors">Water Pollution</a>
-                <a href="light.html" class="block py-2 text-eco-orange font-medium">Light Pollution</a>
-                <a href="noise.html" class="block py-2 hover:text-eco-purple transition-colors">Noise Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
-                <a href="presentation.html" class="block py-2 hover:text-eco-green transition-colors">Demo</a>
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Home</a>
+                <a href="air.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air
+                    Pollution</a>
+                <a href="water.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Water
+                    Pollution</a>
+                <a href="light.html"
+                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-orange font-medium border-l-4 border-eco-orange focus-outline" tabindex="0">Light
+                    Pollution</a>
+                <a href="noise.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors focus-outline" tabindex="0">Noise
+                    Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                    Prediction</a>
+                <a href="presentation.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
             </div>
         </div>
     </nav>
 
     <main class="pt-16">
-        <!-- Hero -->
-        <section class="py-20 bg-gradient-to-br from-orange-950 via-yellow-900/30 to-orange-900">
-            <div class="container mx-auto px-4 text-center">
-                <span class="badge badge-warning mb-4 inline-block shadow-lg shadow-orange-500/50">Growing Problem</span>
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-[0_0_30px_rgba(249,115,22,0.6)]">Light <span class="text-eco-orange">Pollution</span></h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    80% of the world can no longer see the Milky Way. Explore night sky data.
+        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80"
+                    alt="Night Sky Stars" class="w-full h-full object-cover animate-fade-in">
+                <div class="absolute inset-0 bg-gray-900/70 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+            </div>
+
+            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+                <span
+                    class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-orange-200 uppercase bg-orange-900/60 rounded-full border border-orange-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                    Global Crisis
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+                    Light <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-200">Pollution</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                    80% of the world can no longer see the Milky Way. <br>Discover how artificial light is erasing our
+                    night sky.
                 </p>
+
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-3 bg-eco-orange text-white rounded-full font-semibold hover:bg-orange-600 transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
+                        View Simulation
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- Main Content -->
-        <section class="py-12 bg-gradient-to-b from-gray-900 to-orange-950/30">
+        <section id="simulation-section" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <!-- Placeholder for 3D -->
-                    <div class="card">
-                        <h3 class="text-2xl font-bold mb-4">Night Sky Simulation</h3>
-                        <div class="relative bg-black rounded-lg overflow-hidden scene-container" style="height: 500px;">
-                            <canvas id="light-3d-scene" class="w-full h-full"></canvas>
-                            <div id="light-scene-loading" class="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="spinner mx-auto mb-4"></div>
-                                    <p class="text-gray-300">Loading Night Sky...</p>
+                <div class="grid lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up"
+                            style="animation-delay: 0.1s;">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-eco-orange" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                    Night Sky Simulation
+                                </h3>
+                                <div
+                                    class="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-700">
+                                    <span class="relative flex h-3 w-3">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                    </span>
+                                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wide">Live
+                                        Render</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-6">
-                            <div class="flex justify-between mb-2">
-                                <label>Light Intensity</label>
-                                <span id="light-intensity-value" class="text-eco-orange font-bold">High (75%)</span>
+
+                            <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-700 group"
+                                style="height: 500px;">
+                                <canvas id="light-3d-scene" class="w-full h-full"></canvas>
+
+                                <div id="light-scene-loading"
+                                    class="absolute inset-0 bg-gray-900 flex items-center justify-center z-20 transition-opacity duration-500">
+                                    <div class="text-center">
+                                        <div
+                                            class="w-12 h-12 border-4 border-gray-700 border-t-eco-orange rounded-full animate-spin mx-auto mb-4">
+                                        </div>
+                                        <p class="text-gray-400 text-sm tracking-widest font-mono">LOADING SKY MAP...
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="range" id="light-intensity-slider" min="0" max="100" value="75" class="w-full">
+
+                            <div class="mt-6 bg-gray-900/50 p-5 rounded-xl border border-gray-700/50">
+                                <div class="flex justify-between mb-3">
+                                    <label class="text-sm font-medium text-gray-300">City Light Intensity</label>
+                                    <span id="light-intensity-value"
+                                        class="text-eco-orange font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">High
+                                        (75%)</span>
+                                </div>
+                                <div class="relative w-full h-6 flex items-center">
+                                    <input type="range" id="light-intensity-slider" min="0" max="100" value="75"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-orange hover:accent-orange-400 transition-all z-10">
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
+                                    <span>Dark Sky Preserve</span>
+                                    <span>Major Metropolis</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Data Panel -->
-                    <div>
-                        <div class="card mb-6">
-                            <h3 class="text-2xl font-bold mb-4">Light Pollution Impact</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-gray-700/50 p-4 rounded-lg">
-                                    <div class="text-3xl font-bold text-eco-orange">17.4</div>
-                                    <div class="text-sm text-gray-400">Sky Brightness</div>
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                                <svg class="w-5 h-5 text-eco-orange" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                                Current Metrics
+                            </h3>
+                            <div class="space-y-4">
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 transition-all hover:bg-gray-800 hover:border-eco-orange/50">
+                                    <div class="text-sm text-gray-400 mb-1">Sky Brightness</div>
+                                    <div class="flex items-baseline gap-2">
+                                        <div class="text-3xl font-bold text-eco-orange">17.4</div>
+                                        <div class="text-xs text-gray-500">mag/arcsec²</div>
+                                    </div>
+                                    <div class="text-xs text-eco-red mt-2 flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                        </svg>
+                                        Exceeds critical levels
+                                    </div>
                                 </div>
-                                <div class="bg-gray-700/50 p-4 rounded-lg">
-                                    <div class="text-3xl font-bold text-eco-red">15.3%</div>
-                                    <div class="text-sm text-gray-400">Stars Visible</div>
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 transition-all hover:bg-gray-800 hover:border-eco-orange/50">
+                                    <div class="text-sm text-gray-400 mb-1">Stars Visible to Eye</div>
+                                    <div class="text-3xl font-bold text-white">15.3%</div>
+                                    <div class="text-xs text-gray-500 mt-2">Compared to pre-industrial era</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <h3 class="text-xl font-bold mb-4">✨ Impact on Wildlife</h3>
+
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                                <span>🦁</span> Impact on Wildlife
+                            </h3>
                             <div class="space-y-3">
-                                <div class="flex items-center justify-between p-3 bg-orange-900/20 rounded-lg">
-                                    <span>🦉 Nocturnal Animals</span>
-                                    <span class="text-eco-red font-bold">87% Affected</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">
+                                        <span class="text-xl">🦇</span> Nocturnal
+                                    </span>
+                                    <span class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">87%
+                                        Affected</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-orange-900/20 rounded-lg">
-                                    <span>🦅 Migratory Birds</span>
-                                    <span class="text-eco-orange font-bold">62% Disoriented</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">
+                                        <span class="text-xl">🦆</span> Birds
+                                    </span>
+                                    <span
+                                        class="text-eco-orange font-bold text-sm bg-orange-500/10 px-2 py-1 rounded">62%
+                                        Disoriented</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-orange-900/20 rounded-lg">
-                                    <span>🐛 Insects</span>
-                                    <span class="text-eco-red font-bold">75% Decline</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">
+                                        <span class="text-xl">🦗</span> Insects
+                                    </span>
+                                    <span class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">75%
+                                        Decline</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-orange-900/20 rounded-lg">
-                                    <span>🌳 Plant Cycles</span>
-                                    <span class="text-eco-orange font-bold">45% Disrupted</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">
+                                        <span class="text-xl">🌱</span> Plants
+                                    </span>
+                                    <span
+                                        class="text-yellow-500 font-bold text-sm bg-yellow-500/10 px-2 py-1 rounded">45%
+                                        Disrupted</span>
                                 </div>
                             </div>
                         </div>
@@ -131,62 +311,33 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-400">
-        <p>&copy; 2024 EcoPulse. Hackathon 2024</p>
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 EcoPulse. Environmental Monitoring System.</p>
+        </div>
     </footer>
-        <!-- Added scroll-to-top button -->
-    <button id="scroll-to-top" class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors" aria-label="Scroll to top" title="Back to top">
+
+    <button id="scroll-to-top"
+        class="fixed bottom-8 right-8 p-3 bg-eco-orange text-white rounded-full shadow-lg shadow-orange-500/20 opacity-0 invisible transition-all duration-300 hover:bg-orange-600 transform translate-y-4 hover:-translate-y-1 z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/main.js"></script>
+
     <script src="js/light-3d.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.getElementById('light-intensity-slider');
-            const valueDisplay = document.getElementById('light-intensity-value');
-            
-            slider?.addEventListener('input', (e) => {
-                const value = e.target.value;
-                const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
-                valueDisplay.textContent = `${level} (${value}%)`;
-                window.lightScene?.updateLightIntensity(value);
-            });
-        });
-    </script>
-    <script>// Scroll to Top Functionality
-;(() => {
-  const scrollButton = document.getElementById("scroll-to-top")
+    <script src="js/light.js"></script>
+    <script src="js/script.js"></script>
 
-  if (!scrollButton) return
 
-  // Show/hide button based on scroll position
-  function toggleScrollButton() {
-    if (window.scrollY > 300) {
-      scrollButton.classList.add("visible")
-    } else {
-      scrollButton.classList.remove("visible")
-    }
-  }
 
-  // Smooth scroll to top
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-
-  // Event listeners
-  window.addEventListener("scroll", toggleScrollButton, { passive: true })
-  scrollButton.addEventListener("click", scrollToTop)
-
-  // Initial check
-  toggleScrollButton()
-})()
-</script>
 </body>
+
 </html>

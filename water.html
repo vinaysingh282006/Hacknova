@@ -1,127 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Pollution - EcoPulse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.4);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+
+<body class="bg-gray-900 text-white font-['Inter']">
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
+    
+    <nav
+        class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
                 </a>
-                <!-- Desktop Navigation -->
+
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="air.html" class="nav-link">Air</a>
-                    <a href="water.html" class="nav-link active text-eco-blue">Water</a>
-                    <a href="light.html" class="nav-link">Light</a>
-                    <a href="noise.html" class="nav-link">Noise</a>
-                    <a href="presentation.html" class="nav-link">Demo</a>
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group focus-outline" tabindex="0">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group focus-outline" tabindex="0">
+                        Air
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="water.html" class="text-eco-blue font-medium relative focus-outline" tabindex="0">
+                        Water
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-blue"></span>
+                    </a>
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group focus-outline" tabindex="0">
+                        Light
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group focus-outline" tabindex="0">
+                        Noise
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                        Prediction</a>
+                    <a href="presentation.html"
+                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2">
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
             <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block py-2 hover:text-eco-blue transition-colors">Home</a>
-                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
-                <a href="water.html" class="block py-2 text-eco-blue font-medium">Water Pollution</a>
-                <a href="light.html" class="block py-2 hover:text-eco-orange transition-colors">Light Pollution</a>
-                <a href="noise.html" class="block py-2 hover:text-eco-purple transition-colors">Noise Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
-                <a href="presentation.html" class="block py-2 hover:text-eco-green transition-colors">Demo</a>
+                <a href="index.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Home</a>
+                <a href="air.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air
+                    Pollution</a>
+                <a href="water.html"
+                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-blue font-medium border-l-4 border-eco-blue focus-outline" tabindex="0">Water
+                    Pollution</a>
+                <a href="light.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors focus-outline" tabindex="0">Light
+                    Pollution</a>
+                <a href="noise.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors focus-outline" tabindex="0">Noise
+                    Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                    Prediction</a>
+                <a href="presentation.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
             </div>
         </div>
     </nav>
 
     <main class="pt-16">
-        <!-- Hero -->
-        <section class="py-20 bg-gradient-to-br from-blue-950 via-cyan-900/40 to-blue-900">
-            <div class="container mx-auto px-4 text-center">
-                <span class="badge badge-info mb-4 inline-block shadow-lg shadow-blue-500/50">Global Crisis</span>
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-[0_0_30px_rgba(14,165,233,0.6)]">Water <span class="text-eco-blue">Pollution</span></h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    2 billion people lack access to safely managed drinking water. Explore contamination data.
+        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1974"
+                    alt="Water Pollution" class="w-full h-full object-cover animate-fade-in">
+                <div class="absolute inset-0 bg-gray-900/70 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+            </div>
+
+            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+                <span
+                    class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-blue-200 uppercase bg-blue-900/60 rounded-full border border-blue-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                    Critical Resource
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+                    Water <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Crisis</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                    2 billion people lack access to safe drinking water. <br>Our oceans are drowning in plastic and
+                    waste.
                 </p>
+
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-3 bg-eco-blue text-white rounded-full font-semibold hover:bg-blue-600 transition-all hover:scale-105 shadow-lg shadow-blue-500/30">
+                        View Simulation
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- Main Content -->
-        <section class="py-12 bg-gradient-to-b from-gray-900 to-blue-950/30">
+        <section id="simulation-section" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <!-- Placeholder for 3D -->
-                    <div class="card">
-                        <h3 class="text-2xl font-bold mb-4">Water Flow Simulation</h3>
-                        <div class="relative bg-black rounded-lg overflow-hidden scene-container" style="height: 500px;">
-                            <canvas id="water-3d-scene" class="w-full h-full"></canvas>
-                            <div id="water-scene-loading" class="absolute inset-0 bg-gray-900/90 flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="spinner mx-auto mb-4"></div>
-                                    <p class="text-gray-300">Loading Water Simulation...</p>
+                <div class="grid lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up"
+                            style="animation-delay: 0.1s;">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-eco-blue" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                        </path>
+                                    </svg>
+                                    Ocean Waste Map
+                                </h3>
+                                <div
+                                    class="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-700">
+                                    <span class="relative flex h-3 w-3">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                                    </span>
+                                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wide">Live
+                                        Feed</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mt-6">
-                            <div class="flex justify-between mb-2">
-                                <label>Contamination Level</label>
-                                <span id="water-contamination-value" class="text-eco-blue font-bold">High (65%)</span>
+
+                            <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-700 group"
+                                style="height: 500px;">
+                                <canvas id="water-3d-scene" class="w-full h-full"></canvas>
+
+                                <div id="water-scene-loading"
+                                    class="absolute inset-0 bg-gray-900 flex items-center justify-center z-20 transition-opacity duration-500">
+                                    <div class="text-center">
+                                        <div
+                                            class="w-12 h-12 border-4 border-gray-700 border-t-eco-blue rounded-full animate-spin mx-auto mb-4">
+                                        </div>
+                                        <p class="text-gray-400 text-sm tracking-widest font-mono">LOADING OCEAN DATA...
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="range" id="water-contamination-slider" min="0" max="100" value="65" class="w-full">
+
+                            <div class="mt-6 bg-gray-900/50 p-5 rounded-xl border border-gray-700/50">
+                                <div class="flex justify-between mb-3">
+                                    <label class="text-sm font-medium text-gray-300">Microplastic Density</label>
+                                    <span id="water-pollution-value"
+                                        class="text-eco-blue font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">High
+                                        (4.5 g/m³)</span>
+                                </div>
+                                <div class="relative w-full h-6 flex items-center">
+                                    <input type="range" id="water-pollution-slider" min="0" max="100" value="75"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-blue hover:accent-blue-400 transition-all z-10"
+                                        role="slider" aria-label="Water pollution level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
+                                    <span>Pristine</span>
+                                    <span>Garbage Patch</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Data Panel -->
-                    <div>
-                        <div class="card mb-6">
-                            <h3 class="text-2xl font-bold mb-4">Current Water Quality</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-gray-700/50 p-4 rounded-lg">
-                                    <div class="text-3xl font-bold text-eco-blue">24.8</div>
-                                    <div class="text-sm text-gray-400">Chemicals mg/L</div>
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                                <svg class="w-5 h-5 text-eco-blue" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                                Key Statistics
+                            </h3>
+                            <div class="space-y-4">
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-blue/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Ocean Acidity (pH)</div>
+                                    <div class="flex items-baseline gap-2">
+                                        <div class="text-3xl font-bold text-eco-orange">8.05</div>
+                                        <div class="text-xs text-gray-500">Normal is 8.2</div>
+                                    </div>
+                                    <div class="text-xs text-eco-red mt-2 flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                        </svg>
+                                        30% more acidic
+                                    </div>
                                 </div>
-                                <div class="bg-gray-700/50 p-4 rounded-lg">
-                                    <div class="text-3xl font-bold text-eco-orange">45.3</div>
-                                    <div class="text-sm text-gray-400">Microplastics/L</div>
+                                <div
+                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-blue/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Plastic Waste</div>
+                                    <div class="text-3xl font-bold text-white">14M</div>
+                                    <div class="text-xs text-gray-500 mt-2">Tons per year</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <h3 class="text-xl font-bold mb-4">💧 Pollution Sources</h3>
+
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                                <span>🐠</span> Marine Impact
+                            </h3>
                             <div class="space-y-3">
-                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
-                                    <span>🏭 Industrial Waste</span>
-                                    <span class="text-eco-red font-bold">42%</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🐢 Turtles</span>
+                                    <span class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">Ingest
+                                        Plastic</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
-                                    <span>🌾 Agricultural Runoff</span>
-                                    <span class="text-eco-orange font-bold">31%</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🪸 Coral</span>
+                                    <span
+                                        class="text-eco-orange font-bold text-sm bg-orange-500/10 px-2 py-1 rounded">Bleaching</span>
                                 </div>
-                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
-                                    <span>🏘️ Urban Sewage</span>
-                                    <span class="text-eco-orange font-bold">18%</span>
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-blue-900/20 rounded-lg">
-                                    <span>♻️ Plastic Waste</span>
-                                    <span class="text-eco-blue font-bold">9%</span>
+                                <div
+                                    class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🧬 Food Chain</span>
+                                    <span
+                                        class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">Contaminated</span>
                                 </div>
                             </div>
                         </div>
@@ -131,62 +294,28 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-400">
-        <p>&copy; 2024 EcoPulse. Hackathon 2024</p>
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 flex justify-center">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 EcoPulse. Environmental Monitoring System.</p>
+        </div>
     </footer>
-        <!-- Added scroll-to-top button -->
-    <button id="scroll-to-top" class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors" aria-label="Scroll to top" title="Back to top">
+
+    <button id="scroll-to-top"
+        class="fixed bottom-8 right-8 p-3 bg-eco-blue text-white rounded-full shadow-lg shadow-blue-500/20 opacity-0 invisible transition-all duration-300 hover:bg-blue-600 transform translate-y-4 hover:-translate-y-1 z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/water-3d.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.getElementById('water-contamination-slider');
-            const valueDisplay = document.getElementById('water-contamination-value');
-            
-            slider?.addEventListener('input', (e) => {
-                const value = e.target.value;
-                const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
-                valueDisplay.textContent = `${level} (${value}%)`;
-                window.waterScene?.updateContaminationLevel(value);
-            });
-        });
-    </script>
-    <script>// Scroll to Top Functionality
-;(() => {
-  const scrollButton = document.getElementById("scroll-to-top")
-
-  if (!scrollButton) return
-
-  // Show/hide button based on scroll position
-  function toggleScrollButton() {
-    if (window.scrollY > 300) {
-      scrollButton.classList.add("visible")
-    } else {
-      scrollButton.classList.remove("visible")
-    }
-  }
-
-  // Smooth scroll to top
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-
-  // Event listeners
-  window.addEventListener("scroll", toggleScrollButton, { passive: true })
-  scrollButton.addEventListener("click", scrollToTop)
-
-  // Initial check
-  toggleScrollButton()
-})()
-</script>
+    <script src="js/water.js"></script>
 </body>
+
 </html>
