@@ -146,15 +146,30 @@
             </div>
 
             <!-- Hero Content -->
-            <div class="hero-content">
-                <div class="hero-glass">
-
-                    <!-- LOAD ANIMATED CONTENT -->
-                    <div class="hero-load hero-delay-1">
-                        <h1>
-                            Visualize Our<br />
-                            <span>Planet’s Health</span>
-                        </h1>
+            <div class="relative z-10 container mx-auto px-4 text-center">
+                <div class="animate-fade-in-up">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                        Visualize Our
+                        <br>
+                        <span class="text-white drop-shadow-[0_0_30px_rgba(14,165,233,0.8)]">
+                            Planet's Health
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl sm:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        Interactive 3D exploration of environmental pollution data.
+                        <br class="hidden sm:block">
+                        Discover the impact of air, water, and light pollution through immersive visualizations.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                        <a href="air.html" class="btn btn-primary px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all w-full sm:w-auto">
+                            Explore Now
+                        </a>
+                        <a href="presentation.html" class="btn btn-outline px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all w-full sm:w-auto">
+                            View Demo
+                        </a>
                     </div>
 
                     <div class="hero-load hero-delay-2">
@@ -198,27 +213,36 @@
 
 
         <!-- Statistics Section -->
+        <!-- Data based on widely cited global environmental estimates (WHO & research studies) -->
         <section class="py-20 bg-gray-800/50 border-y border-gray-700">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+                    <!--Air Pollution-->
                     <div class="stat-item scroll-reveal">
-                        <div class="text-4xl md:text-5xl font-bold text-eco-red mb-2" data-counter="91" data-suffix="%">
-                            91%</div>
+                        <!-- Static value used since no JS-based counter animation exists -->
+                        <div class="text-4xl md:text-5xl font-bold text-eco-red mb-2" data-counter="91" data-suffix="%">91%</div>
                         <p class="text-gray-400 text-sm md:text-base">People breathe polluted air</p>
                     </div>
+
+                    <!--unsafe water-->
                     <div class="stat-item scroll-reveal">
-                        <div class="text-4xl md:text-5xl font-bold text-eco-blue mb-2" data-counter="2" data-suffix="B">
-                            2B</div>
+                        <!-- Static value used since no JS-based counter animation exists -->
+                        <div class="text-4xl md:text-5xl font-bold text-eco-blue mb-2" data-counter="2" data-suffix="B">2B</div>
                         <p class="text-gray-400 text-sm md:text-base">Lack safe water</p>
                     </div>
+
+                    <!-- Light Pollution -->
                     <div class="stat-item scroll-reveal">
-                        <div class="text-4xl md:text-5xl font-bold text-eco-orange mb-2" data-counter="80"
-                            data-suffix="%">80%</div>
+                        <!-- Static value used since no JS-based counter animation exists -->
+                        <div class="text-4xl md:text-5xl font-bold text-eco-orange mb-2" data-counter="80" data-suffix="%">80%</div>
                         <p class="text-gray-400 text-sm md:text-base">Can't see Milky Way</p>
                     </div>
+
+                    <!-- Noise Pollution -->
                     <div class="stat-item scroll-reveal">
-                        <div class="text-4xl md:text-5xl font-bold text-eco-purple mb-2" data-counter="45"
-                            data-suffix="%">45%</div>
+                        <!-- Static value used since no JS-based counter animation exists -->
+                        <div class="text-4xl md:text-5xl font-bold text-eco-purple mb-2" data-counter="45" data-suffix="%">45%</div>
                         <p class="text-gray-400 text-sm md:text-base">Exposed to harmful noise</p>
                     </div>
                 </div>
