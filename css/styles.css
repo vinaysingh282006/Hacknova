@@ -823,3 +823,50 @@ input[type=range]::-webkit-slider-runnable-track {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transform: translateY(-6px);
 }
+
+
+/* ===============================
+   Explore Data Link Hover Effect
+   (Issue #81)
+================================ */
+
+.explore-link {
+  position: relative;
+  gap: 6px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.explore-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+  opacity: 0.8;
+}
+
+.group:hover .explore-link,
+.explore-link:focus-visible {
+  transform: translateX(6px);
+}
+
+.group:hover .explore-link::after,
+.explore-link:focus-visible::after {
+  width: 100%;
+}
+
+.explore-link svg {
+  transition: transform 0.3s ease;
+}
+
+.group:hover .explore-link svg,
+.explore-link:focus-visible svg {
+  transform: translateX(4px);
+}
+
+.explore-link:focus-visible {
+  outline: none;
+}
