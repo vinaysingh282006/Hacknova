@@ -92,9 +92,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (val >= 30) level = 'Medium';
             if (val >= 70) level = 'High';
             valueDisplay.textContent = `${level} (${val}%)`;
+            
+            // Update ARIA attributes for accessibility
+            slider.setAttribute('aria-valuenow', val);
+            slider.setAttribute('aria-valuetext', `${val}% contamination level - ${level}`);
 
             // Trigger Debounced 3D Update
             debouncedUpdate(val);
         });
+        
+        // Initialize ARIA attributes
+        const initialValue = parseInt(slider.value);
+        let initialLevel = 'Low';
+        if (initialValue >= 30) initialLevel = 'Medium';
+        if (initialValue >= 70) initialLevel = 'High';
+        slider.setAttribute('aria-valuenow', initialValue);
+        slider.setAttribute('aria-valuetext', `${initialValue}% contamination level - ${initialLevel}`);
+        slider.setAttribute('aria-label', 'Water contamination level');
     }
 });

@@ -28,41 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Mobile Menu Logic ---
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
+    // --- 2. Air Quality Health Impact Animation ---
+    const healthItems = document.querySelectorAll('.group.flex.items-center.justify-between');
+    healthItems.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('shadow-lg', 'scale-[1.02]');
         });
         
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('shadow-lg', 'scale-[1.02]');
         });
-    }
+    });
 
-    // --- 3. Scroll To Top Logic ---
-    const scrollButton = document.getElementById("scroll-to-top");
-    
-    if (scrollButton) {
-        function toggleScrollButton() {
-            if (window.scrollY > 300) {
-                scrollButton.classList.remove("opacity-0", "invisible", "translate-y-4");
-            } else {
-                scrollButton.classList.add("opacity-0", "invisible", "translate-y-4");
-            }
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-
-        window.addEventListener("scroll", toggleScrollButton, { passive: true });
-        scrollButton.addEventListener("click", scrollToTop);
-        toggleScrollButton(); // Initial check
+    // --- 3. Air Quality Metrics Animation ---
+    const metricCards = document.querySelectorAll('.bg-gray-800\/50.p-4.rounded-xl');
+    if (metricCards.length > 0) {
+        // Animate metrics on page load
+        setTimeout(() => {
+            metricCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 * index);
+            });
+        }, 500);
     }
 });

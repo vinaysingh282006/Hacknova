@@ -14,7 +14,8 @@
     <meta property="og:description" content="Interactive 3D exploration of environmental pollution data">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ecopulse.example.com">
-
+    <meta property="og:image" content="https://hacknova-seven.vercel.app/ecopulse-logo.png">
+    
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EcoPulse - Environmental Pollution Visualization">
@@ -30,6 +31,9 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -60,7 +64,7 @@
 
 <body class="bg-gray-900 text-white">
     <!-- Skip to Content Link for Accessibility -->
-    <a href="#main-content" class="skip-link sr-only focus:not-sr-only">Skip to main content</a>
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Navigation Header -->
     <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300"
@@ -76,12 +80,12 @@
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors">Air</a>
-                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors">Water</a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors">Light</a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors">Noise</a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors focus-outline" tabindex="0">Home</a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air</a>
+                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Water</a>
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors focus-outline" tabindex="0">Light</a>
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors focus-outline" tabindex="0">Noise</a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
                         Prediction</a>
                     <a href="presentation.html"
                         class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
@@ -98,12 +102,12 @@
 
         <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
             <div class="px-4 py-4 space-y-3">
-                <a href="#home" class="block py-2 text-gray-300 hover:text-white">Home</a>
-                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
-                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
-                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
-                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple">Noise Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
+                <a href="#home" class="block py-2 text-gray-300 hover:text-white focus-outline" tabindex="0">Home</a>
+                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red focus-outline" tabindex="0">Air Pollution</a>
+                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue focus-outline" tabindex="0">Water Pollution</a>
+                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange focus-outline" tabindex="0">Light Pollution</a>
+                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple focus-outline" tabindex="0">Noise Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
                     Prediction</a>
                 <a href="presentation.html"
                     class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
@@ -445,63 +449,70 @@
         </section>
 
         <!-- Features Section -->
-        <section class="py-20 bg-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
-                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Advanced visualization technology meets environmental awareness
-                    </p>
-                </div>
+ <section class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
 
-                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                <path fill-rule="evenodd"
-                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
-                        <p class="text-gray-300">
-                            Immersive Three.js visualizations with real-time controls and camera navigation
-                        </p>
-                    </div>
+    <div class="text-center mb-16 scroll-reveal">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Advanced visualization technology meets environmental awareness
+      </p>
+    </div>
 
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Real Data</h3>
-                        <p class="text-gray-300">
-                            Based on WHO, EPA, and scientific research with regional breakdowns
-                        </p>
-                    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
-                    <div class="card text-center scroll-reveal">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
-                        <p class="text-gray-300">
-                            Responsive design with touch controls, gestures, and PWA support
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Card 1 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
+        <p class="text-gray-300">
+          Immersive Three.js visualizations with real-time controls and camera navigation
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Real Data</h3>
+        <p class="text-gray-300">
+          Based on WHO, EPA, and scientific research with regional breakdowns
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
+        <p class="text-gray-300">
+          Responsive design with touch controls, gestures, and PWA support
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         <!-- Reviews Section -->
         <section class="reviews-section scroll-reveal">
@@ -807,6 +818,184 @@
             </div>
         </section>
 
+        <!-- Environmental Data Dashboard -->
+        <section class="py-20 bg-gray-900 border-t border-gray-700">
+            <div class="container mx-auto px-4 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Real-time Environmental Data</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Live pollution monitoring with interactive visualizations and predictive analytics
+                    </p>
+                </div>
+                
+                <!-- Dashboard Controls -->
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <button id="dashboard-mode-all" class="dashboard-mode-btn active px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all">
+                        All Pollution Types
+                    </button>
+                    <button id="dashboard-mode-air" class="dashboard-mode-btn px-6 py-3 bg-eco-red/20 text-eco-red rounded-full border border-eco-red/30 hover:bg-eco-red/30 transition-all">
+                        Air Only
+                    </button>
+                    <button id="dashboard-mode-water" class="dashboard-mode-btn px-6 py-3 bg-eco-blue/20 text-eco-blue rounded-full border border-eco-blue/30 hover:bg-eco-blue/30 transition-all">
+                        Water Only
+                    </button>
+                    <button id="dashboard-mode-noise" class="dashboard-mode-btn px-6 py-3 bg-eco-purple/20 text-eco-purple rounded-full border border-eco-purple/30 hover:bg-eco-purple/30 transition-all">
+                        Noise Only
+                    </button>
+                </div>
+                
+                <!-- Dashboard Grid -->
+                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Air Quality Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-lime-900/30 to-green-800/20 border border-lime-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-lime-400">Air Quality Index</h3>
+                            <div class="flex items-center text-sm text-lime-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="air-quality-value" class="text-4xl font-bold text-white">42</span>
+                            <span class="ml-2 text-gray-400">AQI</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="air-quality-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="air-quality-status" class="text-green-400">Good</span> • PM2.5: 12 μg/m³ • PM10: 18 μg/m³
+                        </div>
+                    </div>
+                    
+                    <!-- Water Quality Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-teal-900/30 to-cyan-800/20 border border-teal-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-teal-400">Water Quality</h3>
+                            <div class="flex items-center text-sm text-teal-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="water-quality-value" class="text-4xl font-bold text-white">78</span>
+                            <span class="ml-2 text-gray-400">WQI</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="water-quality-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="water-quality-status" class="text-yellow-400">Moderate</span> • pH: 7.2 • DO: 6.8 mg/L
+                        </div>
+                    </div>
+                    
+                    <!-- Noise Level Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-purple-900/30 to-violet-800/20 border border-purple-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-purple-400">Noise Level</h3>
+                            <div class="flex items-center text-sm text-purple-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="noise-level-value" class="text-4xl font-bold text-white">65</span>
+                            <span class="ml-2 text-gray-400">dB</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="noise-level-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="noise-level-status" class="text-yellow-400">Moderate</span> • Peak: 78 dB • Avg: 62 dB
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Section -->
+                <div class="bg-gray-800/50 border border-gray-700 rounded-3xl p-6 mb-12">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-white">Pollution Trends</h3>
+                        <div class="flex space-x-2">
+                            <button id="chart-1d" class="chart-time-btn active px-4 py-2 bg-eco-green/20 text-eco-green rounded-lg text-sm">1D</button>
+                            <button id="chart-1w" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">1W</button>
+                            <button id="chart-1m" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">1M</button>
+                            <button id="chart-3m" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">3M</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pollution-trend-chart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Global Map Section -->
+                <div class="bg-gray-800/50 border border-gray-700 rounded-3xl p-6">
+                    <h3 class="text-2xl font-bold text-white mb-6">Global Pollution Map</h3>
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div class="map-container">
+                            <div class="relative w-full h-80 bg-gray-900 rounded-xl overflow-hidden">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="inline-block p-4 bg-gray-800 rounded-lg mb-4">
+                                            <svg class="w-16 h-16 mx-auto text-eco-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="text-gray-400">Interactive pollution map visualization</p>
+                                        <p class="text-sm text-gray-500 mt-2">Real-time data from monitoring stations worldwide</p>
+                                    </div>
+                                </div>
+                                <!-- Pollution hotspots would be rendered here by JS -->
+                                <div class="absolute top-1/4 left-1/3 w-4 h-4 bg-eco-red rounded-full animate-ping"></div>
+                                <div class="absolute top-1/3 left-2/3 w-4 h-4 bg-eco-orange rounded-full animate-ping"></div>
+                                <div class="absolute bottom-1/3 left-1/4 w-4 h-4 bg-eco-red rounded-full animate-ping"></div>
+                                <div class="absolute bottom-1/4 right-1/3 w-3 h-3 bg-eco-yellow rounded-full animate-ping"></div>
+                            </div>
+                        </div>
+                        <div class="map-info">
+                            <h4 class="text-lg font-semibold text-white mb-4">Pollution Hotspots</h4>
+                            <div class="space-y-4">
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-red">Delhi, India</h5>
+                                            <p class="text-sm text-gray-400">Severe Air Pollution</p>
+                                        </div>
+                                        <span class="text-sm bg-red-500/20 text-red-400 px-2 py-1 rounded">AQI: 420</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Industrial emissions and vehicle exhaust</div>
+                                </div>
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-orange">Los Angeles, USA</h5>
+                                            <p class="text-sm text-gray-400">High Ozone Levels</p>
+                                        </div>
+                                        <span class="text-sm bg-orange-500/20 text-orange-400 px-2 py-1 rounded">AQI: 185</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Photochemical smog from traffic</div>
+                                </div>
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-purple">Shanghai, China</h5>
+                                            <p class="text-sm text-gray-400">Water Contamination</p>
+                                        </div>
+                                        <span class="text-sm bg-purple-500/20 text-purple-400 px-2 py-1 rounded">WQI: 45</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Industrial discharge and runoff</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Call to Action Section -->
         <section class="py-20 bg-gradient-to-r from-eco-blue/20 to-eco-green/20 border-t border-gray-700">
             <div class="container mx-auto px-4 text-center scroll-reveal">
@@ -827,59 +1016,55 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <!-- About -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
-                    <p class="text-gray-400 mb-4">
-                        Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
-                    </p>
-                </div>
+<footer class="bg-gray-900 border-t border-gray-800 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+      
+      <!-- About -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
+        <p class="text-gray-400 max-w-sm">
+          Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
+        </p>
+      </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="air.html" class="text-gray-400 hover:text-eco-blue transition-colors">Air
-                                Pollution</a></li>
-                        <li><a href="water.html" class="text-gray-400 hover:text-eco-blue transition-colors">Water
-                                Pollution</a></li>
-                        <li><a href="light.html" class="text-gray-400 hover:text-eco-blue transition-colors">Light
-                                Pollution</a></li>
-                        <li><a href="noise.html" class="text-gray-400 hover:text-eco-purple transition-colors">Noise
-                                Pollution</a></li>
-                        <li><a href="ai-prediction.html"
-                                class="text-gray-400 hover:text-purple-400 transition-colors">AI Prediction</a></li>
-                        <li><a href="presentation.html"
-                                class="text-gray-400 hover:text-eco-blue transition-colors">Presentation</a></li>
-                    </ul>
-                </div>
+      <!-- Quick Links -->
+      <div class="flex flex-col items-center md:items-start md:pl-40">
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-center">
+          <li><a href="air.html" class="footer-link">Air Pollution</a></li>
+          <li><a href="water.html" class="footer-link">Water Pollution</a></li>
+          <li><a href="light.html" class="footer-link">Light Pollution</a></li>
+          <li><a href="noise.html" class="footer-link">Noise Pollution</a></li>
+          <li><a href="ai-prediction.html" class="footer-link">AI Prediction</a></li>
+          <li><a href="presentation.html" class="footer-link">Presentation</a></li>
+        </ul>
+      </div>
 
-                <!-- Credits -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Technology</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Three.js for 3D Graphics</li>
-                        <li>Chart.js for Data Viz</li>
-                        <li>TensorFlow.js for AI</li>
-                        <li>Tailwind CSS Styling</li>
-                        <li>Vanilla JavaScript</li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Technology -->
+      <div class="flex flex-col items-center md:items-start md:pl-60 ">
+        <h3 class="text-xl font-bold mb-4">Technology</h3>
+        <ul class="space-y-2 text-gray-400 ">
+          <li>Three.js for 3D Graphics</li>
+          <li>Chart.js for Data Viz</li>
+          <li>TensorFlow.js for AI</li>
+          <li>Tailwind CSS</li>
+          <li>Vanilla JavaScript</li>
+        </ul>
+      </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
-                <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
-            </div>
-        </div>
-    </footer>
-    <!-- Added scroll-to-top button -->
-    <button id="scroll-to-top"
-        class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors"
-        aria-label="Scroll to top" title="Back to top">
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+      <p>© <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+    </div>
+
+  </div>
+</footer>
+        <!-- Added scroll-to-top button -->
+    <button id="scroll-to-top" class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors" aria-label="Scroll to top" title="Back to top">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
