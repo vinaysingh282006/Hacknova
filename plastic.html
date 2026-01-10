@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plastic Pollution - EcoPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥤</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                        'eco-brown': '#D97706',
+                        'eco-teal': '#0D9488', /* Teal-600 for Plastic */
+                        'eco-cyan': '#06B6D4', /* Cyan-500 for Accents */
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(31, 41, 55, 0.85); 
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+        }
+        /* Custom Bar Animation */
+        .bar-fill {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-['Inter']">
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group">
+                        Air
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
+                        Water
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
+                    </a>
+                    
+                    
+
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group">
+                        Light
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
+                        Noise
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="soil.html" class="text-gray-300 hover:text-eco-brown transition-colors relative group">
+                        Soil
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-brown transition-all group-hover:w-full"></span>
+                    </a>
+
+                    <a href="plastic.html" class="text-gray-300 hover:text-eco-cyan transition-colors relative group">
+                        Plastic
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-cyan"></span>
+                    </a>
+
+                   <a href="radioactive.html" class="text-gray-300 hover:text-eco-green transition-colors relative group">
+                        Radioactive
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-lime"></span>
+                    </a>
+
+
+
+
+                   <a href="presentation.html" class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Home</a>
+                <a href="air.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors">Air Pollution</a>
+                <a href="water.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Water Pollution</a>
+                
+                <a href="light.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors">Light Pollution</a>
+                <a href="noise.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors">Noise Pollution</a>
+
+                <a href="soil.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-brown transition-colors">Soil Pollution</a>
+                <a href="plastic.html" class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-cyan font-medium border-l-4 border-eco-cyan">Plastic Pollution</a>
+                
+                <a href="radioactive.html"
+                    class="block py-2 text-gray-300 hover:text-eco-orange">Radioactive
+                    Waste</a>
+
+
+                
+                <a href="presentation.html" class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://plus.unsplash.com/premium_photo-1663088881507-209dbbb1fbc7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plastic Waste Ocean" class="w-full h-full object-cover animate-fade-in">
+                <div class="absolute inset-0 bg-gray-900/45 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+                <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-cyan-200 uppercase bg-cyan-900/80 rounded-full border border-cyan-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                    Forever Waste
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl">
+                    Plastic <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-200">Pandemic</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
+                    More than 8 million tons of plastic enter our oceans every year. <br>It takes centuries to disappear.
+                </p>
+                
+                <div class="mt-8 flex justify-center gap-4">
+                    <button onclick="document.getElementById('data-section').scrollIntoView({behavior: 'smooth'})" class="px-8 py-3 bg-eco-teal text-white rounded-full font-semibold hover:bg-teal-600 transition-all hover:scale-105 shadow-lg shadow-teal-500/30">
+                        View Data
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="data-section" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-12 gap-8">
+                    
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up" style="animation-delay: 0.1s;">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                    <svg class="w-6 h-6 text-eco-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                    Decomposition Timeline
+                                </h3>
+                                <div class="flex items-center space-x-2 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-700">
+                                    <span class="relative flex h-3 w-3">
+                                      <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
+                                    </span>
+                                    <span class="text-xs font-semibold text-gray-300 uppercase tracking-wide">Live Estimates</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800/40 rounded-xl p-6 border border-gray-700 space-y-8 relative">
+                                <div class="absolute top-0 right-0 text-xs text-gray-600 font-mono mt-2 mr-4">Scale: Years</div>
+                                
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xl">🥤</span>
+                                            <span class="text-sm font-medium text-gray-300">Plastic Bottle</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-eco-cyan">450 Years</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div id="bar-bottle" class="bar-fill bg-gradient-to-r from-teal-500 to-cyan-400 h-3 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xl">🪥</span>
+                                            <span class="text-sm font-medium text-gray-300">Toothbrush</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-teal-300">500 Years</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div id="bar-brush" class="bar-fill bg-gradient-to-r from-teal-600 to-cyan-500 h-3 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xl">🎣</span>
+                                            <span class="text-sm font-medium text-gray-300">Fishing Line</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-eco-orange">600 Years</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div id="bar-net" class="bar-fill bg-gradient-to-r from-orange-500 to-red-500 h-3 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xl">🛍️</span>
+                                            <span class="text-sm font-medium text-gray-300">Plastic Bag</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-green-400">20 Years</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                                        <div id="bar-bag" class="bar-fill bg-gradient-to-r from-green-500 to-green-300 h-3 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 bg-gray-900/50 p-5 rounded-xl border border-gray-700/50">
+                                <div class="flex justify-between mb-3">
+                                    <label class="text-sm font-medium text-gray-300">Recycling Rate Projection</label>
+                                    <span id="plastic-slider-value" class="text-eco-cyan font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">Current (9%)</span>
+                                </div>
+                                <div class="relative w-full h-6 flex items-center">
+                                    <input type="range" id="plastic-slider" min="0" max="100" value="9" 
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-cyan hover:accent-teal-400 transition-all z-10">
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
+                                    <span>Current Reality</span>
+                                    <span>Circular Economy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-6">
+                        
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                                <svg class="w-5 h-5 text-eco-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Global Production
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-cyan/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Annual Production</div>
+                                    <div class="flex items-baseline gap-2">
+                                        <div class="text-3xl font-bold text-white">400M</div>
+                                        <div class="text-xs text-gray-500">Tons</div>
+                                    </div>
+                                    <div class="text-xs text-eco-orange mt-2 flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+                                        Doubling every 15 years
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-cyan/50 transition-all">
+                                    <div class="text-sm text-gray-400 mb-1">Microplastics in Ocean</div>
+                                    <div class="text-3xl font-bold text-eco-cyan">51T</div>
+                                    <div class="text-xs text-gray-500 mt-2">Trillion particles</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 animate-slide-up" style="animation-delay: 0.3s;">
+                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                                <span>🐋</span> Marine Impact
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🐢 Animals</span>
+                                    <span class="text-eco-red font-bold text-sm bg-red-500/10 px-2 py-1 rounded">100k+ Die/Yr</span>
+                                </div>
+                                <div class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🍽️ Food</span>
+                                    <span class="text-eco-orange font-bold text-sm bg-orange-500/10 px-2 py-1 rounded">Ingested</span>
+                                </div>
+                                <div class="group flex items-center justify-between p-3 bg-gray-800/40 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
+                                    <span class="flex items-center gap-3 text-gray-300">🏝️ Garbage</span>
+                                    <span class="text-yellow-500 font-bold text-sm bg-yellow-500/10 px-2 py-1 rounded">Great Pacific Patch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6 flex justify-center">
+                <div class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2024 EcoPulse. Environmental Monitoring System.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 p-3 bg-eco-cyan text-white rounded-full shadow-lg shadow-cyan-500/20 opacity-0 invisible transition-all duration-300 hover:bg-cyan-600 transform translate-y-4 hover:-translate-y-1 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script src="js/plastic.js"></script>
+</body>
+</html>
