@@ -32,75 +32,96 @@ Create your own fork of the repository on GitHub.
 ```bash
 git clone https://github.com/your-username/ecopulse.git
 cd ecopulse
-3. Create a New Branch
+```
+
+### 3. Create a New Branch
+
+```bash
 git checkout -b feature/your-feature-name
+```
 
-4. Make Your Changes
+### 4.  Make Your Changes
 
-Follow the existing project structure
+- Follow the existing project structure
 
-Keep code modular and readable
+- Keep code modular and readable
 
-Avoid unnecessary dependencies
+- Avoid unnecessary dependencies
 
-Ensure accessibility standards are maintained
+- Ensure accessibility standards are maintained
 
-5. Commit Your Changes
+### 5. Commit Your Changes
+
+```bash
 git add .
 git commit -m "feat: concise description of changes"
+```
 
-6. Push and Open a Pull Request
+### 6. Push and Open a Pull Request
+
+```bash
 git push origin feature/your-feature-name
+```
+
+### 7. Open a Pull Request from your fork to the main repository.
+
+---
+
+### What You Can Work On
+
+- New 3D visualizations or scene improvements
+
+- Performance optimizations
+
+- Accessibility enhancements (WCAG compliance)
+
+- Mobile responsiveness improvements
+
+- Bug fixes and refactoring
+
+- Documentation improvements
+
+- Check the Issues section before starting work.
+
+---
+
+### Pull Request Guidelines
+
+- Clearly describe what your PR does
+
+- Reference related issues if applicable
+
+- Include screenshots or videos for UI changes
+
+- Ensure your changes do not break existing features
+
+- All pull requests are reviewed before merging.
 
 
-Open a Pull Request from your fork to the main repository.
+---
 
-What You Can Work On
+### Code Style & Best Practices
 
-New 3D visualizations or scene improvements
+- Write clean, readable code
 
-Performance optimizations
+- Use meaningful variable and function names
 
-Accessibility enhancements (WCAG compliance)
+- Comment complex logic
 
-Mobile responsiveness improvements
+- Test changes locally before submitting
 
-Bug fixes and refactoring
+---
 
-Documentation improvements
-
-Check the Issues section before starting work.
-
-Pull Request Guidelines
-
-Clearly describe what your PR does
-
-Reference related issues if applicable
-
-Include screenshots or videos for UI changes
-
-Ensure your changes do not break existing features
-
-All pull requests are reviewed before merging.
-
-Code Style & Best Practices
-
-Write clean, readable code
-
-Use meaningful variable and function names
-
-Comment complex logic
-
-Test changes locally before submitting
-
-Community Expectations
+### Community Expectations
 
 By contributing, you agree to:
 
-Be respectful and professional
+- Be respectful and professional
 
-Give and receive constructive feedback
+- Give and receive constructive feedback
 
-Support a welcoming open-source environment
+- Support a welcoming open-source environment
 
-Thank you for contributing to EcoPulse and supporting open-source sustainability initiatives.
+---
+
+> Thank you for contributing to EcoPulse and supporting open-source sustainability initiatives.
