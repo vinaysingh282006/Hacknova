@@ -217,8 +217,10 @@
                                         class="text-eco-purple font-bold font-mono bg-gray-800 px-2 py-0.5 rounded">65 dB (Moderate)</span>
                                 </div>
                                 <div class="relative w-full h-6 flex items-center">
-                                    <input type="range" id="noise-level-slider" min="0" max="120" value="65"
-                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-purple hover:accent-purple-400 transition-all z-10">
+                                    <input type="range" id="noise-level-slider" min="0" max="120" value="65" step="1"
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-purple hover:accent-purple-400 
+                                        transition-all z-10  hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-orange-500/40 "
+                                        role="slider" aria-label="Adjust ambient noise level" aria-valuemin="0" aria-valuemax="120" aria-valuenow="65" />
                                 </div>
                                 <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
                                     <span>Silent</span>
