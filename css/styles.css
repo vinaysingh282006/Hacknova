@@ -390,6 +390,77 @@
 /* ===============================
    EcoPulse Global Styles
 ================================ */
+
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 18px;
+  padding: 1.75rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  backdrop-filter: blur(8px) saturate(120%);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.ecopulse-card {
+  padding: 1.6rem;
+}
+
+.card .w-16 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(2,6,23,0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #38bdf8, #10b981);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(2,6,23,0.55), 0 10px 30px rgba(16,185,129,0.06);
+  border-color: rgba(56,189,248,0.12);
+}
+
+.card:hover .w-16 {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.55), 0 6px 14px rgba(59,130,246,0.06);
+}
+
+/* CTA inside feature area */
+#why-ecopulse .inline-block {
+  box-shadow: 0 8px 30px rgba(16,185,129,0.06);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    min-height: unset;
+  }
+  .card h3 { font-size: 1.0625rem; }
+}
+
+
+
 /* --- Custom Logo Styles --- */
 .gradient-text {
   background: linear-gradient(to right, #ffffff, #9ca3af);
@@ -519,6 +590,23 @@
 
 /* Range Slider Styling */
 input[type=range] {
+
+    -webkit-appearance: none; 
+  appearance: none;
+    background: transparent; 
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ef4444; 
+    cursor: pointer;
+    margin-top: -6px; 
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
   -webkit-appearance: none;
   background: transparent;
 }
@@ -532,6 +620,7 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   margin-top: -6px;
   box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -564,12 +653,22 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .reviews-header h2 {
+
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #38bdf8, #22c55e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   background: linear-gradient(to right, #38bdf8, #22c55e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
 }
 
 .reviews-header p {
