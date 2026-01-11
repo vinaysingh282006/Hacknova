@@ -27,7 +27,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -490,6 +493,8 @@
             </div>
         </section>
 
+       <section class="py-20 bg-gray-900">
+
         <!-- Features Section -->
  <section class="py-20 bg-gray-900">
   <div class="container mx-auto px-4">
@@ -551,6 +556,11 @@
           Responsive design with touch controls, gestures, and PWA support
         </p>
       </div>
+
+    </div>
+  </div>
+</section>
+
 
     </div>
   </div>
@@ -1061,6 +1071,20 @@
         </section>
     </main>
 
+   <footer class="bg-gray-900 border-t border-gray-800 py-12">
+  <div class="container mx-auto px-4">
+
+    <!-- Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-12 mb-8 w-full text-center md:text-left">
+
+      <!-- About -->
+      <div>
+        <h3 class="text-xl font-bold mb-4 gradient-text">
+          <i class="fa-solid fa-leaf mr-2"></i>About EcoPulse
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Environmental awareness through interactive 3D data visualization.
+          Built for Hackathon 2024.
     <!-- Footer -->
 <footer class="bg-gray-900 border-t border-gray-800 py-12">
   <div class="max-w-7xl mx-auto px-6">
@@ -1076,6 +1100,85 @@
       </div>
 
       <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">
+          <i class="fa-solid fa-link mr-2"></i>Quick Links
+        </h3>
+        <ul class="space-y-2">
+          <li class="flex justify-center md:justify-start">
+            <a href="air.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-wind"></i>Air Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="water.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-water"></i>Water Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="light.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-lightbulb"></i>Light Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="noise.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-purple transition-colors">
+              <i class="fa-solid fa-volume-high"></i>Noise Pollution
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="ai-prediction.html" class="flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-colors">
+              <i class="fa-solid fa-brain"></i>AI Prediction
+            </a>
+          </li>
+          <li class="flex justify-center md:justify-start">
+            <a href="presentation.html" class="flex items-center gap-2 text-gray-400 hover:text-eco-blue transition-colors">
+              <i class="fa-solid fa-file-powerpoint"></i>Presentation
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Technology -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">
+          <i class="fa-solid fa-microchip mr-2"></i>Technology
+        </h3>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-cube"></i>Three.js for 3D Graphics
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-chart-line"></i>Chart.js for Data Viz
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-robot"></i>TensorFlow.js for AI
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-solid fa-palette"></i>Tailwind CSS Styling
+          </li>
+          <li class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa-brands fa-js"></i>Vanilla JavaScript
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+      <p>&copy; <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+    </div>
+
+  </div>
+</footer>
+
+
+    <!-- Added scroll-to-top button -->
+    <button id="scroll-to-top"
+        class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors"
+        aria-label="Scroll to top" title="Back to top">
+=======
       <div class="flex flex-col items-center md:items-start md:pl-40">
         <h3 class="text-xl font-bold mb-4">Quick Links</h3>
         <ul class="space-y-2 text-center">

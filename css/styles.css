@@ -640,6 +640,42 @@ input[type=range]::-webkit-slider-runnable-track {
   color: #38bdf8 !important;
 }
 
+/* Footer mobile alignment */
+@media (max-width: 768px) {
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer ul li,
+  footer ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer h3 {
+    justify-content: center;
+  }
+}
+/* Final footer mobile centering fix */
+@media (max-width: 768px) {
+  footer ul {
+    align-items: center;
+  }
+
+  footer ul li {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer ul li a {
+    justify-content: center;
+    text-align: center;
+  }
+}
 .dashboard-card {
   transition: all 0.3s ease;
   border: 1px solid rgba(56, 189, 248, 0.2);
