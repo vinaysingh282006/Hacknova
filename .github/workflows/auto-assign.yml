@@ -4,6 +4,9 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  issues: write
+
 jobs:
   assign:
     runs-on: ubuntu-latest
@@ -15,9 +18,14 @@ jobs:
             const issue = context.payload.issue;
             const creator = issue.user.login;
 
-            await github.rest.issues.addAssignees({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issue.number,
-              assignees: [creator],
-            });
+            try {
+              await github.rest.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                assignees: [creator],
+              });
+              console.log(`Successfully assigned issue #${issue.number} to ${creator}`);
+            } catch (error) {
+              console.warn(`Could not auto-assign issue #${issue.number}: ${error.message}`);
+            }

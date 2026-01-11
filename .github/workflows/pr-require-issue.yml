@@ -41,5 +41,5 @@ Use one of the following formats:
 ❗ PRs without a linked issue will be considered **invalid** and may be closed by maintainers.`
               });
 
-              core.setFailed("PR does not reference any issue.");
+              require("@actions/core").setFailed("PR does not reference any issue.");
             }
