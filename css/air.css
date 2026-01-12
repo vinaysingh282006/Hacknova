@@ -1,0 +1,206 @@
+/* Air Pollution Page Specific Styles */
+/* Glass Card Styling */
+.glass-card {
+    background: rgba(31, 41, 55, 0.85);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+/* Air pollution themed colors */
+.text-air-red {
+    color: #ef4444; /* eco-red */
+}
+
+.text-air-orange {
+    color: #f97316; /* eco-orange */
+}
+
+.text-air-yellow {
+    color: #f59e0b; /* amber */
+}
+
+.text-air-green {
+    color: #22c55e; /* eco-green */
+}
+
+.bg-air-red {
+    background-color: #ef4444;
+}
+
+.border-air-red {
+    border-color: #ef4444;
+}
+
+/* Animation classes */
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    0% { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Custom range slider for air pollution */
+input[type="range"].air-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #22c55e, #f59e0b, #f97316, #ef4444); /* Green to yellow to orange to red */
+    outline: none;
+}
+
+input[type="range"].air-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f97316; /* eco-orange */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+}
+
+input[type="range"].air-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f97316; /* eco-orange */
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+}
+
+/* Air quality level indicators */
+.aqi-good {
+    color: #22c55e; /* Green */
+}
+
+.aqi-moderate {
+    color: #f59e0b; /* Yellow */
+}
+
+.aqi-unhealthy {
+    color: #f97316; /* Orange */
+}
+
+.aqi-hazardous {
+    color: #ef4444; /* Red */
+}
+
+/* Loading animation for air scene */
+#air-scene-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.9); /* gray-900 with opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: opacity 0.5s ease;
+}
+
+#air-scene-loading .loader-text {
+    color: #9ca3af; /* gray-400 */
+    font-family: monospace;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+/* Air-specific 3D scene container */
+#air-3d-scene {
+    width: 100%;
+    height: 100%;
+}
+
+/* Health impact cards for air pollution */
+.health-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.health-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.health-card-low-risk {
+    border-left-color: #22c55e; /* Green */
+}
+
+.health-card-moderate-risk {
+    border-left-color: #f59e0b; /* Yellow */
+}
+
+.health-card-high-risk {
+    border-left-color: #ef4444; /* Red */
+}
+
+/* Metric card styling */
+.metric-card {
+    background: rgba(30, 41, 59, 0.5); /* gray-800 with opacity */
+    border: 1px solid rgba(55, 65, 81, 0.5); /* gray-600 with opacity */
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    border-color: #f97316; /* eco-orange */
+    transform: translateY(-3px);
+}
+
+/* Air-specific navigation active state */
+.nav-active-air {
+    color: #f97316 !important; /* eco-orange */
+    position: relative;
+}
+
+.nav-active-air::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #f97316; /* eco-orange */
+    border-radius: 1px;
+}
+
+/* Air pollution particle effects */
+.pollution-particles {
+    position: relative;
+}
+
+.pollution-particles::before,
+.pollution-particles::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(249, 115, 22, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0;
+    animation: pollutionFloat 15s linear infinite;
+}
+
+.pollution-particles::after {
+    animation-delay: 5s;
+    opacity: 0.5;
+}
+
+@keyframes pollutionFloat {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 30px 30px;
+    }
+}

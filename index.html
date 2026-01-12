@@ -27,10 +27,23 @@
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
+ feat/live-countdown-sticky-cta
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
     <link rel="stylesheet" href="css/styles.css">
+ feat/live-countdown-sticky-cta
+
+    
+
+
+    <!-- Manifest for PWA -->
+
     <link rel="manifest" href="manifest.json">
+    
 
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
@@ -51,8 +64,44 @@
         }
     }
 </script>
+<!-- Precautions Modal -->
+<div id="precaution-modal"
+     class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[9999]">
+
+  <div class="bg-gray-900 text-white max-w-lg w-[90%] rounded-2xl p-6 relative animate-fade-in">
+    
+    <button onclick="closePrecautions()"
+            class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">
+      ✖
+    </button>
+
+    <h2 id="precaution-title" class="text-2xl font-bold mb-4"></h2>
+
+    <ul id="precaution-content" class="space-y-3 text-gray-300"></ul>
+  </div>
+</div>
 
 <body class="bg-gray-900 text-white">
+feat/live-countdown-sticky-cta
+
+    <!-- Skip to Content Link for Accessibility -->
+    
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300"
+        id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                    
+                </a>
+
 
     <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800" id="navbar">
         <div class="container mx-auto px-4 h-16 flex justify-between items-center">
@@ -60,8 +109,34 @@
                 <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
                     <span class="text-white font-bold text-xl">E</span>
                 </div>
+ feat/live-countdown-sticky-cta
                 <span class="text-2xl font-bold gradient-text">EcoPulse</span>
             </a>
+
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                    
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-gray-300 hover:text-white focus-outline" tabindex="0">Home</a>
+                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red focus-outline" tabindex="0">Air Pollution</a>
+                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue focus-outline" tabindex="0">Water Pollution</a>
+                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange focus-outline" tabindex="0">Light Pollution</a>
+                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple focus-outline" tabindex="0">Noise Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
+                    Prediction</a>
+                <a href="presentation.html"
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+
         </div>
     </nav>
 
@@ -69,6 +144,7 @@
 
         <!-- HERO SECTION -->
         <section class="hero-section">
+            
 
             <div class="hero-bg">
                 <div class="hero-earth"></div>
@@ -79,6 +155,13 @@
                     <span class="ring ring-2"></span>
                 </div>
                 <div class="hero-particles"></div>
+                <div class="precaution-buttons">
+  <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')">🔊 Noise Precautions</button>
+</div>
+
             </div>
 
             <div class="hero-content">
@@ -102,6 +185,13 @@
                         <a href="air.html" class="btn-primary">Explore Now</a>
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
+                    <div class="hero-load hero-delay-4 mt-6 flex flex-wrap gap-3 justify-center">
+  <button onclick="openPrecautions('air')" class="btn-outline">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')" class="btn-outline">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')" class="btn-outline">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')" class="btn-outline">🔊 Noise Precautions</button>
+</div>
+
 
                     <div class="hero-load hero-delay-4">
                         <a href="ai-prediction.html" class="btn-ai">
@@ -133,11 +223,843 @@
                     <rect x="1" y="1" width="22" height="38" rx="11" stroke="currentColor" stroke-width="2" />
                     <circle cx="12" cy="12" r="3" fill="currentColor">
                         <animate attributeName="cy" from="10" to="28" dur="1.6s" repeatCount="indefinite" />
+                        
                     </circle>
                 </svg>
             </div>
 
         </section>
+ feat/live-countdown-sticky-cta
+
+
+
+
+        <!-- Statistics Section -->
+        <section class="py-20 bg-gray-800/50 border-y border-gray-700">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="stat-item scroll-reveal">
+                        <div class="text-4xl md:text-5xl font-bold text-eco-red mb-2" data-counter="91" data-suffix="%">
+                            91%</div>
+                        <p class="text-gray-400 text-sm md:text-base">People breathe polluted air</p>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <div class="text-4xl md:text-5xl font-bold text-eco-blue mb-2" data-counter="2" data-suffix="B">
+                            2B</div>
+                        <p class="text-gray-400 text-sm md:text-base">Lack Safe Water</p>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <div class="text-4xl md:text-5xl font-bold text-eco-orange mb-2" data-counter="80"
+                            data-suffix="%">80%</div>
+                        <p class="text-gray-400 text-sm md:text-base">Can't see Milky Way</p>
+                    </div>
+                    <div class="stat-item scroll-reveal">
+                        <div class="text-4xl md:text-5xl font-bold text-eco-purple mb-2" data-counter="45"
+                            
+                            data-suffix="%">45%</div>
+                        <p class="text-gray-400 text-sm md:text-base">Exposed to harmful noise</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Cards Section -->
+        <section class="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Explore Pollution Topics</h2>
+                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                        Dive deep into interactive 3D visualizations for each environmental challenge
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <!-- Air Pollution Card -->
+                    <a href="air.html"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-lime-900/30 to-green-800/20 border-lime-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-eco-red-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-eco-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-lime-400">Air Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            91% of the world breathes polluted air. Explore 3D city simulations with particle-based smog
+                            visualization.
+                        </p>
+                        <div
+                            class="flex items-center text-lime-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Air Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Water Pollution Card -->
+                    <a href="water.html"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-teal-900/30 to-cyan-800/20 border-teal-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-eco-blue-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-eco-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-teal-400">Water Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            2 billion lack safe water. Visualize river contamination with interactive hotspots and flow
+                            simulations.
+                        </p>
+                        <div
+                            class="flex items-center text-teal-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Water Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Light Pollution Card -->
+                    <a href="light.html"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-amber-900/30 to-yellow-800/20 border-amber-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-eco-orange-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-eco-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z clip-rule="
+                                    evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-amber-400">Light Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            80% can't see the Milky Way. Experience night sky simulations with light pollution intensity
+                            
+                            controls.
+                        </p>
+                        <div
+                            class="flex items-center text-amber-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Light Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- AI Prediction Card -->
+                    <a href="ai-prediction.html"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-purple-900/30 to-purple-800/20 border-purple-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 7H7v6h6V7z" />
+                                <path fill-rule="evenodd"
+                                    d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-purple-400">AI Prediction</h3>
+                        <p class="text-gray-300 mb-4">
+                            Machine learning models analyze historical data to predict future pollution trends with
+                            confidence intervals.
+                        </p>
+                        <div
+                            class="flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore AI Models
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Noise Pollution Card -->
+                    <a href="noise.html"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-purple-900/30 to-violet-800/20 border-purple-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            
+                            <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-purple-400">Noise Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            45% of urban populations affected by harmful noise. Explore sound wave propagation and
+                            health impacts.
+                        </p>
+                        <div
+                            class="flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Noise Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Soil Pollution Card -->
+                    <a href="#"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-amber-900/30 to-yellow-800/20 border-amber-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-amber-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-amber-400">Soil Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            33% of global soil degraded. Discover contamination sources, agricultural impacts, and
+                            restoration solutions.
+                        </p>
+                        <div
+                            class="flex items-center text-amber-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Soil Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Plastic Pollution Card -->
+                    <a href="#"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-teal-900/30 to-cyan-800/20 border-teal-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-teal-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-teal-400">Plastic Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            300 million tons produced yearly. Visualize ocean plastic accumulation and microplastic
+                            impact on ecosystems.
+                        </p>
+                        <div
+                            class="flex items-center text-teal-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            
+                            Explore Plastic Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Radioactive Pollution Card -->
+                    <a href="#"
+                        class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-lime-900/30 to-green-800/20 border-lime-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
+                        <div
+                            class="flex items-center justify-center w-16 h-16 bg-lime-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8 text-lime-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-lime-400">Radioactive Pollution</h3>
+                        <p class="text-gray-300 mb-4">
+                            250+ contaminated sites worldwide. Track nuclear waste, radiation levels, and long-term
+                            environmental impact.
+                        </p>
+                        <div
+                            class="flex items-center text-lime-400 font-semibold group-hover:translate-x-2 transition-transform">
+                            Explore Radiation Data
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                    
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+ <section class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
+
+    <div class="text-center mb-16 scroll-reveal">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Advanced visualization technology meets environmental awareness
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+      <!-- Card 1 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd"
+              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
+        <p class="text-gray-300">
+          Immersive Three.js visualizations with real-time controls and camera navigation
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Real Data</h3>
+        <p class="text-gray-300">
+          Based on WHO, EPA, and scientific research with regional breakdowns
+            
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card ecopulse-card text-center scroll-reveal">
+        <div
+          class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
+        <p class="text-gray-300">
+          Responsive design with touch controls, gestures, and PWA support
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+        <!-- Reviews Section -->
+        <section class="reviews-section scroll-reveal">
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h2>What People Are Saying</h2>
+                    <p>Real experiences from our community members</p>
+                    
+                </div>
+                
+                <div class="reviews-track">
+                    <div class="reviews-wrapper">
+                        <!-- First set of reviews -->
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse has transformed how I understand environmental issues. The 3D visualizations are incredible!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Arjun Sharma</div>
+                                    <div class="author-title">Environmental Scientist</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The interactive features make learning about pollution so engaging. A must-see for students!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Priya Patel</div>
+                                    <div class="author-title">Teacher</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "I never realized the extent of pollution in my city until I used EcoPulse. Eye-opening experience!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Rahul Verma</div>
+                                    <div class="author-title">Urban Planner</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The AI prediction models are fascinating. They help me understand future environmental challenges."
+                                
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Ananya Gupta</div>
+                                    <div class="author-title">Data Analyst</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "As a policy maker, EcoPulse provides valuable insights for developing environmental regulations."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Vikram Singh</div>
+                                    <div class="author-title">Policy Advisor</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The water pollution visualization helped our NGO target cleanup efforts more effectively."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Sunita Reddy</div>
+                                    <div class="author-title">NGO Coordinator</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "Incredible platform that makes complex environmental data accessible to everyone."
+                                
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Kiran Joshi</div>
+                                    <div class="author-title">Researcher</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The light pollution module helped me find the best spots for stargazing with my astronomy club."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Amitabh Nair</div>
+                                    <div class="author-title">Astronomy Enthusiast</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse has become an essential tool for our environmental awareness campaigns."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Meera Krishnan</div>
+                                    <div class="author-title">Community Leader</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The noise pollution visualization helped me understand the acoustic challenges in our city."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Rajesh Malhotra</div>
+                                    <div class="author-title">Acoustic Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "A powerful tool for environmental education that combines technology with real-world impact."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Neha Chatterjee</div>
+                                    <div class="author-title">Educator</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse opened my eyes to the interconnectedness of different types of pollution."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Sandeep Agarwal</div>
+                                    <div class="author-title">Environmental Advocate</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second set of reviews (duplicate for seamless loop) -->
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse has transformed how I understand environmental issues. The 3D visualizations are incredible!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Arjun Sharma</div>
+                                    <div class="author-title">Environmental Scientist</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The interactive features make learning about pollution so engaging. A must-see for students!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Priya Patel</div>
+                                    <div class="author-title">Teacher</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "I never realized the extent of pollution in my city until I used EcoPulse. Eye-opening experience!"
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Rahul Verma</div>
+                                    <div class="author-title">Urban Planner</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The AI prediction models are fascinating. They help me understand future environmental challenges."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Ananya Gupta</div>
+                                    <div class="author-title">Data Analyst</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "As a policy maker, EcoPulse provides valuable insights for developing environmental regulations."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Vikram Singh</div>
+                                    <div class="author-title">Policy Advisor</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The water pollution visualization helped our NGO target cleanup efforts more effectively."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Sunita Reddy</div>
+                                    <div class="author-title">NGO Coordinator</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "Incredible platform that makes complex environmental data accessible to everyone."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Kiran Joshi</div>
+                                    <div class="author-title">Researcher</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The light pollution module helped me find the best spots for stargazing with my astronomy club."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Amitabh Nair</div>
+                                    <div class="author-title">Astronomy Enthusiast</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse has become an essential tool for our environmental awareness campaigns."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Meera Krishnan</div>
+                                    <div class="author-title">Community Leader</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "The noise pollution visualization helped me understand the acoustic challenges in our city."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Rajesh Malhotra</div>
+                                    <div class="author-title">Acoustic Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "A powerful tool for environmental education that combines technology with real-world impact."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Neha Chatterjee</div>
+                                    <div class="author-title">Educator</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-card">
+                            <div class="review-content">
+                                "EcoPulse opened my eyes to the interconnectedness of different types of pollution."
+                            </div>
+                            <div class="review-author">
+                                <div>
+                                    <div class="author-name">Sandeep Agarwal</div>
+                                    <div class="author-title">Environmental Advocate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Environmental Data Dashboard -->
+        <section class="py-20 bg-gray-900 border-t border-gray-700">
+            <div class="container mx-auto px-4 scroll-reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Real-time Environmental Data</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Live pollution monitoring with interactive visualizations and predictive analytics
+                    </p>
+                </div>
+                
+                <!-- Dashboard Controls -->
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <button id="dashboard-mode-all" class="dashboard-mode-btn active px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all">
+                        All Pollution Types
+                    </button>
+                    <button id="dashboard-mode-air" class="dashboard-mode-btn px-6 py-3 bg-eco-red/20 text-eco-red rounded-full border border-eco-red/30 hover:bg-eco-red/30 transition-all">
+                        Air Only
+                    </button>
+                    <button id="dashboard-mode-water" class="dashboard-mode-btn px-6 py-3 bg-eco-blue/20 text-eco-blue rounded-full border border-eco-blue/30 hover:bg-eco-blue/30 transition-all">
+                        Water Only
+                    </button>
+                    <button id="dashboard-mode-noise" class="dashboard-mode-btn px-6 py-3 bg-eco-purple/20 text-eco-purple rounded-full border border-eco-purple/30 hover:bg-eco-purple/30 transition-all">
+                        Noise Only
+                    </button>
+                </div>
+                
+                <!-- Dashboard Grid -->
+                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Air Quality Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-lime-900/30 to-green-800/20 border border-lime-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-lime-400">Air Quality Index</h3>
+                            <div class="flex items-center text-sm text-lime-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="air-quality-value" class="text-4xl font-bold text-white">42</span>
+                            <span class="ml-2 text-gray-400">AQI</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="air-quality-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="air-quality-status" class="text-green-400">Good</span> • PM2.5: 12 μg/m³ • PM10: 18 μg/m³
+                        </div>
+                    </div>
+                    
+                    <!-- Water Quality Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-teal-900/30 to-cyan-800/20 border border-teal-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-teal-400">Water Quality</h3>
+                            <div class="flex items-center text-sm text-teal-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="water-quality-value" class="text-4xl font-bold text-white">78</span>
+                            <span class="ml-2 text-gray-400">WQI</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="water-quality-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="water-quality-status" class="text-yellow-400">Moderate</span> • pH: 7.2 • DO: 6.8 mg/L
+                        </div>
+                    </div>
+                    
+                    <!-- Noise Level Card -->
+                    <div class="dashboard-card bg-gradient-to-br from-purple-900/30 to-violet-800/20 border border-purple-500/30 rounded-3xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-purple-400">Noise Level</h3>
+                            <div class="flex items-center text-sm text-purple-400">
+                                <span class="mr-2">Live</span>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline mb-4">
+                            <span id="noise-level-value" class="text-4xl font-bold text-white">65</span>
+                            <span class="ml-2 text-gray-400">dB</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div id="noise-level-bar" class="h-2 rounded-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-300">
+                            <span id="noise-level-status" class="text-yellow-400">Moderate</span> • Peak: 78 dB • Avg: 62 dB
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Section -->
+                <div class="bg-gray-800/50 border border-gray-700 rounded-3xl p-6 mb-12">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-white">Pollution Trends</h3>
+                        <div class="flex space-x-2">
+                            <button id="chart-1d" class="chart-time-btn active px-4 py-2 bg-eco-green/20 text-eco-green rounded-lg text-sm">1D</button>
+                            <button id="chart-1w" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">1W</button>
+                            <button id="chart-1m" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">1M</button>
+                            <button id="chart-3m" class="chart-time-btn px-4 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm">3M</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pollution-trend-chart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Global Map Section -->
+                <div class="bg-gray-800/50 border border-gray-700 rounded-3xl p-6">
+                    <h3 class="text-2xl font-bold text-white mb-6">Global Pollution Map</h3>
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div class="map-container">
+                            <div class="relative w-full h-80 bg-gray-900 rounded-xl overflow-hidden">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="inline-block p-4 bg-gray-800 rounded-lg mb-4">
+                                            <svg class="w-16 h-16 mx-auto text-eco-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="text-gray-400">Interactive pollution map visualization</p>
+                                        <p class="text-sm text-gray-500 mt-2">Real-time data from monitoring stations worldwide</p>
+                                    </div>
+                                </div>
+                                <!-- Pollution hotspots would be rendered here by JS -->
+                                <div class="absolute top-1/4 left-1/3 w-4 h-4 bg-eco-red rounded-full animate-ping"></div>
+                                <div class="absolute top-1/3 left-2/3 w-4 h-4 bg-eco-orange rounded-full animate-ping"></div>
+                                <div class="absolute bottom-1/3 left-1/4 w-4 h-4 bg-eco-red rounded-full animate-ping"></div>
+                                <div class="absolute bottom-1/4 right-1/3 w-3 h-3 bg-eco-yellow rounded-full animate-ping"></div>
+                            </div>
+                        </div>
+                        <div class="map-info">
+                            <h4 class="text-lg font-semibold text-white mb-4">Pollution Hotspots</h4>
+                            <div class="space-y-4">
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-red">Delhi, India</h5>
+                                            <p class="text-sm text-gray-400">Severe Air Pollution</p>
+                                        </div>
+                                        <span class="text-sm bg-red-500/20 text-red-400 px-2 py-1 rounded">AQI: 420</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Industrial emissions and vehicle exhaust</div>
+                                </div>
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-orange">Los Angeles, USA</h5>
+                                            <p class="text-sm text-gray-400">High Ozone Levels</p>
+                                        </div>
+                                        <span class="text-sm bg-orange-500/20 text-orange-400 px-2 py-1 rounded">AQI: 185</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Photochemical smog from traffic</div>
+                                </div>
+                                <div class="hotspot-item p-4 bg-gray-700/50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h5 class="font-medium text-eco-purple">Shanghai, China</h5>
+                                            <p class="text-sm text-gray-400">Water Contamination</p>
+                                        </div>
+                                        <span class="text-sm bg-purple-500/20 text-purple-400 px-2 py-1 rounded">WQI: 45</span>
+                                    </div>
+                                    <div class="mt-2 text-xs text-gray-500">Industrial discharge and runoff</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-20 bg-gradient-to-r from-eco-blue/20 to-eco-green/20 border-t border-gray-700">
+            <div class="container mx-auto px-4 text-center scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Make a Difference?</h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Explore the data, understand the impact, and discover actionable solutions
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="air.html" class="btn btn-primary px-8 py-4 text-lg font-semibold">
+                        Start Exploring
+                    </a>
+                    <a href="presentation.html" class="btn btn-outline px-8 py-4 text-lg font-semibold">
+                        View Presentation
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- ✅ STICKY REGISTER CTA -->
@@ -146,9 +1068,25 @@
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+feat/live-countdown-sticky-cta
 
     <!-- ✅ MODULE SCRIPT -->
     <script type="module" src="js/script.js"></script>
 
 </body>
+
+    <script src="js/script.js"></script>
+</body>
+
+        <script>
+            (function(){
+                var el = document.getElementById('year');
+                if(el) el.textContent = new Date().getFullYear();
+            })();
+        </script>
+
+</body>
+
+
+
 </html>

@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
-     <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-
-
-
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+  
     <style>
         body {
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
@@ -420,288 +427,80 @@
         .floating {
             animation: floatAnimation 3s ease-in-out infinite;
         }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<!-- <body>
-     Futuristic particle background 
-    <div class="particles-container" id="particles"></div>
-    
-     Navigation 
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'eco-green': '#10B981',
-                    'eco-blue': '#3B82F6',
-                    'eco-purple': '#8B5CF6',
-                    'eco-orange': '#F97316',
-                    'eco-red': '#EF4444',
-                }
-            }
-        }
-    }
-</script> -->
 
 <body class="bg-gray-900 text-white overflow-x-hidden">
     <!-- Futuristic particle background -->
     <div class="particles-container" id="particles"></div>
+    
     <!-- Navigation -->
-    <!-- <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300"
-        id="navbar">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="h-16 flex items-center justify-between">
+                <!-- LEFT: Logo -->
                 <a href="index.html" class="flex items-center space-x-2">
-                    <span class="text-2xl font-bold gradient-text text-white">EcoPulse</span>
-                    <div
-                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
                 </a>
 
+                <!-- RIGHT: Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link active text-eco-blue font-medium text-white">Home</a>
-                    <a href="air.html" class="nav-link hover:text-eco-red transition-colors text-white">Air</a>
-                    <a href="water.html" class="nav-link hover:text-eco-blue transition-colors text-white">Water</a>
-                    <a href="light.html" class="nav-link hover:text-eco-orange transition-colors text-white">Light</a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors text-white">AI Prediction</a>
-                </div>
-                
-                <!-- Mobile Menu Button 
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Toggle menu" aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-
-                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors">Air</a>
-                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors">Water</a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors">Light</a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors">Noise</a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI
-                        Prediction</a>
-                    <a href="presentation.html"
-                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                    <a href="index.html" class="nav-link text-white font-medium">Home</a>
+                    <a href="air.html" class="nav-link text-white hover:text-eco-red transition-colors">Air</a>
+                    <a href="water.html" class="nav-link text-white hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="nav-link text-white hover:text-eco-orange transition-colors">Light</a>
+                    <a href="ai-prediction.html" class="nav-link text-white hover:text-purple-400 transition-colors">
+                        AI Prediction
+                    </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- RIGHT: Mobile Menu Button -->
+                <button
+                    id="mobile-menu-btn"
+                    class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                    aria-label="Toggle menu"
+                    aria-expanded="false"
+                >
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
         
-        <!-- Mobile Menu 
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
-            <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block py-2 text-eco-blue font-medium">Home</a>
-                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
-                <a href="water.html" class="block py-2 hover:text-eco-blue transition-colors">Water Pollution</a>
-                <a href="light.html" class="block py-2 hover:text-eco-orange transition-colors">Light Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
-            </div>
-        </div>
-    </nav> -->
-
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur border-b border-gray-800">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="h-16 flex items-center justify-between">
-
-      <!-- LEFT: Logo -->
-      <a href="index.html" class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
-          <span class="text-white font-bold text-xl">E</span>
-        </div>
-        <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-      </a>
-
-      <!-- RIGHT: Desktop Nav -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="nav-link text-white font-medium">Home</a>
-        <a href="air.html" class="nav-link text-white hover:text-eco-red transition-colors">Air</a>
-        <a href="water.html" class="nav-link text-white hover:text-eco-blue transition-colors">Water</a>
-        <a href="light.html" class="nav-link text-white hover:text-eco-orange transition-colors">Light</a>
-        <a href="ai-prediction.html" class="nav-link text-white hover:text-purple-400 transition-colors">
-          AI Prediction
-        </a>
-      </div>
-
-      <!-- RIGHT: Mobile Menu Button -->
-      <button
-        id="mobile-menu-btn"
-        class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-      >
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-
-    </div>
-  </div>
-</nav>
-
-
-    <!-- Main Content -->
-    <div class="ai-container" style="margin-top: 100px;">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-5xl font-bold mb-4 floating">
-                <span style="background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    AI Pollution Prediction
-                </span>
-            </h1>
-            <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with machine learning</p>
-        </div>
-
-        <!-- Data Upload Section -->
-        <div class="gradient-bg mb-8 glow" id="upload-section">
-            <h2 class="section-title">📊 Load Dataset</h2>
-            <div class="dataset-selector">
-                <select class="dataset-dropdown" id="dataset-select">
-                    <option value="">Select a dataset...</option>
-                    <option value="DATASET/city_day.csv">City Pollution Data (Daily) - 2.5 MB</option>
-                    <option value="DATASET/station_day.csv">Station Pollution Data (Daily) - 8.4 MB</option>
-                    <option value="DATASET/city_hour.csv">City Pollution Data (Hourly) - 64 MB</option>
-                </select>
-                <div class="upload-small" id="upload-trigger">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                    </svg>
-                    Upload Custom CSV
-                </div>
-                <input type="file" id="file-input" accept=".csv" class="hidden">
-            </div>
-            <div class="mt-4">
-                <button class="btn-ai" id="load-selected-dataset">Load Selected Dataset</button>
-            </div>
-            <div id="loading-indicator" class="hidden mt-4 flex items-center justify-center gap-4">
-                <div class="loading-spinner"></div>
-                <span class="text-white">Loading data...</span>
-            </div>
-        </div>
-
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8" id="stats-section" style="display: none;">
-            <div class="stat-card">
-                <div class="text-3xl mb-2">📅</div>
-                <div class="text-2xl font-bold text-white" id="stat-records">0</div>
-                <div class="text-sm text-gray-400">Total Records</div>
-            </div>
-            <div class="stat-card">
-                <div class="text-3xl mb-2">🏙️</div>
-                <div class="text-2xl font-bold text-white" id="stat-locations">0</div>
-                <div class="text-sm text-gray-400">Locations</div>
-            </div>
-            <div class="stat-card">
-                <div class="text-3xl mb-2">📈</div>
-                <div class="text-2xl font-bold text-white" id="stat-timespan">-</div>
-                <div class="text-sm text-gray-400">Time Span</div>
-            </div>
-            <div class="stat-card">
-                <div class="text-3xl mb-2">⚠️</div>
-                <div class="text-2xl font-bold text-white" id="stat-avg-aqi">-</div>
-                <div class="text-sm text-gray-400">Avg PM2.5</div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Visualizations Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8" id="viz-section" style="display: none;">
-            <!-- Time Series Chart -->
-            <div class="gradient-bg glow">
-                <h3 class="section-title">📊 Pollution Trends Over Time</h3>
-                <div class="chart-container">
-                    <canvas id="time-series-chart"></canvas>
-                </div>
-            </div>
-
-            <!-- Pollutant Comparison -->
-            <div class="gradient-bg glow">
-                <h3 class="section-title">🔬 Pollutant Levels Comparison</h3>
-                <div class="chart-container">
-                    <canvas id="pollutant-chart"></canvas>
-                </div>
-            </div>
-
-            <!-- Heatmap -->
-            <div class="gradient-bg glow">
-                <h3 class="section-title">🗓️ Seasonal Patterns Heatmap</h3>
-                <div class="chart-container">
-                    <canvas id="heatmap-chart"></canvas>
-                </div>
-            </div>
-
-            <!-- Distribution Chart -->
-            <div class="gradient-bg glow">
-                <h3 class="section-title">📉 AQI Distribution</h3>
-                <div class="chart-container">
-                    <canvas id="distribution-chart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Geographic Map -->
-        <div class="gradient-bg mb-8 glow" id="map-section" style="display: none;">
-            <h3 class="section-title">🗺️ Pollution Hotspots by Location</h3>
-            <div class="map-container" id="pollution-map">
-                <div class="tooltip" id="map-tooltip"></div>
-            </div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- AI Model Training Section -->
-        <div class="gradient-bg mb-8 glow" id="training-section" style="display: none;">
-            <h2 class="section-title">🤖 Train AI Model</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label class="block text-gray-300 mb-2">Target Variable</label>
-                    <select id="target-variable" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
-                        <option value="PM2.5">PM2.5 Concentration</option>
-                        <option value="PM10">PM10 Concentration</option>
-                        <option value="NO2">NO2 Concentration</option>
-                        <option value="AQI">Air Quality Index</option>
-
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800">
             <div class="px-4 py-4 space-y-3">
                 <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Home</a>
                 <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
                 <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
                 <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
-                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple">Noise Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
-                    Prediction</a>
-                <a href="presentation.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
-
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
             </div>
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="pt-16">
-        <!-- Main Content -->
         <div class="ai-container" style="margin-top: 100px;">
             <!-- Header -->
             <div class="text-center mb-12">
                 <h1 class="text-5xl font-bold mb-4 floating">
-                    <span
-                        style="background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    <span class="gradient-text">
                         AI Pollution Prediction
                     </span>
                 </h1>
-                <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with
-                    machine
-                    learning</p>
+                <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with machine learning</p>
             </div>
 
             <!-- Data Upload Section -->
@@ -715,23 +514,13 @@
                         <option value="DATASET/city_hour.csv">City Pollution Data (Hourly) - 64 MB</option>
                     </select>
                     <div class="upload-small" id="upload-trigger">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
-                            </path>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                         </svg>
                         Upload Custom CSV
                     </div>
                     <input type="file" id="file-input" accept=".csv" class="hidden">
                 </div>
-                <div>
-                    <label class="block text-gray-300 mb-2">Prediction Window</label>
-                    <select id="prediction-window" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
-                        <option value="1">1 Day Ahead</option>
-                        <option value="7">7 Days Ahead</option>
-                        <option value="30">30 Days Ahead</option>
-                    </select>
                 <div class="mt-4">
                     <button class="btn-ai" id="load-selected-dataset">Load Selected Dataset</button>
                 </div>
@@ -820,8 +609,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-300 mb-2">Target Variable</label>
-                        <select id="target-variable"
-                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="target-variable" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="PM2.5">PM2.5 Concentration</option>
                             <option value="PM10">PM10 Concentration</option>
                             <option value="NO2">NO2 Concentration</option>
@@ -830,8 +618,7 @@
                     </div>
                     <div>
                         <label class="block text-gray-300 mb-2">Prediction Window</label>
-                        <select id="prediction-window"
-                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="prediction-window" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="1">1 Day Ahead</option>
                             <option value="7">7 Days Ahead</option>
                             <option value="30">30 Days Ahead</option>
@@ -870,15 +657,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-300 mb-2">Select Location</label>
-                        <select id="pred-location"
-                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="pred-location" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="">Loading...</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-gray-300 mb-2">Select Date</label>
-                        <input type="date" id="pred-date"
-                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <input type="date" id="pred-date" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                     </div>
                     <div class="flex items-end">
                         <button class="btn-ai w-full" id="predict-btn">Predict</button>
@@ -909,7 +694,7 @@
 
                     <!-- 7 Awesome Prediction Charts -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
+                        
                         <!-- 1. Forecast Timeline with Confidence Bands -->
                         <div class="gradient-bg glow">
                             <h4 class="text-lg font-bold text-white mb-4">📈 7-Day Forecast Timeline</h4>
@@ -977,121 +762,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Prediction Interface -->
-        <div class="gradient-bg glow" id="prediction-section" style="display: none;">
-            <h2 class="section-title">🔮 Make Predictions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div>
-                    <label class="block text-gray-300 mb-2">Select Location</label>
-                    <select id="pred-location" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
-                        <option value="">Loading...</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-gray-300 mb-2">Select Date</label>
-                    <input type="date" id="pred-date" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
-                </div>
-                <div class="flex items-end">
-                    <button class="btn-ai w-full" id="predict-btn">Predict</button>
-                </div>
-            </div>
-            <div id="prediction-results" class="hidden">
-                <h3 class="text-2xl font-bold text-white mb-6 text-center">🎯 Detailed Prediction Analytics</h3>
-                
-                <!-- Summary Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    <div class="stat-card">
-                        <div class="text-sm text-gray-400 mb-2">Predicted Value</div>
-                        <div class="text-3xl font-bold text-white" id="pred-value">-</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="text-sm text-gray-400 mb-2">Confidence</div>
-                        <div class="text-3xl font-bold text-white" id="pred-confidence">-</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="text-sm text-gray-400 mb-2">AQI Category</div>
-                        <div class="text-3xl font-bold text-white" id="pred-category">-</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="text-sm text-gray-400 mb-2">Risk Level</div>
-                        <div class="text-3xl font-bold text-white" id="pred-risk">-</div>
-                    </div>
-                </div>
-
-                <!-- 7 Awesome Prediction Charts -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    
-                    <!-- 1. Forecast Timeline with Confidence Bands -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">📈 7-Day Forecast Timeline</h4>
-                        <div class="chart-container">
-                            <canvas id="forecast-timeline-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 2. Historical vs Predicted Comparison -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">🔄 Historical vs Predicted</h4>
-                        <div class="chart-container">
-                            <canvas id="comparison-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 3. Probability Distribution -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">📊 Probability Distribution</h4>
-                        <div class="chart-container">
-                            <canvas id="probability-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 4. Hourly Variation Forecast -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">⏰ Hourly Pattern Forecast</h4>
-                        <div class="chart-container">
-                            <canvas id="hourly-pattern-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 5. Multi-Pollutant Impact Analysis -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">🧪 Multi-Pollutant Impact</h4>
-                        <div class="chart-container">
-                            <canvas id="multi-pollutant-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 6. Risk Assessment Gauge -->
-                    <div class="gradient-bg glow">
-                        <h4 class="text-lg font-bold text-white mb-4">⚠️ Health Risk Assessment</h4>
-                        <div class="chart-container">
-                            <canvas id="risk-gauge-chart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- 7. Weekly Trend Comparison -->
-                    <div class="gradient-bg glow lg:col-span-2">
-                        <h4 class="text-lg font-bold text-white mb-4">📉 Weekly Trend Analysis</h4>
-                        <div class="chart-container">
-                            <canvas id="weekly-trend-chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Recommendations -->
-                <div class="gradient-bg glow mt-6">
-                    <h4 class="text-lg font-bold text-white mb-4">💡 AI Recommendations</h4>
-                    <div id="ai-recommendations" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <!-- Dynamically populated -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </main>
+
     <script>
         // Create futuristic particle background
         document.addEventListener('DOMContentLoaded', function() {
@@ -1208,6 +880,16 @@
                     const avg = pm25Values.reduce((a, b) => a + b, 0) / pm25Values.length;
                     document.getElementById('stat-avg-aqi').textContent = avg.toFixed(1);
                 }
+            }
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
             }
         });
     </script>

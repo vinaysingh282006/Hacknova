@@ -331,13 +331,59 @@
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="js/light-3d.js"></script>
     <script src="js/light.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 
-
-
+    <!-- Initialize EcoPulse functionality -->
+    <script>
+        // Initialize EcoPulse functionality on this page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu if EcoPulse is available
+            if (window.EcoPulse && typeof EcoPulse.initMobileMenu === 'function') {
+                EcoPulse.initMobileMenu();
+            }
+            
+            // Initialize scroll to top if available
+            if (window.EcoPulse && typeof EcoPulse.initScrollToTop === 'function') {
+                EcoPulse.initScrollToTop();
+            }
+            
+            // Initialize scroll reveal for light page specific elements
+            if (window.EcoPulse && typeof EcoPulse.initScrollReveal === 'function') {
+                EcoPulse.initScrollReveal();
+            }
+            
+            // Additional light-specific scroll reveal for any new elements
+            const lightReveals = document.querySelectorAll('.glass-card, .animate-slide-up');
+            if (lightReveals.length && window.IntersectionObserver) {
+                const lightObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    }
+                );
+                
+                lightReveals.forEach(el => {
+                    // Set initial state for animation
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    lightObserver.observe(el);
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

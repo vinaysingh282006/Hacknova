@@ -91,8 +91,13 @@
 <body class="bg-gray-900 text-white">
     <!-- App Layout -->
     <div class="min-h-screen flex flex-col">
-        <header class="nav-helper no-print text-sm text-gray-500 text-right px-4 py-2">
-            Press ← → or Space • Ctrl+P to print
+        <header class="nav-helper no-print text-sm text-gray-500 px-4 py-2 flex justify-between items-center">
+            <div>Press ← → or Space • Ctrl+P to print</div>
+            <a href="index.html">
+                <button id="skip-btn" class="px-4 py-1 bg-gray-800 hover:bg-gray-700 rounded-lg">
+                    Skip Demo
+                </button>
+            </a>
         </header>
 
         <!-- Slides Wrapper -->
@@ -484,7 +489,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
                         <a href="index.html" class="btn btn-primary px-8 py-4 text-xl">View Live Demo</a>
-                        <a href="air.html" class="btn btn-outline px-8 py-4 text-xl">Explore Data</a>
+                        <a href="air.html" class="btn btn-primary px-8 py-4 text-xl">Explore Data</a>
                     </div>
                     <div class="text-gray-400">
                         <p class="text-lg mb-4">Thank you!</p>

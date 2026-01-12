@@ -1,0 +1,222 @@
+/* Light Pollution Page Specific Styles */
+/* Glass Card Styling */
+.glass-card {
+    background: rgba(17, 24, 39, 0.85); /* Darker for night theme */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(55, 65, 81, 0.5); /* gray-600 with opacity */
+}
+
+/* Light pollution themed colors */
+.text-light-yellow {
+    color: #fbbf24; /* amber-400 */
+}
+
+.text-light-orange {
+    color: #f97316; /* eco-orange */
+}
+
+.text-light-red {
+    color: #ef4444; /* eco-red */
+}
+
+.bg-light-yellow {
+    background-color: #fbbf24;
+}
+
+.border-light-yellow {
+    border-color: #fbbf24;
+}
+
+/* Night sky background */
+.night-sky {
+    background: linear-gradient(to bottom, #0c1445, #1e1b4b, #000000);
+}
+
+/* Animation classes */
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.animate-star-twinkle {
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* Custom range slider for light intensity */
+input[type="range"].light-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #1e293b, #7e22ce, #f97316); /* Dark to purple to orange */
+    outline: none;
+}
+
+input[type="range"].light-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f97316; /* eco-orange */
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.7);
+}
+
+input[type="range"].light-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f97316; /* eco-orange */
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.7);
+}
+
+/* Light intensity level indicators */
+.intensity-low {
+    color: #22c55e; /* Green for low light pollution */
+}
+
+.intensity-medium {
+    color: #f59e0b; /* Amber for medium light pollution */
+}
+
+.intensity-high {
+    color: #ef4444; /* Red for high light pollution */
+}
+
+/* Loading animation for light scene */
+#light-scene-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95); /* Pure black for night scene */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: opacity 0.5s ease;
+}
+
+#light-scene-loading .loader-text {
+    color: #cbd5e1; /* slate-300 */
+    font-family: monospace;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+/* Light-specific 3D scene container */
+#light-3d-scene {
+    width: 100%;
+    height: 100%;
+}
+
+/* Star visibility effects */
+.star-visible {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.star-fading {
+    opacity: 0.5;
+    transition: opacity 1s ease;
+}
+
+.star-hidden {
+    opacity: 0.1;
+    transition: opacity 1s ease;
+}
+
+/* Milky Way visibility effects */
+.milkyway-visible {
+    opacity: 0.4;
+    transition: opacity 2s ease;
+}
+
+.milkyway-fading {
+    opacity: 0.2;
+    transition: opacity 2s ease;
+}
+
+.milkyway-hidden {
+    opacity: 0.05;
+    transition: opacity 2s ease;
+}
+
+/* Light pollution impact cards */
+.impact-card {
+    background: rgba(15, 23, 42, 0.6); /* slate-900 with opacity */
+    border: 1px solid rgba(55, 65, 81, 0.3);
+    transition: all 0.3s ease;
+}
+
+.impact-card:hover {
+    border-color: #f97316; /* eco-orange */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2);
+}
+
+/* Metric display for light pollution */
+.metric-display {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.metric-display.high-pollution {
+    border-color: #ef4444; /* eco-red */
+}
+
+.metric-display.medium-pollution {
+    border-color: #f59e0b; /* amber */
+}
+
+.metric-display.low-pollution {
+    border-color: #22c55e; /* eco-green */
+}
+
+/* Light-specific navigation active state */
+.nav-active-light {
+    color: #f97316 !important; /* eco-orange */
+    position: relative;
+}
+
+.nav-active-light::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #f97316; /* eco-orange */
+    border-radius: 1px;
+}
+
+/* Night mode enhancements */
+body.night-mode {
+    background-color: #0f172a; /* slate-900 */
+}
+
+/* City lights simulation */
+.city-light {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fbbf24; /* amber-400 */
+    box-shadow: 0 0 10px 2px #fbbf24;
+    animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}

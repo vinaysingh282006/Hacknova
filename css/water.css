@@ -1,0 +1,169 @@
+/* Water Pollution Page Specific Styles */
+/* Glass Card Styling */
+.glass-card {
+    background: rgba(31, 41, 55, 0.85);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(75, 85, 99, 0.5);
+}
+
+/* Water-themed colors */
+.text-water-blue {
+    color: #38bdf8; /* eco-blue */
+}
+
+.bg-water-blue {
+    background-color: #38bdf8;
+}
+
+.border-water-blue {
+    border-color: #38bdf8;
+}
+
+.text-water-green {
+    color: #22c55e; /* eco-green */
+}
+
+.bg-water-green {
+    background-color: #22c55e;
+}
+
+.border-water-green {
+    border-color: #22c55e;
+}
+
+/* Animation classes */
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    0% { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Custom range slider for water contamination */
+input[type="range"].water-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #1e3a8a, #2563eb, #60a5fa); /* Deep blue to light blue */
+    outline: none;
+}
+
+input[type="range"].water-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #38bdf8;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+input[type="range"].water-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #38bdf8;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* Water contamination level indicators */
+.contamination-low {
+    color: #22c55e;
+}
+
+.contamination-moderate {
+    color: #f59e0b;
+}
+
+.contamination-high {
+    color: #ef4444;
+}
+
+/* Loading animation for water scene */
+#water-scene-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.9); /* gray-900 with opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    transition: opacity 0.5s ease;
+}
+
+#water-scene-loading .loader-text {
+    color: #9ca3af; /* gray-400 */
+    font-family: monospace;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+/* Water-specific 3D scene container */
+#water-3d-scene {
+    width: 100%;
+    height: 100%;
+}
+
+/* Health impact cards for water pollution */
+.health-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.health-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.health-card-low-risk {
+    border-left-color: #22c55e;
+}
+
+.health-card-moderate-risk {
+    border-left-color: #f59e0b;
+}
+
+.health-card-high-risk {
+    border-left-color: #ef4444;
+}
+
+/* Metric card styling */
+.metric-card {
+    background: rgba(30, 41, 59, 0.5); /* gray-800 with opacity */
+    border: 1px solid rgba(55, 65, 81, 0.5); /* gray-600 with opacity */
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    border-color: #38bdf8; /* eco-blue */
+    transform: translateY(-3px);
+}
+
+/* Water-specific navigation active state */
+.nav-active-water {
+    color: #38bdf8 !important; /* eco-blue */
+    position: relative;
+}
+
+.nav-active-water::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #38bdf8; /* eco-blue */
+    border-radius: 1px;
+}
