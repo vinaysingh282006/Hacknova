@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,14 +25,14 @@
             }
         }
     </script>
-  
+
     <style>
         body {
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
-        
+
         /* Futuristic grid background */
         body::before {
             content: "";
@@ -40,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 linear-gradient(rgba(18, 18, 50, 0.8), rgba(18, 18, 50, 0.8)),
                 linear-gradient(90deg, rgba(92, 119, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(rgba(92, 119, 255, 0.1) 1px, transparent 1px);
@@ -48,7 +49,7 @@
             background-position: 0 0, -1px -1px, -1px -1px;
             z-index: -1;
         }
-        
+
         /* Animated particles */
         .particles-container {
             position: fixed;
@@ -59,7 +60,7 @@
             z-index: -1;
             overflow: hidden;
         }
-        
+
         .particle {
             position: absolute;
             border-radius: 50%;
@@ -67,24 +68,27 @@
             box-shadow: 0 0 10px rgba(92, 119, 255, 0.8), 0 0 20px rgba(92, 119, 255, 0.6);
             animation: float 15s infinite linear;
         }
-        
+
         @keyframes float {
             0% {
                 transform: translateY(0) translateX(0) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(100px) rotate(360deg);
                 opacity: 0;
             }
         }
-        
+
         .ai-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -92,7 +96,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .gradient-bg {
             background: linear-gradient(135deg, rgba(92, 119, 255, 0.1) 0%, rgba(132, 92, 255, 0.05) 100%);
             border: 1px solid rgba(92, 119, 255, 0.3);
@@ -101,7 +105,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
         }
-        
+
         .gradient-bg::before {
             content: "";
             position: absolute;
@@ -114,13 +118,21 @@
             z-index: -1;
             animation: border-animation 3s ease-in-out infinite;
         }
-        
+
         @keyframes border-animation {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.3; }
+            0% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 0.3;
+            }
         }
-        
+
         .chart-container {
             position: relative;
             height: 400px;
@@ -130,7 +142,7 @@
             margin: 1rem 0;
             border: 1px solid rgba(92, 119, 255, 0.2);
         }
-        
+
         .stat-card {
             background: linear-gradient(135deg, rgba(92, 119, 255, 0.15) 0%, rgba(132, 92, 255, 0.1) 100%);
             border: 1px solid rgba(92, 119, 255, 0.3);
@@ -140,7 +152,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .stat-card::before {
             content: "";
             position: absolute;
@@ -151,16 +163,16 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: left 0.5s;
         }
-        
+
         .stat-card:hover::before {
             left: 100%;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(92, 119, 255, 0.3);
         }
-        
+
         .upload-zone {
             border: 2px dashed rgba(92, 119, 255, 0.5);
             border-radius: 1rem;
@@ -170,12 +182,12 @@
             transition: all 0.3s ease;
             background: rgba(0, 0, 0, 0.2);
         }
-        
+
         .upload-zone:hover {
             border-color: rgba(92, 119, 255, 0.8);
             background: rgba(92, 119, 255, 0.05);
         }
-        
+
         .btn-ai {
             background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%);
             color: white;
@@ -189,7 +201,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .btn-ai::before {
             content: "";
             position: absolute;
@@ -200,21 +212,21 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
+
         .btn-ai:hover::before {
             left: 100%;
         }
-        
+
         .btn-ai:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(92, 119, 255, 0.4);
         }
-        
+
         .btn-ai:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+
         .loading-spinner {
             border: 3px solid rgba(92, 119, 255, 0.3);
             border-top: 3px solid #5c77ff;
@@ -223,12 +235,17 @@
             height: 40px;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -236,13 +253,13 @@
             border-radius: 4px;
             overflow: hidden;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #5c77ff 0%, #845cff 100%);
             transition: width 0.3s ease;
         }
-        
+
         .map-container {
             width: 100%;
             height: 500px;
@@ -252,7 +269,7 @@
             overflow: hidden;
             border: 1px solid rgba(92, 119, 255, 0.2);
         }
-        
+
         .city-marker {
             position: absolute;
             width: 20px;
@@ -263,12 +280,12 @@
             background: rgba(92, 119, 255, 0.7);
             box-shadow: 0 0 10px rgba(92, 119, 255, 0.8);
         }
-        
+
         .city-marker:hover {
             transform: scale(1.5);
             box-shadow: 0 0 20px rgba(92, 119, 255, 1);
         }
-        
+
         .tooltip {
             position: absolute;
             background: rgba(0, 0, 0, 0.9);
@@ -280,79 +297,112 @@
             transition: opacity 0.3s ease;
             border: 1px solid rgba(92, 119, 255, 0.5);
         }
-        
+
         /* Fancy animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes scaleIn {
             from {
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
             }
         }
-        
+
         @keyframes slideInLeft {
             from {
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
-        
+
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
         }
-        
+
         .animate-in {
             animation: fadeInUp 0.6s ease-out forwards;
         }
-        
+
         .animate-scale {
             animation: scaleIn 0.5s ease-out forwards;
         }
-        
+
         .animate-slide {
             animation: slideInLeft 0.7s ease-out forwards;
         }
-        
+
         .stat-card:hover {
             animation: pulse 0.5s ease-in-out;
         }
-        
+
         .gradient-bg {
             animation: fadeInUp 0.8s ease-out forwards;
         }
-        
+
         /* Staggered animation delays */
-        .gradient-bg:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
-        .gradient-bg:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
-        .gradient-bg:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
-        .gradient-bg:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
-        .gradient-bg:nth-child(5) { animation-delay: 0.5s; opacity: 0; }
-        .gradient-bg:nth-child(6) { animation-delay: 0.6s; opacity: 0; }
-        .gradient-bg:nth-child(7) { animation-delay: 0.7s; opacity: 0; }
-        
+        .gradient-bg:nth-child(1) {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(2) {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(3) {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(4) {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(5) {
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(6) {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .gradient-bg:nth-child(7) {
+            animation-delay: 0.7s;
+            opacity: 0;
+        }
+
         /* Dataset selection styling */
         .dataset-selector {
             display: flex;
@@ -361,7 +411,7 @@
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .dataset-dropdown {
             flex: 1;
             min-width: 250px;
@@ -372,13 +422,13 @@
             color: white;
             font-size: 1rem;
         }
-        
+
         .dataset-dropdown:focus {
             outline: none;
             border-color: #5c77ff;
             box-shadow: 0 0 0 3px rgba(92, 119, 255, 0.3);
         }
-        
+
         .upload-small {
             background: rgba(92, 119, 255, 0.15);
             border: 1px dashed rgba(92, 119, 255, 0.5);
@@ -391,12 +441,12 @@
             gap: 0.5rem;
             font-size: 0.9rem;
         }
-        
+
         .upload-small:hover {
             background: rgba(92, 119, 255, 0.3);
             border-color: rgba(92, 119, 255, 0.8);
         }
-        
+
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -405,29 +455,37 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
-        
+
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(92, 119, 255, 0.5), transparent);
             margin: 2rem 0;
         }
-        
+
         /* Glowing effect for important elements */
         .glow {
             box-shadow: 0 0 15px rgba(92, 119, 255, 0.5);
         }
-        
+
         /* Floating animation for cards */
         @keyframes floatAnimation {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
-        
+
         .floating {
             animation: floatAnimation 3s ease-in-out infinite;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%);
             -webkit-background-clip: text;
@@ -439,14 +497,15 @@
 <body class="bg-gray-900 text-white overflow-x-hidden">
     <!-- Futuristic particle background -->
     <div class="particles-container" id="particles"></div>
-    
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="h-16 flex items-center justify-between">
                 <!-- LEFT: Logo -->
                 <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
@@ -454,22 +513,20 @@
 
                 <!-- RIGHT: Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-white font-medium">Home</a>
-                    <a href="air.html" class="nav-link text-white hover:text-eco-red transition-colors">Air</a>
-                    <a href="water.html" class="nav-link text-white hover:text-eco-blue transition-colors">Water</a>
-                    <a href="light.html" class="nav-link text-white hover:text-eco-orange transition-colors">Light</a>
-                    <a href="ai-prediction.html" class="nav-link text-white hover:text-purple-400 transition-colors">
+                    <a href="index.html" class="block py-2 text-white hover:text-eco-green transition-colors">
+                        Home
+                    </a>
+                    <a href="air.html" class="block py-2 text-white hover:text-eco-green transition-colors">Air</a>
+                    <a href="water.html" class="block py-2 text-white hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="block py-2 text-white hover:text-eco-orange transition-colors">Light</a>
+                    <a href="ai-prediction.html" class="block py-2 text-white hover:text-purple-400 transition-colors">
                         AI Prediction
                     </a>
                 </div>
 
                 <!-- RIGHT: Mobile Menu Button -->
-                <button
-                    id="mobile-menu-btn"
-                    class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
-                    aria-label="Toggle menu"
-                    aria-expanded="false"
-                >
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                    aria-label="Toggle menu" aria-expanded="false">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
@@ -477,15 +534,23 @@
                 </button>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800">
+        <div id="mobile-menu" class="md:hidden hidden absolute top-16 left-0 w-full
+            bg-gray-900 border-t border-gray-800
+            transition-all duration-200 ease-out">
+
+
             <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Home</a>
-                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
-                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
-                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
+                <a href="index.html" class="block py-2 text-white hover:text-eco-green transition-colors">Home</a>
+                <a href="air.html" class="block py-2 text-white hover:text-eco-green transition-colors">Air
+                    Pollution</a>
+                <a href="water.html" class="block py-2 text-white hover:text-eco-blue transition-colors">Water
+                    Pollution</a>
+                <a href="light.html" class="block py-2 text-white hover:text-eco-orange transition-colors">Light
+                    Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 text-white hover:text-purple-400 transition-colors">AI
+                    Prediction</a>
             </div>
         </div>
     </nav>
@@ -500,7 +565,8 @@
                         AI Pollution Prediction
                     </span>
                 </h1>
-                <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with machine learning</p>
+                <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with
+                    machine learning</p>
             </div>
 
             <!-- Data Upload Section -->
@@ -514,8 +580,11 @@
                         <option value="DATASET/city_hour.csv">City Pollution Data (Hourly) - 64 MB</option>
                     </select>
                     <div class="upload-small" id="upload-trigger">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                            </path>
                         </svg>
                         Upload Custom CSV
                     </div>
@@ -609,7 +678,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-300 mb-2">Target Variable</label>
-                        <select id="target-variable" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="target-variable"
+                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="PM2.5">PM2.5 Concentration</option>
                             <option value="PM10">PM10 Concentration</option>
                             <option value="NO2">NO2 Concentration</option>
@@ -618,7 +688,8 @@
                     </div>
                     <div>
                         <label class="block text-gray-300 mb-2">Prediction Window</label>
-                        <select id="prediction-window" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="prediction-window"
+                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="1">1 Day Ahead</option>
                             <option value="7">7 Days Ahead</option>
                             <option value="30">30 Days Ahead</option>
@@ -657,13 +728,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <div>
                         <label class="block text-gray-300 mb-2">Select Location</label>
-                        <select id="pred-location" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <select id="pred-location"
+                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                             <option value="">Loading...</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-gray-300 mb-2">Select Date</label>
-                        <input type="date" id="pred-date" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
+                        <input type="date" id="pred-date"
+                            class="w-full bg-gray-800 text-white p-3 rounded-lg border border-purple-500">
                     </div>
                     <div class="flex items-end">
                         <button class="btn-ai w-full" id="predict-btn">Predict</button>
@@ -694,7 +767,7 @@
 
                     <!-- 7 Awesome Prediction Charts -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        
+
                         <!-- 1. Forecast Timeline with Confidence Bands -->
                         <div class="gradient-bg glow">
                             <h4 class="text-lg font-bold text-white mb-4">📈 7-Day Forecast Timeline</h4>
@@ -766,14 +839,14 @@
 
     <script>
         // Create futuristic particle background
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 30;
-            
+
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                
+
                 // Random properties
                 const size = Math.random() * 5 + 2;
                 const posX = Math.random() * 100;
@@ -781,7 +854,7 @@
                 const animationDuration = Math.random() * 20 + 10;
                 const animationDelay = Math.random() * 5;
                 const hue = Math.random() * 60 + 200; // Blue/purple range
-                
+
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${posX}%`;
@@ -790,22 +863,22 @@
                 particle.style.animationDelay = `${animationDelay}s`;
                 particle.style.background = `hsla(${hue}, 70%, 70%, ${Math.random() * 0.5 + 0.3})`;
                 particle.style.boxShadow = `0 0 ${size * 2}px hsla(${hue}, 70%, 70%, 0.8)`;
-                
+
                 particlesContainer.appendChild(particle);
             }
-            
+
             // Update the data loader to handle the new dataset selection
             const datasetSelect = document.getElementById('dataset-select');
             const loadDatasetBtn = document.getElementById('load-selected-dataset');
             const uploadTrigger = document.getElementById('upload-trigger');
             const fileInput = document.getElementById('file-input');
             const loadingIndicator = document.getElementById('loading-indicator');
-            
+
             // Handle file upload trigger
             uploadTrigger.addEventListener('click', () => {
                 fileInput.click();
             });
-            
+
             // Handle file selection
             fileInput.addEventListener('change', async (e) => {
                 if (e.target.files.length > 0) {
@@ -821,7 +894,7 @@
                     }
                 }
             });
-            
+
             // Handle dataset selection
             loadDatasetBtn.addEventListener('click', async () => {
                 const selectedPath = datasetSelect.value;
@@ -829,13 +902,13 @@
                     alert('Please select a dataset first');
                     return;
                 }
-                
+
                 loadingIndicator.classList.remove('hidden');
                 try {
                     // Load dataset from path
                     const response = await fetch(selectedPath);
                     if (!response.ok) throw new Error('Dataset not found');
-                    
+
                     const text = await response.text();
                     await window.dataLoader.parseCSV(text);
                     showDataSections();
@@ -846,7 +919,7 @@
                     loadingIndicator.classList.add('hidden');
                 }
             });
-            
+
             // Show data sections after loading
             function showDataSections() {
                 document.getElementById('stats-section').style.display = 'grid';
@@ -854,48 +927,51 @@
                 document.getElementById('map-section').style.display = 'block';
                 document.getElementById('training-section').style.display = 'block';
                 document.getElementById('prediction-section').style.display = 'block';
-                
+
                 // Update stats
                 updateStats();
             }
-            
+
             // Update statistics display
             function updateStats() {
                 const metadata = window.dataLoader.metadata;
                 document.getElementById('stat-records').textContent = metadata.totalRecords.toLocaleString();
                 document.getElementById('stat-locations').textContent = metadata.locations.length;
-                
+
                 if (metadata.dateRange.start && metadata.dateRange.end) {
                     const start = metadata.dateRange.start.toLocaleDateString();
                     const end = metadata.dateRange.end.toLocaleDateString();
                     document.getElementById('stat-timespan').textContent = `${start} - ${end}`;
                 }
-                
+
                 // Calculate average PM2.5
                 const pm25Values = window.dataLoader.rawData
                     .map(r => r['PM2.5'])
                     .filter(v => v !== null && v !== undefined);
-                
+
                 if (pm25Values.length > 0) {
                     const avg = pm25Values.reduce((a, b) => a + b, 0) / pm25Values.length;
                     document.getElementById('stat-avg-aqi').textContent = avg.toFixed(1);
                 }
             }
-            
+
             // Mobile menu functionality
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+
             if (mobileMenuBtn && mobileMenu) {
                 mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+                    const isOpen = mobileMenu.classList.toggle('hidden') === false;
+                    mobileMenuBtn.setAttribute('aria-expanded', isOpen);
                 });
+
             }
         });
     </script>
-    
+
     <script src="js/data-loader.js"></script>
     <script src="js/ai-visualizations.js"></script>
     <script src="js/ai-model.js"></script>
 </body>
+
 </html>
