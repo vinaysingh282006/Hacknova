@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Pollution - EcoPulse</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
 
-   <link rel="icon" type="image/png" href="ecopulse-logo.png">
+    <link rel="icon" type="image/png" href="ecopulse-logo.png">
     <script>
         tailwind.config = {
             theme: {
@@ -28,12 +27,12 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                            '0%': {opacity: '0'},
+                            '100%': {opacity: '1'},
                         },
                         slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                            '0%': {transform: 'translateY(20px)', opacity: '0'},
+                            '100%': {transform: 'translateY(0)', opacity: '1'},
                         }
                     }
                 }
@@ -89,379 +88,508 @@
 </head>
 
 <body class="bg-gray-900 text-white font-['Inter']">
-    <nav
-        class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="flex items-center space-x-2 pulse-element">
-                    <div
-                        class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">E</span>
-                    </div>
-                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-                </a>
-
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group">
-                        Home
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="air.html" class="text-eco-orange font-medium relative">
-                        Air
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-orange"></span>
-                    </a>
-                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
-                        Water
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group">
-                        Light
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
-                        Noise
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI
-                        Prediction</a>
-                    <a href="presentation.html"
-                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+<nav
+    class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-2 pulse-element">
+                <div
+                    class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">E</span>
                 </div>
+                <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+            </a>
 
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group">
+                    Home
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
+                </a>
+                <a href="air.html" class="text-eco-orange font-medium relative">
+                    Air
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-orange"></span>
+                </a>
+                <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
+                    Water
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group">
+                    Light
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
+                </a>
+                <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
+                    Noise
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
+                </a>
+                <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI
+                    Prediction</a>
+                <a href="presentation.html"
+                   class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
+        <div class="px-4 py-4 space-y-3">
+            <a href="index.html"
+               class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Home</a>
+            <a href="air.html"
+               class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-orange font-medium border-l-4 border-eco-orange">Air
+                Pollution</a>
+            <a href="water.html"
+               class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Water
+                Pollution</a>
+            <a href="light.html"
+               class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors">Light
+                Pollution</a>
+            <a href="noise.html"
+               class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors">Noise
+                Pollution</a>
+            <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
+                Prediction</a>
+            <a href="presentation.html"
+               class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-16">
+    <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1578604665675-9aee692f6ddc?q=80&w=1231"
+                 alt="Air Pollution Smog" class="w-full h-full object-cover animate-fade-in opacity-80">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <!-- Smog Overlay via CSS -->
+            <div class="smog-overlay"></div>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
+            <span
+                class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-orange-200 uppercase bg-orange-900/80 rounded-full border border-orange-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.3)] pulse-element">
+                Health Emergency
+            </span>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter drop-shadow-2xl">
+                Air <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 animate-pulse">Quality</span>
+            </h1>
+            <p
+                class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg border-l-4 border-eco-orange pl-6 py-2 bg-black/20 backdrop-blur-sm rounded-r-lg">
+                91% of the World breathes Polluted Air. <br><span class="text-white font-medium">See the invisible
+                threat.</span>
+            </p>
+
+            <div class="mt-8 flex justify-center gap-4">
+                <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
+                        class="px-8 py-3 bg-eco-orange text-white rounded-full font-semibold hover:bg-orange-600 transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
+                    View Simulation
                 </button>
             </div>
         </div>
+    </section>
 
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
-            <div class="px-4 py-4 space-y-3">
-                <a href="index.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Home</a>
-                <a href="air.html"
-                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-orange font-medium border-l-4 border-eco-orange">Air
-                    Pollution</a>
-                <a href="water.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Water
-                    Pollution</a>
-                <a href="light.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors">Light
-                    Pollution</a>
-                <a href="noise.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors">Noise
-                    Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
-                    Prediction</a>
-                <a href="presentation.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
-            </div>
-        </div>
-    </nav>
+    <section id="simulation-section" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-12 gap-8">
 
-    <main class="pt-16">
-        <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1578604665675-9aee692f6ddc?q=80&w=1231"
-                    alt="Air Pollution Smog" class="w-full h-full object-cover animate-fade-in opacity-80">
-                <div class="absolute inset-0 bg-black/60"></div>
-                <!-- Smog Overlay via CSS -->
-                <div class="smog-overlay"></div>
-
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-            </div>
-
-            <div class="container mx-auto px-4 text-center relative z-10 animate-slide-up">
-                <span
-                    class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-orange-200 uppercase bg-orange-900/80 rounded-full border border-orange-500/30 backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.3)] pulse-element">
-                    Health Emergency
-                </span>
-                <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter drop-shadow-2xl">
-                    Air <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 animate-pulse">Quality</span>
-                </h1>
-                <p
-                    class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg border-l-4 border-eco-orange pl-6 py-2 bg-black/20 backdrop-blur-sm rounded-r-lg">
-                    91% of the World breathes Polluted Air. <br><span class="text-white font-medium">See the invisible threat.</span>
-                </p>
-
-                <div class="mt-8 flex justify-center gap-4">
-                    <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
-                        class="px-8 py-3 bg-eco-orange text-white rounded-full font-semibold hover:bg-orange-600 transition-all hover:scale-105 shadow-lg shadow-orange-500/30">
-                        View Simulation
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="simulation-section" class="py-16 bg-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-12 gap-8">
-
-                    <div class="lg:col-span-8 space-y-6">
-                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up animate-float"
-                            style="animation-delay: 0.1s;">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
-                                    <span class="p-2 bg-orange-500/20 rounded-lg">
-                                        <svg class="w-6 h-6 text-eco-orange" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                    Air Quality Map
-                                </h3>
-                                <div
-                                    class="flex items-center space-x-2 bg-gray-900/80 px-4 py-1.5 rounded-full border border-orange-500/30 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
-                                    <span class="relative flex h-3 w-3">
-                                        <span
-                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-                                    </span>
-                                    <span class="text-xs font-bold text-orange-100 uppercase tracking-wide">Live Stream</span>
-                                </div>
-                            </div>
-
-                            <div class="relative bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-700 group pollution-particles"
-                                style="height: 500px;">
-                                <canvas id="air-3d-scene" class="w-full h-full"></canvas>
-
-                                <div id="air-scene-loading"
-                                    class="absolute inset-0 bg-gray-900 flex items-center justify-center z-20 transition-opacity duration-500">
-                                    <div class="text-center">
-                                        <div
-                                            class="w-16 h-16 border-4 border-gray-800 border-t-eco-orange rounded-full animate-spin mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                                        </div>
-                                        <p class="text-eco-orange text-sm tracking-[0.3em] font-mono font-bold animate-pulse">INITIALIZING SENSORS...</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 bg-gray-900/60 p-6 rounded-xl border border-gray-700/50 backdrop-blur-md">
-                                <div class="flex justify-between mb-4 items-end">
-                                    <div>
-                                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Simulation Control</label>
-                                        <div class="text-lg font-bold text-white">PM2.5 Density</div>
-                                    </div>
-                                    <span id="air-pollution-value"
-                                        class="text-eco-orange font-bold font-mono bg-orange-500/10 px-3 py-1 rounded border border-orange-500/20">High
-                                        (156 AQI)</span>
-                                </div>
-                                <div class="relative w-full h-8 flex items-center">
-                                    <input type="range" id="air-pollution-slider" min="0" max="300" value="156"
-                                        class="air-slider w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer z-10">
-                                </div>
-                                <div class="flex justify-between text-[10px] text-gray-500 mt-2 font-mono uppercase tracking-widest">
-                                    <span>Safe</span>
-                                    <span>Hazardous</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4 space-y-6">
-                        <div class="glass-card rounded-2xl p-6 animate-slide-up animate-float-delayed" style="animation-delay: 0.2s;">
-                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
-                                <span class="p-2 bg-gray-800 rounded-lg text-eco-orange">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up animate-float"
+                         style="animation-delay: 0.1s;">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                                <span class="p-2 bg-orange-500/20 rounded-lg">
+                                    <svg class="w-6 h-6 text-eco-orange" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
                                         </path>
                                     </svg>
                                 </span>
-                                Current Metrics
+                                Air Quality Map
                             </h3>
-                            <div class="space-y-4">
-                                <div id="aqi-sidebar-card"
-                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-orange/50 transition-all aqi-status-unhealthy">
-                                    <div class="text-sm text-gray-400 mb-1">Global Avg AQI</div>
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-baseline gap-2">
-                                            <div id="sidebar-aqi-num" class="text-3xl font-bold text-eco-orange">156</div>
-                                            <div id="sidebar-aqi-label" class="text-xs text-gray-500">Unhealthy</div>
-                                        </div>
-                                        <canvas id="aqi-sparkline" width="80" height="40"></canvas>
+                            <div
+                                class="flex items-center space-x-2 bg-gray-900/80 px-4 py-1.5 rounded-full border border-orange-500/30 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                                <span class="relative flex h-3 w-3">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                                </span>
+                                <span class="text-xs font-bold text-orange-100 uppercase tracking-wide">Live
+                                    Stream</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-700 group pollution-particles"
+                            style="height: 500px;">
+                            <canvas id="air-3d-scene" class="w-full h-full"></canvas>
+
+                            <div id="air-scene-loading"
+                                 class="absolute inset-0 bg-gray-900 flex items-center justify-center z-20 transition-opacity duration-500">
+                                <div class="text-center">
+                                    <div
+                                        class="w-16 h-16 border-4 border-gray-800 border-t-eco-orange rounded-full animate-spin mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.4)]">
                                     </div>
-                                    <div class="text-xs text-eco-orange mt-2 flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-                                        </svg>
-                                        +12% from last year
-                                    </div>
-                                </div>
-                                <div
-                                    class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-orange/50 transition-all">
-                                    <div class="text-sm text-gray-400 mb-1">CO2 Levels</div>
-                                    <div class="text-3xl font-bold text-white">421</div>
-                                    <div class="text-xs text-gray-500 mt-2">Parts per million (ppm)</div>
+                                    <p class="text-eco-orange text-sm tracking-[0.3em] font-mono font-bold animate-pulse">
+                                        INITIALIZING SENSORS...</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 animate-slide-up animate-float" style="animation-delay: 0.4s;">
-                            <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
-                                <span class="text-2xl">😷</span> <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Health Impact</span>
-                            </h3>
-                            <div class="space-y-4">
-                                <div
-                                    class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-high-risk">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-xl">🫁</div>
-                                        <div>
-                                            <div class="text-gray-200 font-medium">Respiratory System</div>
-                                            <div class="text-xs text-gray-400">Pneumonia & Asthma</div>
-                                        </div>
-                                    </div>
-                                    <span
-                                        class="text-red-400 font-bold text-xs bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/20">High Risk</span>
+                        <div class="mt-6 bg-gray-900/60 p-6 rounded-xl border border-gray-700/50 backdrop-blur-md">
+                            <div class="flex justify-between mb-4 items-end">
+                                <div>
+                                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Simulation
+                                        Control</label>
+                                    <div class="text-lg font-bold text-white">PM2.5 Density</div>
                                 </div>
+                            <span id="air-pollution-value"
+                                  class="text-eco-orange font-bold font-mono bg-orange-500/10 px-3 py-1 rounded border border-orange-500/20">High
+                                (156 AQI)</span>
+                            </div>
+                            <div class="relative w-full h-8 flex items-center">
+                                <input type="range" id="air-pollution-slider" min="0" max="300" value="156"
+                                       class="air-slider w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer z-10">
+                            </div>
+                            <div
+                                class="flex justify-between text-[10px] text-gray-500 mt-2 font-mono uppercase tracking-widest">
+                                <span>Safe</span>
+                                <span>Hazardous</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <div
-                                    class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-moderate-risk">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-xl">❤️</div>
-                                        <div>
-                                            <div class="text-gray-200 font-medium">Cardiovascular</div>
-                                            <div class="text-xs text-gray-400">Blood Pressure</div>
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 animate-slide-up animate-float-delayed"
+                         style="animation-delay: 0.2s;">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+                            <span class="p-2 bg-gray-800 rounded-lg text-eco-orange">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </span>
+                            Current Metrics
+                        </h3>
+                        <div class="space-y-4">
+                            <div id="aqi-sidebar-card"
+                                 class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-orange/50 transition-all aqi-status-unhealthy">
+                                <div class="text-sm text-gray-400 mb-1">Global Avg AQI</div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-baseline gap-2">
+                                        <div id="sidebar-aqi-num"
+                                             class="text-3xl font-bold text-eco-orange">156
                                         </div>
+                                        <div id="sidebar-aqi-label" class="text-xs text-gray-500">Unhealthy</div>
                                     </div>
-                                    <span
-                                        class="text-yellow-400 font-bold text-xs bg-yellow-500/10 px-3 py-1.5 rounded-full border border-yellow-500/20">Moderate</span>
+                                    <canvas id="aqi-sparkline" width="80" height="40"></canvas>
                                 </div>
+                                <div class="text-xs text-eco-orange mt-2 flex items-center">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                                    </svg>
+                                    +12% from last year
+                                </div>
+                            </div>
+                            <div
+                                class="bg-gray-800/50 p-4 rounded-xl border border-gray-700 hover:border-eco-orange/50 transition-all">
+                                <div class="text-sm text-gray-400 mb-1">CO2 Levels</div>
+                                <div class="text-3xl font-bold text-white">421</div>
+                                <div class="text-xs text-gray-500 mt-2">Parts per million (ppm)</div>
+                            </div>
+                        </div>
+                    </div>
 
-                                <div
-                                    class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-high-risk">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-xl">🌡️</div>
-                                        <div>
-                                            <div class="text-gray-200 font-medium">Global Warming</div>
-                                            <div class="text-xs text-gray-400">Greenhouse Effect</div>
-                                        </div>
+                    <div class="glass-card rounded-2xl p-6 animate-slide-up animate-float"
+                         style="animation-delay: 0.4s;">
+                        <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-white">
+                            <span class="text-2xl">😷</span> <span
+                                class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Health
+                                Impact</span>
+                        </h3>
+                        <div class="space-y-4">
+                            <div
+                                class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-high-risk">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-xl">
+                                        🫁
                                     </div>
-                                    <span
-                                        class="text-orange-400 font-bold text-xs bg-orange-500/10 px-3 py-1.5 rounded-full border border-orange-500/20">+1.5°C</span>
+                                    <div>
+                                        <div class="text-gray-200 font-medium">Respiratory System</div>
+                                        <div class="text-xs text-gray-400">Pneumonia & Asthma</div>
+                                    </div>
                                 </div>
+                                <span
+                                    class="text-red-400 font-bold text-xs bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/20">High
+                                    Risk</span>
+                            </div>
+
+                            <div
+                                class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-moderate-risk">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-xl">
+                                        ❤️
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-200 font-medium">Cardiovascular</div>
+                                        <div class="text-xs text-gray-400">Blood Pressure</div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-yellow-400 font-bold text-xs bg-yellow-500/10 px-3 py-1.5 rounded-full border border-yellow-500/20">Moderate</span>
+                            </div>
+
+                            <div
+                                class="group flex items-center justify-between p-4 bg-gray-800/40 border border-gray-700 rounded-xl hover:bg-gray-800 transition-all health-card health-card-high-risk">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-xl">
+                                        🌡️
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-200 font-medium">Global Warming</div>
+                                        <div class="text-xs text-gray-400">Greenhouse Effect</div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-orange-400 font-bold text-xs bg-orange-500/10 px-3 py-1.5 rounded-full border border-orange-500/20">+1.5°C</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- Impact timeline + quick actions strip -->
+        <section class="bg-gray-900 pb-16">
+            <div class="container mx-auto px-4">
+                <div class="glass-card rounded-2xl p-6 md:p-8 mt-4">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold flex items-center gap-2">
+                                <span class="text-2xl">⏱️</span>
+                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                                    A Day in Polluted Air
+                                </span>
+                            </h3>
+                            <p class="text-xs text-gray-400 mt-1">
+                                How different exposure durations at this AQI can stress your body.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2 text-[11px] font-mono">
+                            <span class="w-2 h-2 rounded-full bg-eco-orange"></span>
+                            <span class="uppercase tracking-wide text-gray-400">Live AQI: 156 · Unhealthy</span>
+                        </div>
+                    </div>
 
-        </section>
-    </main>
+                    <!-- simple horizontal timeline -->
+                    <div class="grid md:grid-cols-5 gap-4 mb-6 text-sm">
+                        <div class="rounded-xl bg-gray-900/70 border border-gray-700 p-3">
+                            <div class="flex items-center gap-2 text-emerald-300 text-xs font-semibold uppercase">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>1 Hour
+                            </div>
+                            <p class="mt-1 text-xs text-gray-300">
+                                Mild eye irritation and breathing discomfort for sensitive groups.
+                            </p>
+                        </div>
+                        <div class="rounded-xl bg-gray-900/70 border border-gray-700 p-3">
+                            <div class="flex items-center gap-2 text-yellow-300 text-xs font-semibold uppercase">
+                                <span class="w-2 h-2 rounded-full bg-yellow-400"></span>6 Hours
+                            </div>
+                            <p class="mt-1 text-xs text-gray-300">
+                                Inflammation in airways; asthma and COPD symptoms can flare up.
+                            </p>
+                        </div>
+                        <div class="rounded-xl bg-gray-900/70 border border-gray-700 p-3">
+                            <div class="flex items-center gap-2 text-orange-300 text-xs font-semibold uppercase">
+                                <span class="w-2 h-2 rounded-full bg-orange-400"></span>24 Hours
+                            </div>
+                            <p class="mt-1 text-xs text-gray-300">
+                                Blood thickens, blood pressure rises, risk of heart events increases.
+                            </p>
+                        </div>
+                        <div class="rounded-xl bg-gray-900/70 border border-gray-700 p-3">
+                            <div class="flex items-center gap-2 text-red-300 text-xs font-semibold uppercase">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>1 Week
+                            </div>
+                            <p class="mt-1 text-xs text-gray-300">
+                                Persistent cough, fatigue, and higher hospital visits for heart and lung issues.
+                            </p>
+                        </div>
+                        <div class="rounded-xl bg-gray-900/70 border border-gray-700 p-3">
+                            <div class="flex items-center gap-2 text-fuchsia-300 text-xs font-semibold uppercase">
+                                <span class="w-2 h-2 rounded-full bg-fuchsia-500"></span>1+ Years
+                            </div>
+                            <p class="mt-1 text-xs text-gray-300">
+                                Greater risk of COPD, stroke, lung cancer, and cognitive decline.
+                            </p>
+                        </div>
+                    </div>
 
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-6 flex justify-center">
-                <div
-                    class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2 pulse-element">
-                    <span class="text-white font-bold text-2xl">E</span>
+                    <!-- quick actions row -->
+                    <div class="grid md:grid-cols-4 gap-4 text-xs">
+                        <div class="bg-gray-900/70 border border-gray-700 rounded-xl p-3 flex gap-2">
+                            <span class="text-lg">😷</span>
+                            <div>
+                                <div class="font-semibold text-gray-100">Protect yourself</div>
+                                <p class="text-gray-400">
+                                    Wear N95 outside, avoid heavy exercise near roads, keep kids indoors at peak hours.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-900/70 border border-gray-700 rounded-xl p-3 flex gap-2">
+                            <span class="text-lg">🏠</span>
+                            <div>
+                                <div class="font-semibold text-gray-100">Clean indoor air</div>
+                                <p class="text-gray-400">
+                                    Use filters, seal windows during rush hours, avoid burning incense or trash.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-900/70 border border-gray-700 rounded-xl p-3 flex gap-2">
+                            <span class="text-lg">🚲</span>
+                            <div>
+                                <div class="font-semibold text-gray-100">Low‑emission habits</div>
+                                <p class="text-gray-400">
+                                    Prefer public transport, carpool, and walking for short distances.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-900/70 border border-gray-700 rounded-xl p-3 flex gap-2">
+                            <span class="text-lg">📢</span>
+                            <div>
+                                <div class="font-semibold text-gray-100">Community action</div>
+                                <p class="text-gray-400">
+                                    Support tree‑planting, cleaner fuels, and local campaigns for better air.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="text-gray-500 text-sm">&copy; 2026 EcoPulse. Environmental Monitoring System.</p>
+        </section>
+    </section>
+</main>
+
+<footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <div class="container mx-auto px-4 text-center">
+        <div class="mb-6 flex justify-center">
+            <div
+                class="w-12 h-12 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center mr-2 pulse-element">
+                <span class="text-white font-bold text-2xl">E</span>
+            </div>
         </div>
-    </footer>
+        <p class="text-gray-500 text-sm">&copy; 2026 EcoPulse. Environmental Monitoring System.</p>
+    </div>
+</footer>
 
-    <button id="scroll-to-top"
+<button id="scroll-to-top"
         class="fixed bottom-8 right-8 p-3 bg-eco-orange text-white rounded-full shadow-lg shadow-orange-500/20 opacity-0 invisible transition-all duration-300 hover:bg-orange-600 transform translate-y-4 hover:-translate-y-1 z-50">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/air-3d.js"></script>
-    <script src="js/air.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/air-3d.js"></script>
+<script src="js/air.js"></script>
 
-    <script>
-        // Initialize EcoPulse functionality on this page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize mobile menu if EcoPulse is available
-            if (window.EcoPulse && typeof EcoPulse.initMobileMenu === 'function') {
-                EcoPulse.initMobileMenu();
-            }
+<script>
+    // Initialize EcoPulse functionality on this page
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize mobile menu if EcoPulse is available
+        if (window.EcoPulse && typeof EcoPulse.initMobileMenu === 'function') {
+            EcoPulse.initMobileMenu();
+        }
 
-            // Initialize scroll to top if available
-            if (window.EcoPulse && typeof EcoPulse.initScrollToTop === 'function') {
-                EcoPulse.initScrollToTop();
-            }
+        // Initialize scroll to top if available
+        if (window.EcoPulse && typeof EcoPulse.initScrollToTop === 'function') {
+            EcoPulse.initScrollToTop();
+        }
 
-            // Initialize scroll reveal for air page specific elements
-            if (window.EcoPulse && typeof EcoPulse.initScrollReveal === 'function') {
-                EcoPulse.initScrollReveal();
-            }
+        // Initialize scroll reveal for air page specific elements
+        if (window.EcoPulse && typeof EcoPulse.initScrollReveal === 'function') {
+            EcoPulse.initScrollReveal();
+        }
 
-            // Additional air-specific scroll reveal for any new elements
-            const airReveals = document.querySelectorAll('.glass-card, .animate-slide-up');
-            if (airReveals.length && window.IntersectionObserver) {
-                const airObserver = new IntersectionObserver(
-                    (entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0)';
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -50px 0px'
-                    }
-                );
+        // Additional air-specific scroll reveal for any new elements
+        const airReveals = document.querySelectorAll('.glass-card, .animate-slide-up');
+        if (airReveals.length && window.IntersectionObserver) {
+            const airObserver = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
 
-                airReveals.forEach(el => {
-                    // Set initial state for animation
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    airObserver.observe(el);
-                });
-            }
-            // Slider UI enhancements: update track fill and label dynamically
-            const slider = document.getElementById('air-pollution-slider');
-            const label = document.getElementById('air-pollution-value');
-            if (slider) {
-                const updateSlider = () => {
-                    const val = Number(slider.value);
-                    const min = Number(slider.min || 0);
-                    const max = Number(slider.max || 100);
-                    const pct = ((val - min) / (max - min)) * 100;
-                    slider.style.background = `linear-gradient(90deg, rgba(251,146,60,1) ${pct}%, rgba(55,65,81,1) ${pct}%)`;
+            airReveals.forEach(el => {
+                // Set initial state for animation
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                airObserver.observe(el);
+            });
+        }
+        // Slider UI enhancements: update track fill and label dynamically
+        const slider = document.getElementById('air-pollution-slider');
+        const label = document.getElementById('air-pollution-value');
+        if (slider) {
+            const updateSlider = () => {
+                const val = Number(slider.value);
+                const min = Number(slider.min || 0);
+                const max = Number(slider.max || 100);
+                const pct = ((val - min) / (max - min)) * 100;
+                slider.style.background = `linear-gradient(90deg, rgba(251,146,60,1) ${pct}%, rgba(55,65,81,1) ${pct}%)`;
 
-                    if (label) {
-                        let text = `${val} AQI`;
-                        if (val < 50) text = `Good (${val} AQI)`;
-                        else if (val < 100) text = `Moderate (${val} AQI)`;
-                        else if (val < 150) text = `Unhealthy for sensitive groups (${val} AQI)`;
-                        else if (val < 200) text = `Unhealthy (${val} AQI)`;
-                        else if (val < 300) text = `Very Unhealthy (${val} AQI)`;
-                        else text = `Hazardous (${val} AQI)`;
-                        label.textContent = text;
+                if (label) {
+                    let text = `${val} AQI`;
+                    if (val < 50) text = `Good (${val} AQI)`;
+                    else if (val < 100) text = `Moderate (${val} AQI)`;
+                    else if (val < 150) text = `Unhealthy for sensitive groups (${val} AQI)`;
+                    else if (val < 200) text = `Unhealthy (${val} AQI)`;
+                    else if (val < 300) text = `Very Unhealthy (${val} AQI)`;
+                    else text = `Hazardous (${val} AQI)`;
+                    label.textContent = text;
 
-                        const fg = val < 50 ? '#10B981' : val < 100 ? '#3B82F6' : val < 150 ? '#F97316' : val < 200 ? '#F59E0B' : val < 300 ? '#EF4444' : '#7f1d1d';
-                        label.style.color = fg;
-                    }
-                };
+                    const fg = val < 50 ? '#10B981' : val < 100 ? '#3B82F6' : val < 150 ? '#F97316' : val < 200 ? '#F59E0B' : val < 300 ? '#EF4444' : '#7f1d1d';
+                    label.style.color = fg;
+                }
+            };
 
-                slider.addEventListener('input', updateSlider, { passive: true });
-                // initialize
-                updateSlider();
-            }
-        });
-    </script>
+            slider.addEventListener('input', updateSlider, {passive: true});
+            // initialize
+            updateSlider();
+        }
+    });
+</script>
 
 </body>
-
 </html>
