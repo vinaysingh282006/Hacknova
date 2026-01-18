@@ -6,18 +6,18 @@ const CORE_ASSETS = [
   '/offline.html',
   '/manifest.json',
 
-  // CSS
   '/css/styles.css',
   '/css/air.css',
   '/css/water.css',
   '/css/light.css',
 
-  // JS
+  '/js/main.js',
+  '/js/script.js',
   '/js/air.js',
   '/js/air-3d.js',
-  '/js/countdown.js',
+  '/js/water.js',
+  '/js/light.js',
 
-  // Images
   '/ecopulse-logo.png'
 ];
 

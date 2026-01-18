@@ -574,3 +574,31 @@ footer {
 .aqi-status-moderate { border-left: 5px solid #FBBF24 !important; background: rgba(251, 191, 36, 0.08) !important; }
 .aqi-status-unhealthy { border-left: 5px solid #F97316 !important; background: rgba(249, 115, 22, 0.08) !important; }
 .aqi-status-hazardous { border-left: 5px solid #8B5CF6 !important; background: rgba(139, 92, 246, 0.08) !important; }
+
+/*Offline Implementation*/
+
+#network-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+  display: none;
+}
+
+#network-status.offline {
+  background: #dc2626;
+  color: white;
+  display: block;
+}
+
+#network-status.online {
+  background: #16a34a;
+  color: white;
+  display: block;
+}
+
