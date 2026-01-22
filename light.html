@@ -51,6 +51,10 @@
 </head>
 
 <body class="bg-gray-900 text-white font-['Inter']">
+    <div id="network-status" class="online">
+  You are back online
+</div>
+
     <!-- Skip to Content Link for Accessibility -->
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
     
@@ -385,6 +389,28 @@
             }
         });
     </script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+
+  // Optional: Network status feedback
+  window.addEventListener('offline', () => {
+    console.warn('You are offline');
+  });
+
+  window.addEventListener('online', () => {
+    console.log('Back online');
+  });
+</script>
+<div id="cursor-glow"></div>
+
 </body>
 
 </html>
