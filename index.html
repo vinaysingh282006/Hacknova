@@ -9,45 +9,46 @@
     <meta name="keywords"
         content="pollution, environment, 3D visualization, air quality, water contamination, light pollution, climate change">
 
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="EcoPulse - Environmental Pollution Visualization">
     <meta property="og:description" content="Interactive 3D exploration of environmental pollution data">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ecopulse.example.com">
     <meta property="og:image" content="https://hacknova-seven.vercel.app/ecopulse-logo.png">
-    
-    <!-- Twitter Card Meta Tags -->
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EcoPulse - Environmental Pollution Visualization">
     <meta name="twitter:description" content="Interactive 3D exploration of environmental pollution data">
 
     <title>EcoPulse - Environmental Pollution Visualization</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+ feat/live-countdown-sticky-cta
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Chart.js for data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+ feat/live-countdown-sticky-cta
+
     
 
 
     <!-- Manifest for PWA -->
+
     <link rel="manifest" href="manifest.json">
     
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+   <link rel="icon" type="image/png" href="ecopulse-logo.png">
 </head>
+
 <script>
     tailwind.config = {
         theme: {
@@ -81,6 +82,8 @@
 </div>
 
 <body class="bg-gray-900 text-white">
+feat/live-countdown-sticky-cta
+
     <!-- Skip to Content Link for Accessibility -->
     
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
@@ -99,17 +102,17 @@
                     
                 </a>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-white transition-colors focus-outline" tabindex="0">Home</a>
-                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air</a>
-                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Water</a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors focus-outline" tabindex="0">Light</a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors focus-outline" tabindex="0">Noise</a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
-                        Prediction</a>
-                    <a href="presentation.html"
-                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800" id="navbar">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">E</span>
                 </div>
+ feat/live-countdown-sticky-cta
+                <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+            </a>
+
 
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
                     
@@ -133,37 +136,24 @@
                 <a href="presentation.html"
                     class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
             </div>
+
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main id="main-content">
 
-
-        <!-- HERO SECTION -->
         <!-- HERO SECTION -->
         <section class="hero-section">
             
 
-            <!-- Background Layers -->
             <div class="hero-bg">
-
-                <!-- Earth Image -->
                 <div class="hero-earth"></div>
-
-                <!-- Vignette -->
                 <div class="hero-vignette"></div>
-
-                <!-- Grid Overlay -->
                 <div class="hero-grid"></div>
-
-                <!-- Data Rings -->
                 <div class="hero-rings">
                     <span class="ring ring-1"></span>
                     <span class="ring ring-2"></span>
                 </div>
-
-                <!-- Floating Particles -->
                 <div class="hero-particles"></div>
                 <div class="precaution-buttons">
   <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
@@ -174,11 +164,9 @@
 
             </div>
 
-            <!-- Hero Content -->
             <div class="hero-content">
                 <div class="hero-glass">
 
-                    <!-- LOAD ANIMATED CONTENT -->
                     <div class="hero-load hero-delay-1">
                         <h1>
                             Visualize Our<br />
@@ -212,14 +200,24 @@
                         </a>
                     </div>
 
-                    <div class="hero-load hero-delay-5 hero-tags">
+                    <!-- ✅ COUNTDOWN -->
+                    <div class="hero-load hero-delay-5">
+                        <div id="event-countdown" class="event-countdown"></div>
+                    </div>
+
+                    <!-- ✅ HERO REGISTER ANCHOR -->
+                    <a href="presentation.html" id="hero-register-btn"
+                        class="btn-primary mt-6 inline-block">
+                        Register Now
+                    </a>
+
+                    <div class="hero-load hero-delay-6 hero-tags">
                         Air • Water • Light • Noise • AI Prediction
                     </div>
 
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <div class="hero-scroll" id="scroll-indicator">
                 <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
                     <rect x="1" y="1" width="22" height="38" rx="11" stroke="currentColor" stroke-width="2" />
@@ -231,6 +229,8 @@
             </div>
 
         </section>
+ feat/live-countdown-sticky-cta
+
 
 
 
@@ -246,30 +246,36 @@
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-blue mb-2" data-counter="2" data-suffix="B">
                             2B</div>
-                        <p class="text-gray-400 text-sm md:text-base">Lack Safe Water</p>
+                        <p class="text-gray-400 text-sm md:text-base">lack access to safe drinking water</p>
                     </div>
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-orange mb-2" data-counter="80"
                             data-suffix="%">80%</div>
-                        <p class="text-gray-400 text-sm md:text-base">Can't see Milky Way</p>
+                        <p class="text-gray-400 text-sm md:text-base">world’s population can’t see the Milky Way due to light pollution</p>
+                        
                     </div>
                     <div class="stat-item scroll-reveal">
                         <div class="text-4xl md:text-5xl font-bold text-eco-purple mb-2" data-counter="45"
                             
                             data-suffix="%">45%</div>
                         <p class="text-gray-400 text-sm md:text-base">Exposed to harmful noise</p>
+                        
                     </div>
+                    
                 </div>
             </div>
         </section>
 
         <!-- Topic Cards Section -->
         <section class="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+            
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 scroll-reveal">
                     <h2 class="text-4xl md:text-5xl font-bold mb-4">Explore Pollution Topics</h2>
                     <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Dive deep into interactive 3D visualizations for each environmental challenge
+                      Explore air, water, light, and noise pollution using location-based data, 3D simulations, and interactive insights.
+                        
+                        
                     </p>
                 </div>
 
@@ -290,14 +296,15 @@
                             91% of the world breathes polluted air. Explore 3D city simulations with particle-based smog
                             visualization.
                         </p>
-                        <div
-                            class="flex items-center text-lime-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore Air Data
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-lime-400 font-semibold">
+  Explore Air Data
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- Water Pollution Card -->
@@ -315,15 +322,17 @@
                         <p class="text-gray-300 mb-4">
                             2 billion lack safe water. Visualize river contamination with interactive hotspots and flow
                             simulations.
+                            
                         </p>
-                        <div
-                            class="flex items-center text-teal-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore Water Data
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-teal-400 font-semibold">
+  Explore Water Data
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- Light Pollution Card -->
@@ -343,14 +352,15 @@
                             
                             controls.
                         </p>
-                        <div
-                            class="flex items-center text-amber-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore Light Data
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-amber-400 font-semibold">
+  Explore Light Data
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- AI Prediction Card -->
@@ -370,14 +380,15 @@
                             Machine learning models analyze historical data to predict future pollution trends with
                             confidence intervals.
                         </p>
-                        <div
-                            class="flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore AI Models
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-purple-400 font-semibold">
+  Explore AI Models
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- Noise Pollution Card -->
@@ -397,14 +408,15 @@
                             45% of urban populations affected by harmful noise. Explore sound wave propagation and
                             health impacts.
                         </p>
-                        <div
-                            class="flex items-center text-purple-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore Noise Data
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-purple-400 font-semibold">
+  Explore Noise Data
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- Soil Pollution Card -->
@@ -423,14 +435,14 @@
                             33% of global soil degraded. Discover contamination sources, agricultural impacts, and
                             restoration solutions.
                         </p>
-                        <div
-                            class="flex items-center text-amber-400 font-semibold group-hover:translate-x-2 transition-transform">
-                            Explore Soil Data
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </div>
+                        <div class="explore-link flex items-center text-amber-400 font-semibold">
+  Explore Soil Data
+  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+    </path>
+  </svg>
+</div>
+
                     </a>
 
                     <!-- Plastic Pollution Card -->
@@ -490,35 +502,71 @@
             </div>
         </section>
 
-        <!-- Features Section -->
- <section class="py-20 bg-gray-900">
-  <div class="container mx-auto px-4">
+                <!-- Features Section -->
+ <section id="why-ecopulse" aria-labelledby="why-ecopulse-title" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4">
 
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-        Advanced visualization technology meets environmental awareness
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-
-      <!-- Card 1 -->
-      <div class="card ecopulse-card text-center scroll-reveal">
-        <div
-          class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-            <path fill-rule="evenodd"
-              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-              clip-rule="evenodd" />
-          </svg>
+        <div class="text-center mb-16 scroll-reveal">
+            <h2 id="why-ecopulse-title" class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Turn complex environmental data into clear, actionable insight — with immersive visuals, trusted sources,
+                and tools built for decision-makers and curious learners alike.
+            </p>
         </div>
-        <h3 class="text-xl font-bold mb-3">Interactive 3D</h3>
-        <p class="text-gray-300">
-          Immersive Three.js visualizations with real-time controls and camera navigation
-        </p>
-      </div>
+
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+            <!-- Card 1 -->
+            <div class="card ecopulse-card text-center scroll-reveal">
+                <div
+                    class="w-16 h-16 bg-gradient-to-r from-eco-blue to-eco-green rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path fill-rule="evenodd"
+                            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Immersive 3D Experiences</h3>
+                <p class="text-gray-300">
+                    Interactive Three.js scenes with dynamic filters, time sliders, and camera presets that reveal patterns
+                    across locations and years.
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card ecopulse-card text-center scroll-reveal">
+                <div
+                    class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Trusted, Transparent Data</h3>
+                <p class="text-gray-300">
+                    Curated datasets from WHO, EPA and peer-reviewed research — with regional breakdowns, confidence
+                    indicators, and CSV export for further analysis.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card ecopulse-card text-center scroll-reveal">
+                <div
+                    class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Actionable Insights</h3>
+                <p class="text-gray-300">
+                    Clear summaries, policy-ready charts, and downloadable reports — mobile-friendly and PWA-enabled for
+                    field work and quick sharing.
+                </p>
+            </div>
 
       <!-- Card 2 -->
       <div class="card ecopulse-card text-center scroll-reveal">
@@ -536,24 +584,13 @@
         </p>
       </div>
 
-      <!-- Card 3 -->
-      <div class="card ecopulse-card text-center scroll-reveal">
-        <div
-          class="w-16 h-16 bg-gradient-to-r from-eco-orange to-eco-red rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd"
-              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-              clip-rule="evenodd" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Mobile Ready</h3>
-        <p class="text-gray-300">
-          Responsive design with touch controls, gestures, and PWA support
-        </p>
-      </div>
 
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="presentation.html" class="inline-block px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all">Learn how EcoPulse helps</a>
+        </div>
     </div>
-  </div>
 </section>
 
 
@@ -1050,85 +1087,64 @@
                     Explore the data, understand the impact, and discover actionable solutions
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="air.html" class="btn btn-primary px-8 py-4 text-lg font-semibold">
+                    <a href="air.html" class="btn-primary px-8 py-4 text-lg font-semibold">
                         Start Exploring
                     </a>
-                    <a href="presentation.html" class="btn btn-outline px-8 py-4 text-lg font-semibold">
+                    <a href="presentation.html" class="btn-outline px-8 py-4 text-lg font-semibold">
                         View Presentation
                     </a>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-<footer class="bg-gray-900 border-t border-gray-800 py-12">
-  <div class="max-w-7xl mx-auto px-6">
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
-      
-      <!-- About -->
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
-        <p class="text-gray-400 max-w-sm">
-          Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
-        </p>
-      </div>
+    <!-- ✅ STICKY REGISTER CTA -->
+    <a href="presentation.html" id="sticky-register-cta" class="sticky-register-cta">
+        🚀 Register Now
+    </a>
 
-      <!-- Quick Links -->
-      <div class="flex flex-col items-center md:items-start md:pl-40">
-        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-        <ul class="space-y-2 text-center">
-          <li><a href="air.html" class="footer-link">Air Pollution</a></li>
-          <li><a href="water.html" class="footer-link">Water Pollution</a></li>
-          <li><a href="light.html" class="footer-link">Light Pollution</a></li>
-          <li><a href="noise.html" class="footer-link">Noise Pollution</a></li>
-          <li><a href="ai-prediction.html" class="footer-link">AI Prediction</a></li>
-          <li><a href="presentation.html" class="footer-link">Presentation</a></li>
-        </ul>
-      </div>
-
-      <!-- Technology -->
-      <div class="flex flex-col items-center md:items-start md:pl-60 ">
-        <h3 class="text-xl font-bold mb-4">Technology</h3>
-        <ul class="space-y-2 text-gray-400 ">
-          <li>Three.js for 3D Graphics</li>
-          <li>Chart.js for Data Viz</li>
-          <li>TensorFlow.js for AI</li>
-          <li>Tailwind CSS</li>
-          <li>Vanilla JavaScript</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
-      <p>© <span id="year"></span> EcoPulse. Built with ❤️ for environmental awareness.</p>
-      <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
-    </div>
-
-  </div>
-</footer>
-        <!-- Added scroll-to-top button -->
-    <button id="scroll-to-top" class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors" aria-label="Scroll to top" title="Back to top">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
-
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+feat/live-countdown-sticky-cta
+
+    <!-- ✅ MODULE SCRIPT -->
+    <script type="module" src="js/script.js"></script>
+
+   <script>
+  const banner = document.getElementById('network-status');
+
+  function showOffline() {
+    banner.textContent = 'You are offline';
+    banner.className = 'offline';
+  }
+
+  function showOnline() {
+    banner.textContent = 'You are back online';
+    banner.className = 'online';
+
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 3000);
+  }
+
+  window.addEventListener('offline', showOffline);
+  window.addEventListener('online', showOnline);
+
+  if (!navigator.onLine) {
+    showOffline();
+  }
+</script>
+<script src="/js/networkStatus.js"></script>
+<div id="cursor-glow"></div>
+
+</body>
+
     <script src="js/script.js"></script>
-</body>
 
-        <script>
-            (function(){
-                var el = document.getElementById('year');
-                if(el) el.textContent = new Date().getFullYear();
-            })();
-        </script>
 
 </body>
+
 
 
 </html>
+

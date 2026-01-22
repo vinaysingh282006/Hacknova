@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: 💬 Discussions
-    url: https://github.com/your-org/ecopulse/discussions
-    about: Use discussions for questions and general conversations
-  - name: 📖 Documentation
-    url: https://github.com/your-org/ecopulse#readme
-    about: Check out the README for documentation

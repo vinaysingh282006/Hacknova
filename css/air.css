@@ -1,26 +1,38 @@
 /* Air Pollution Page Specific Styles */
 /* Glass Card Styling */
 .glass-card {
-    background: rgba(31, 41, 55, 0.85);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(75, 85, 99, 0.5);
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 0.3);
 }
 
 /* Air pollution themed colors */
 .text-air-red {
-    color: #ef4444; /* eco-red */
+    color: #ef4444;
+    /* eco-red */
 }
 
 .text-air-orange {
-    color: #f97316; /* eco-orange */
+    color: #f97316;
+    /* eco-orange */
 }
 
 .text-air-yellow {
-    color: #f59e0b; /* amber */
+    color: #f59e0b;
+    /* amber */
 }
 
 .text-air-green {
-    color: #22c55e; /* eco-green */
+    color: #22c55e;
+    /* eco-green */
 }
 
 .bg-air-red {
@@ -37,23 +49,48 @@
 }
 
 @keyframes slideUp {
-    0% { 
+    0% {
         transform: translateY(20px);
         opacity: 0;
     }
-    100% { 
+
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
 /* Custom range slider for air pollution */
 input[type="range"].air-slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 8px;
     border-radius: 4px;
-    background: linear-gradient(to right, #22c55e, #f59e0b, #f97316, #ef4444); /* Green to yellow to orange to red */
+    background: linear-gradient(to right, #22c55e, #f59e0b, #f97316, #ef4444);
+    /* Green to yellow to orange to red */
     outline: none;
 }
 
@@ -62,7 +99,8 @@ input[type="range"].air-slider::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #f97316; /* eco-orange */
+    background: #f97316;
+    /* eco-orange */
     cursor: pointer;
     box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
 }
@@ -71,7 +109,8 @@ input[type="range"].air-slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #f97316; /* eco-orange */
+    background: #f97316;
+    /* eco-orange */
     cursor: pointer;
     border: none;
     box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
@@ -79,26 +118,31 @@ input[type="range"].air-slider::-moz-range-thumb {
 
 /* Air quality level indicators */
 .aqi-good {
-    color: #22c55e; /* Green */
+    color: #22c55e;
+    /* Green */
 }
 
 .aqi-moderate {
-    color: #f59e0b; /* Yellow */
+    color: #f59e0b;
+    /* Yellow */
 }
 
 .aqi-unhealthy {
-    color: #f97316; /* Orange */
+    color: #f97316;
+    /* Orange */
 }
 
 .aqi-hazardous {
-    color: #ef4444; /* Red */
+    color: #ef4444;
+    /* Red */
 }
 
 /* Loading animation for air scene */
 #air-scene-loading {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.9); /* gray-900 with opacity */
+    background: rgba(15, 23, 42, 0.9);
+    /* gray-900 with opacity */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +151,8 @@ input[type="range"].air-slider::-moz-range-thumb {
 }
 
 #air-scene-loading .loader-text {
-    color: #9ca3af; /* gray-400 */
+    color: #9ca3af;
+    /* gray-400 */
     font-family: monospace;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -122,42 +167,59 @@ input[type="range"].air-slider::-moz-range-thumb {
 
 /* Health impact cards for air pollution */
 .health-card {
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 4px solid transparent;
+    background: rgba(31, 41, 55, 0.4);
 }
 
 .health-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(31, 41, 55, 0.6);
 }
 
 .health-card-low-risk {
-    border-left-color: #22c55e; /* Green */
+    border-left-color: #22c55e;
+    /* Green */
+}
+
+.health-card:hover.health-card-low-risk {
+    box-shadow: -5px 5px 20px rgba(34, 197, 94, 0.15);
 }
 
 .health-card-moderate-risk {
-    border-left-color: #f59e0b; /* Yellow */
+    border-left-color: #f59e0b;
+    /* Yellow */
+}
+
+.health-card:hover.health-card-moderate-risk {
+    box-shadow: -5px 5px 20px rgba(245, 158, 11, 0.15);
 }
 
 .health-card-high-risk {
-    border-left-color: #ef4444; /* Red */
+    border-left-color: #ef4444;
+    /* Red */
 }
 
 /* Metric card styling */
 .metric-card {
-    background: rgba(30, 41, 59, 0.5); /* gray-800 with opacity */
-    border: 1px solid rgba(55, 65, 81, 0.5); /* gray-600 with opacity */
+    background: rgba(30, 41, 59, 0.5);
+    /* gray-800 with opacity */
+    border: 1px solid rgba(55, 65, 81, 0.5);
+    /* gray-600 with opacity */
     transition: all 0.3s ease;
 }
 
 .metric-card:hover {
-    border-color: #f97316; /* eco-orange */
+    border-color: #f97316;
+    /* eco-orange */
     transform: translateY(-3px);
 }
 
 /* Air-specific navigation active state */
 .nav-active-air {
-    color: #f97316 !important; /* eco-orange */
+    color: #f97316 !important;
+    /* eco-orange */
     position: relative;
 }
 
@@ -168,7 +230,8 @@ input[type="range"].air-slider::-moz-range-thumb {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #f97316; /* eco-orange */
+    background: #f97316;
+    /* eco-orange */
     border-radius: 1px;
 }
 
@@ -200,7 +263,20 @@ input[type="range"].air-slider::-moz-range-thumb {
     0% {
         background-position: 0 0;
     }
+
     100% {
         background-position: 30px 30px;
     }
+}
+
+/* Smog Overlay Animation */
+.smog-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.4) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: overlay;
 }

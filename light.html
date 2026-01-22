@@ -10,8 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/light.css">
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+    <link rel="icon" type="image/png" href="ecopulse-logo.png">
     <script>
         tailwind.config = {
             theme: {
@@ -52,6 +51,10 @@
 </head>
 
 <body class="bg-gray-900 text-white font-['Inter']">
+    <div id="network-status" class="online">
+  You are back online
+</div>
+
     <!-- Skip to Content Link for Accessibility -->
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
     
@@ -218,7 +221,9 @@
                                 </div>
                                 <div class="relative w-full h-6 flex items-center">
                                     <input type="range" id="light-intensity-slider" min="0" max="100" value="75"
-                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-orange hover:accent-orange-400 transition-all z-10">
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-orange hover:accent-orange-400 transition-all
+                                         hover:opacity-90  focus:outline-none focus:ring-2 focus:ring-orange-500/40
+                                        z-10">
                                 </div>
                                 <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
                                     <span>Dark Sky Preserve</span>
@@ -384,6 +389,28 @@
             }
         });
     </script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+
+  // Optional: Network status feedback
+  window.addEventListener('offline', () => {
+    console.warn('You are offline');
+  });
+
+  window.addEventListener('online', () => {
+    console.log('Back online');
+  });
+</script>
+<div id="cursor-glow"></div>
+
 </body>
 
 </html>

@@ -73,7 +73,7 @@ jobs:
             });
             
             if (errors.length > 0) {
-              core.setFailed("Bug report validation failed");
+              require("@actions/core").setFailed("Bug report validation failed");
             }
 
   validate-feature-request:
@@ -144,7 +144,7 @@ jobs:
             });
             
             if (errors.length > 0) {
-              core.setFailed("Feature request validation failed");
+              require("@actions/core").setFailed("Feature request validation failed");
             }
 
   general-issue-check:
@@ -179,13 +179,17 @@ jobs:
             }
             
             if (suggestedLabel) {
-              // Add suggested label
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                labels: [suggestedLabel]
-              });
-              
-              console.log(`Auto-labeled issue as: ${suggestedLabel}`);
+              try {
+                // Add suggested label
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  labels: [suggestedLabel]
+                });
+                
+                console.log(`Auto-labeled issue as: ${suggestedLabel}`);
+              } catch (error) {
+                console.warn(`Could not auto-label issue #${issue.number}: ${error.message}`);
+              }
             }
