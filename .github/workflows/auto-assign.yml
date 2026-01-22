@@ -9,9 +9,8 @@ permissions:
 
 jobs:
   assign:
-    permissions:
-      issues: write
     runs-on: ubuntu-latest
+
     steps:
       - name: Assign issue to creator
         uses: actions/github-script@v7
@@ -21,14 +20,18 @@ jobs:
               const issue = context.payload.issue;
               const creator = issue.user.login;
 
-            try {
               await github.rest.issues.addAssignees({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue.number,
                 assignees: [creator],
               });
-              console.log(`Successfully assigned issue #${issue.number} to ${creator}`);
+
+              console.log(
+                `Successfully assigned issue #${issue.number} to ${creator}`
+              );
             } catch (error) {
-              console.warn(`Could not auto-assign issue #${issue.number}: ${error.message}`);
+              core.setFailed(
+                `Auto-assign failed for issue #${context.payload.issue?.number}: ${error.message}`
+              );
             }
