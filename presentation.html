@@ -537,7 +537,42 @@
                     </div>
                 </div>
             </section>
+                <div class="cursor-container">
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                    <span class="cursor-dot"></span>
+                </div>
+            </main>
+
+            <!-- Controls Section -->
+            <footer class="controls-section no-print sticky bottom-0 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent py-4">
+                <div class="flex gap-3 justify-center items-center">
+                    <button id="prev-btn"
+                        class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                        ← Prev
+                    </button>
+
+                    <div class="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg">
+                        <span id="current-slide">1</span>
+                        <span class="text-gray-500">/</span>
+                        <span id="total-slides">9</span>
+                    </div>
+
+                    <button id="next-btn"
+                        class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                        Next →
+                    </button>
+                </div>
+            </footer>
+        </div>
+
         </main>
+
 
         <!-- Controls Section -->
         <footer class="controls-section no-print sticky bottom-0 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent py-4">
@@ -657,6 +692,10 @@
         });
     </script>
 
+</body>
+    <script src="js/script.js"></script>
+
+
     <footer class="bg-gray-900 border-t border-gray-800 py-12">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
@@ -701,4 +740,5 @@
         </div>
     </footer>
 </body>
+
 </html>
