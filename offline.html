@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>You’re Offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      text-align: center;
+    }
+    .box {
+      max-width: 420px;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    p {
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #22c55e;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Offline Mode</h1>
+    <p>
+      You are currently offline. Previously visited pages and core features
+      remain available.
+    </p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
+</body>
+</html>

@@ -9,9 +9,13 @@
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+
     <link rel="stylesheet" href="css/water.css">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+
+    <link rel="icon" type="image/png" href="ecopulse-logo.png">
+
     <script>
         tailwind.config = {
             theme: {
@@ -51,6 +55,13 @@
 </head>
 
 <body class="bg-gray-900 text-white font-['Inter']">
+    <div id="network-status" class="online">
+  You are back online
+</div>
+
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
+    
     <nav
         class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300">
         <div class="container mx-auto px-4">
@@ -64,31 +75,31 @@
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors relative group focus-outline" tabindex="0">
                         Home
                         <span
                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-green transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group">
+                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors relative group focus-outline" tabindex="0">
                         Air
                         <span
                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-red transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="water.html" class="text-eco-blue font-medium relative">
+                    <a href="water.html" class="text-eco-blue font-medium relative focus-outline" tabindex="0">
                         Water
                         <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-blue"></span>
                     </a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group">
+                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors relative group focus-outline" tabindex="0">
                         Light
                         <span
                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-orange transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group">
+                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors relative group focus-outline" tabindex="0">
                         Noise
                         <span
                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-eco-purple transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
+                    <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
                         Prediction</a>
                     <a href="presentation.html"
                         class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
@@ -106,20 +117,20 @@
         <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
             <div class="px-4 py-4 space-y-3">
                 <a href="index.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors">Home</a>
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-blue transition-colors focus-outline" tabindex="0">Home</a>
                 <a href="air.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors">Air
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-red transition-colors focus-outline" tabindex="0">Air
                     Pollution</a>
                 <a href="water.html"
-                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-blue font-medium border-l-4 border-eco-blue">Water
+                    class="block py-3 px-4 rounded-lg bg-gray-800/50 text-eco-blue font-medium border-l-4 border-eco-blue focus-outline" tabindex="0">Water
                     Pollution</a>
                 <a href="light.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors">Light
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-orange transition-colors focus-outline" tabindex="0">Light
                     Pollution</a>
                 <a href="noise.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors">Noise
+                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-purple transition-colors focus-outline" tabindex="0">Noise
                     Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors focus-outline" tabindex="0">AI
                     Prediction</a>
                 <a href="presentation.html"
                     class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
@@ -214,7 +225,10 @@
                                 </div>
                                 <div class="relative w-full h-6 flex items-center">
                                     <input type="range" id="water-pollution-slider" min="0" max="100" value="75"
-                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-eco-blue hover:accent-blue-400 transition-all z-10">
+                                        class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer 
+                                        accent-eco-blue hover:accent-blue-400 transition-all z-10  hover:opacity-90
+                                  focus:outline-none focus:ring-2 focus:ring-orange-500/40 "
+                                        role="slider" aria-label="Water pollution level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
                                 </div>
                                 <div class="flex justify-between text-xs text-gray-500 mt-2 font-mono">
                                     <span>Pristine</span>
@@ -323,6 +337,79 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/water-3d.js"></script>
     <script src="js/water.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Initialize EcoPulse functionality -->
+    <script>
+        // Initialize EcoPulse functionality on this page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu if EcoPulse is available
+            if (window.EcoPulse && typeof EcoPulse.initMobileMenu === 'function') {
+                EcoPulse.initMobileMenu();
+            }
+            
+            // Initialize scroll to top if available
+            if (window.EcoPulse && typeof EcoPulse.initScrollToTop === 'function') {
+                EcoPulse.initScrollToTop();
+            }
+            
+            // Initialize scroll reveal for water page specific elements
+            if (window.EcoPulse && typeof EcoPulse.initScrollReveal === 'function') {
+                EcoPulse.initScrollReveal();
+            }
+            
+            // Additional water-specific scroll reveal for any new elements
+            const waterReveals = document.querySelectorAll('.glass-card, .animate-slide-up');
+            if (waterReveals.length && window.IntersectionObserver) {
+                const waterObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    }
+                );
+                
+                waterReveals.forEach(el => {
+                    // Set initial state for animation
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    waterObserver.observe(el);
+                });
+            }
+        });
+    </script>
+
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+
+  // Optional: Network status feedback
+  window.addEventListener('offline', () => {
+    console.warn('You are offline');
+  });
+
+  window.addEventListener('online', () => {
+    console.log('Back online');
+  });
+</script>
+<div id="cursor-glow"></div>
+
 </body>
 
 </html>

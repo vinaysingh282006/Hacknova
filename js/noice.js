@@ -69,6 +69,9 @@ function initNoiseControls() {
         if (navigator.vibrate && value % 10 === 0) {
             navigator.vibrate(5);
         }
+        
+        // Update slider value for screen readers
+        slider.setAttribute('aria-valuetext', `${value} decibels, ${description} - ${value < 50 ? 'Safe level' : value < 85 ? 'Moderate level' : 'Harmful level'}`);
     };
 
     // Event Listener: Input (Real-time UI update + Debounced Scene update)

@@ -5,15 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Pollution Prediction | EcoPulse</title>
+    <link rel="icon" type="image/png" href="ecopulse-logo.png">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-
-
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         body {
@@ -441,6 +453,7 @@
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
@@ -474,32 +487,29 @@
         .floating {
             animation: floatAnimation 3s ease-in-out infinite;
         }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'eco-green': '#10B981',
-                    'eco-blue': '#3B82F6',
-                    'eco-purple': '#8B5CF6',
-                    'eco-orange': '#F97316',
-                    'eco-red': '#EF4444',
-                }
-            }
-        }
-    }
-</script>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <div id="network-status" class="online">
+  You are back online
+</div>
+
     <!-- Futuristic particle background -->
     <div class="particles-container" id="particles"></div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800 transition-all duration-300"
-        id="navbar">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="h-16 flex items-center justify-between">
+                <!-- LEFT: Logo -->
                 <a href="index.html" class="flex items-center space-x-2">
                     <div
                         class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
@@ -508,57 +518,62 @@
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
                 </a>
 
+                <!-- RIGHT: Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                    <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors">Air</a>
-                    <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors">Water</a>
-                    <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors">Light</a>
-                    <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors">Noise</a>
-                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI
-                        Prediction</a>
-                    <a href="presentation.html"
-                        class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                    <a href="index.html" class="block py-2 text-white hover:text-eco-green transition-colors">
+                        Home
+                    </a>
+                    <a href="air.html" class="block py-2 text-white hover:text-eco-green transition-colors">Air</a>
+                    <a href="water.html" class="block py-2 text-white hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="block py-2 text-white hover:text-eco-orange transition-colors">Light</a>
+                    <a href="ai-prediction.html" class="block py-2 text-white hover:text-purple-400 transition-colors">
+                        AI Prediction
+                    </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- RIGHT: Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                    aria-label="Toggle menu" aria-expanded="false">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
-            <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block py-2 text-gray-300 hover:text-white">Home</a>
-                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
-                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
-                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
-                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple">Noise Pollution</a>
-                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI
-                    Prediction</a>
-                <a href="presentation.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden absolute top-16 left-0 w-full
+            bg-gray-900 border-t border-gray-800
+            transition-all duration-200 ease-out">
 
+
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-white hover:text-eco-green transition-colors">Home</a>
+                <a href="air.html" class="block py-2 text-white hover:text-eco-green transition-colors">Air
+                    Pollution</a>
+                <a href="water.html" class="block py-2 text-white hover:text-eco-blue transition-colors">Water
+                    Pollution</a>
+                <a href="light.html" class="block py-2 text-white hover:text-eco-orange transition-colors">Light
+                    Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 text-white hover:text-purple-400 transition-colors">AI
+                    Prediction</a>
             </div>
         </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="pt-16">
-        <!-- Main Content -->
         <div class="ai-container" style="margin-top: 100px;">
             <!-- Header -->
             <div class="text-center mb-12">
                 <h1 class="text-5xl font-bold mb-4 floating">
-                    <span
-                        style="background: linear-gradient(135deg, #5c77ff 0%, #845cff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    <span class="gradient-text">
                         AI Pollution Prediction
                     </span>
                 </h1>
                 <p class="text-xl text-gray-300">Analyze historical data and predict future pollution trends with
-                    machine
-                    learning</p>
+                    machine learning</p>
             </div>
 
             <!-- Data Upload Section -->
@@ -838,6 +853,7 @@
                 <span class="cursor-dot"></span>
             </div>
     </main>
+
     <script>
         // Create futuristic particle background
         document.addEventListener('DOMContentLoaded', function () {
@@ -955,16 +971,18 @@
                     document.getElementById('stat-avg-aqi').textContent = avg.toFixed(1);
                 }
             }
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuBtn = document.getElementById("mobile-menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
 
-            if (!menuBtn || !mobileMenu) return;
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            menuBtn.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-            });
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isOpen = mobileMenu.classList.toggle('hidden') === false;
+                    mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+                });
+
+            }
         });
     </script>
 
@@ -974,5 +992,28 @@
     <script src="js/script.js"></script>
 </body>
 
+
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed:', err));
+    });
+  }
+
+  // Optional: Network status feedback
+  window.addEventListener('offline', () => {
+    console.warn('You are offline');
+  });
+
+  window.addEventListener('online', () => {
+    console.log('Back online');
+  });
+</script>
+
+</body>
+<div id="cursor-glow"></div>
 
 </html>

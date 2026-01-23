@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
-        <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="ecopulse-logo.png">
     <style>
         .slide {
             display: none;
@@ -27,28 +27,121 @@
             overflow-y: auto;
         }
 
+        /* Exit button styling */
+        #exit-btn {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #exit-btn:hover {
+            background-color: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        #exit-btn:active {
+            transform: translateY(0);
+        }
+
         @media print {
             .slide {
                 display: flex !important;
                 page-break-after: always;
             }
             .controls-section,
-            .nav-helper {
+            .nav-helper,
+            #exit-btn {
                 display: none !important;
             }
         }
-    </style>
 
+        @media (max-width: 768px) {
+            #exit-btn {
+                top: 70px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
+
 <body class="bg-gray-900 text-white">
+    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">EcoPulse</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active text-eco-blue font-medium">Home</a>
+                    <a href="air.html" class="nav-link hover:text-eco-red transition-colors">Air</a>
+                    <a href="water.html" class="nav-link hover:text-eco-blue transition-colors">Water</a>
+                    <a href="light.html" class="nav-link hover:text-eco-orange transition-colors">Light</a>
+                    <a href="noise.html" class="nav-link hover:text-eco-purple transition-colors">Noise</a>
+                    <a href="ai-prediction.html" class="nav-link hover:text-purple-400 transition-colors">AI</a>
+                    <a href="presentation.html" class="nav-link hover:text-eco-green transition-colors">Demo</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-eco-blue font-medium">Home</a>
+                <a href="air.html" class="block py-2 hover:text-eco-red transition-colors">Air Pollution</a>
+                <a href="water.html" class="block py-2 hover:text-eco-blue transition-colors">Water Pollution</a>
+                <a href="light.html" class="block py-2 hover:text-eco-orange transition-colors">Light Pollution</a>
+                <a href="noise.html" class="block py-2 hover:text-eco-purple transition-colors">Noise Pollution</a>
+                <a href="ai-prediction.html" class="block py-2 hover:text-purple-400 transition-colors">AI Prediction</a>
+                <a href="presentation.html" class="block py-2 hover:text-eco-green transition-colors">Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Exit Button -->
+    <button id="exit-btn" title="Exit presentation (ESC)" aria-label="Exit presentation">
+        ✕ Exit
+    </button>
+
     <!-- App Layout -->
     <div class="min-h-screen flex flex-col">
-        <header class="nav-helper no-print text-sm text-gray-500 text-right px-4 py-2">
-            Press ← → or Space • Ctrl+P to print
+        <header class="nav-helper no-print text-sm text-gray-500 px-4 py-2 flex justify-between items-center">
+            <div>Press ← → or Space • ESC to exit • Ctrl+P to print</div>
+            <a href="index.html">
+                <button id="skip-btn" class="px-4 py-1 bg-gray-800 hover:bg-gray-700 rounded-lg">
+                    Skip Demo
+                </button>
+            </a>
         </header>
 
         <!-- Slides Wrapper -->
-        <main class="slides-wrapper flex-1 overflow-y-auto">
+        <main class="slides-wrapper flex-1 overflow-y-auto pt-20">
             <!-- Slide 1: Title -->
             <section class="slide active items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900/30 to-green-900/30">
                 <div class="text-center px-4">
@@ -57,14 +150,13 @@
                             <span class="text-6xl">🌍</span>
                         </div>
                     </div>
-                    <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-eco-blue via-eco-green to-eco-blue bg-clip-text text-transparent">
+                    <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-white via-eco-green to-white bg-clip-text text-transparent drop-shadow-lg">
                         EcoPulse
                     </h1>
                     <p class="text-3xl text-gray-300 mb-8">Environmental Pollution Visualization</p>
                     <p class="text-xl text-gray-400">Interactive 3D Data Exploration</p>
                     <div class="mt-12 text-gray-500">
                         <p>Hackathon 2024</p>
-                        <p class="mt-2 text-sm">Press → or Space to continue</p>
                     </div>
                 </div>
             </section>
@@ -437,7 +529,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
                         <a href="index.html" class="btn btn-primary px-8 py-4 text-xl">View Live Demo</a>
-                        <a href="air.html" class="btn btn-outline px-8 py-4 text-xl">Explore Data</a>
+                        <a href="air.html" class="btn btn-primary px-8 py-4 text-xl">Explore Data</a>
                     </div>
                     <div class="text-gray-400">
                         <p class="text-lg mb-4">Thank you!</p>
@@ -479,13 +571,32 @@
             </footer>
         </div>
 
-
-        <!-- Navigation Helper -->
-        <header class="nav-helper no-print text-sm text-gray-500 text-right px-4 py-2">
-            Press ← → or Space • Ctrl+P to print
-        </header>
+        </main>
 
 
+        <!-- Controls Section -->
+        <footer class="controls-section no-print sticky bottom-0 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent py-4">
+            <div class="flex gap-3 justify-center items-center">
+                <button id="prev-btn"
+                    class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    aria-label="Previous slide">
+                    ← Prev
+                </button>
+
+                <div class="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg">
+                    <span id="current-slide">1</span>
+                    <span class="text-gray-500">/</span>
+                    <span id="total-slides">9</span>
+                </div>
+
+                <button id="next-btn"
+                    class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                    aria-label="Next slide">
+                    Next →
+                </button>
+            </div>
+        </footer>
+    </div>
 
     <script>
         class PresentationController {
@@ -497,6 +608,7 @@
                 document.getElementById('total-slides').textContent = this.totalSlides;
                 this.setupControls();
                 this.setupKeyboard();
+                this.setupExitButton();
             }
 
             setupControls() {
@@ -506,7 +618,13 @@
 
             setupKeyboard() {
                 document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowRight' || e.key === ' ') {
+                    // Exit presentation on ESC key
+                    if (e.key === 'Escape' || e.key === 'Esc') {
+                        e.preventDefault();
+                        this.exitPresentation();
+                    }
+                    // Navigate slides
+                    else if (e.key === 'ArrowRight' || e.key === ' ') {
                         e.preventDefault();
                         this.nextSlide();
                     } else if (e.key === 'ArrowLeft') {
@@ -514,6 +632,18 @@
                         this.previousSlide();
                     }
                 });
+            }
+
+            setupExitButton() {
+                const exitBtn = document.getElementById('exit-btn');
+                if (exitBtn) {
+                    exitBtn.addEventListener('click', () => this.exitPresentation());
+                }
+            }
+
+            exitPresentation() {
+                // Attempt to navigate back to home
+                window.location.href = 'index.html';
             }
 
             nextSlide() {
@@ -536,19 +666,79 @@
             }
         }
 
+        // Initialize presentation controller
         new PresentationController();
 
-         document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
+        // Mobile menu toggle
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
 
-    if (!menuBtn || !mobileMenu) return;
+            if (!menuBtn || !mobileMenu) return;
 
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  });
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                const isExpanded = !mobileMenu.classList.contains("hidden");
+                menuBtn.setAttribute("aria-expanded", isExpanded);
+            });
+        });
+
+        // Set current year in footer
+        document.addEventListener("DOMContentLoaded", () => {
+            const yearElement = document.getElementById("year");
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
     </script>
+
 </body>
     <script src="js/script.js"></script>
+
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+                <!-- About -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">About EcoPulse</h3>
+                    <p class="text-gray-400 max-w-sm">
+                        Environmental awareness through interactive 3D data visualization. Built for Hackathon 2024.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="flex flex-col items-center md:items-start md:pl-40">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-center">
+                        <li><a href="air.html" class="footer-link">Air Pollution</a></li>
+                        <li><a href="water.html" class="footer-link">Water Pollution</a></li>
+                        <li><a href="light.html" class="footer-link">Light Pollution</a></li>
+                        <li><a href="noise.html" class="footer-link">Noise Pollution</a></li>
+                        <li><a href="ai-prediction.html" class="footer-link">AI Prediction</a></li>
+                        <li><a href="presentation.html" class="footer-link">Presentation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Technology -->
+                <div class="flex flex-col items-center md:items-start md:pl-60">
+                    <h3 class="text-xl font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Three.js for 3D Graphics</li>
+                        <li>Chart.js for Data Viz</li>
+                        <li>TensorFlow.js for AI</li>
+                        <li>Tailwind CSS</li>
+                        <li>Vanilla JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+                <p>© <span id="year">2026</span> EcoPulse. Built with ❤️ for environmental awareness.</p>
+                <p class="mt-2 text-sm">Hackathon • Environmental Data Initiative</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
