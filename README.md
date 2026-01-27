@@ -32,6 +32,14 @@ EcoPulse transforms complex datasets into immersive 3D stories.
 
 ---
 
+## 🎯 Who Is This Project For?
+
+- Students learning Three.js and WebGL
+- Hackathon participants building climate-tech apps
+- Beginners in open-source contribution
+- Developers interested in data visualization
+
+
 ## 🛠️ Tech Stack
 | Category | Technology | Usage |
 | :--- | :--- | :--- |
