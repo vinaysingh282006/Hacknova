@@ -56,9 +56,8 @@ git commit -m "feat: concise description of changes"
 git push origin feature/your-feature-name
 ```
 
-### 7. Open a Pull Request from your fork to the main repository.
-
-### 7. Open a Pull Request from your fork to the main repository.
+### 7. Open a Pull Request
+Open a Pull Request from your fork to the main repository.
 
 ## What You Can Work On
 
