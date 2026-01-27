@@ -30,8 +30,10 @@ Create your own fork of the repository on GitHub.
 
 ### 2. Clone Your Fork
 
+```bash
 git clone https://github.com/your-username/ecopulse.git
 cd ecopulse
+```
 
 ### 3. Create a New Branch
 git checkout -b feature/your-feature-name
@@ -56,9 +58,8 @@ git commit -m "feat: concise description of changes"
 git push origin feature/your-feature-name
 ```
 
-### 7. Open a Pull Request from your fork to the main repository.
-
-### 7. Open a Pull Request from your fork to the main repository.
+### 7. Open a Pull Request
+Open a Pull Request from your fork to the main repository.
 
 ## What You Can Work On
 
