@@ -1065,6 +1065,34 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="module" src="js/script.js"></script>
+
+   <script>
+  const banner = document.getElementById('network-status');
+
+  function showOffline() {
+    banner.textContent = 'You are offline';
+    banner.className = 'offline';
+  }
+
+  function showOnline() {
+    banner.textContent = 'You are back online';
+    banner.className = 'online';
+
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 3000);
+  }
+
+  window.addEventListener('offline', showOffline);
+  window.addEventListener('online', showOnline);
+
+  if (!navigator.onLine) {
+    showOffline();
+  }
+</script>
+<script src="/js/networkStatus.js"></script>
+<div id="cursor-glow"></div>
+
 </body>
 </html>
 

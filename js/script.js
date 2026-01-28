@@ -632,4 +632,34 @@ function closePrecautions() {
   modal.classList.remove("flex");
 }
 
+// Cursor Glow Effect
+(() => {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+
+  let mouseX = 0, mouseY = 0;
+  let currentX = 0, currentY = 0;
+
+  const speed = 0.15;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    glow.style.opacity = '1';
+  });
+
+  window.addEventListener('mouseleave', () => {
+    glow.style.opacity = '0';
+  });
+
+  function animate() {
+    currentX += (mouseX - currentX) * speed;
+    currentY += (mouseY - currentY) * speed;
+
+    glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
 
