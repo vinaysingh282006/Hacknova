@@ -29,11 +29,13 @@ The project focuses on accessibility, sustainability, and data-driven storytelli
 Create your own fork of the repository on GitHub.
 
 ### 2. Clone Your Fork
-
+```bash
 git clone https://github.com/your-username/ecopulse.git
 cd ecopulse
+```
 
 ### 3. Create a New Branch
+```bash
 git checkout -b feature/your-feature-name
 ```
 
@@ -48,11 +50,13 @@ git checkout -b feature/your-feature-name
 ✅ Ensure accessibility standards are maintained
 
 ### 5. Commit Your Changes
+```bash
 git add .
 git commit -m "feat: concise description of changes"
 ```
 
 ### 6. Push and Open a Pull Request
+```bash
 git push origin feature/your-feature-name
 ```
 
