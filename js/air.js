@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNCTION TO DRAW THE SPARKLINE
     function drawSparkline(canvasId, dataPoints) {
         const canvas = document.getElementById(canvasId);
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
