@@ -4,7 +4,7 @@
             const valueDisplay = document.getElementById('light-intensity-value');
             
             slider?.addEventListener('input', (e) => {
-                const value = e.target.value;
+                const value = Number(e.target.value);
                 const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
                 valueDisplay.textContent = `${level} (${value}%)`;
                 window.lightScene?.updateLightIntensity(value);
@@ -61,7 +61,7 @@
             
             if(slider && valueDisplay) {
                 slider.addEventListener('input', (e) => {
-                    const value = e.target.value;
+                    const value = Number(e.target.value);
                     const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
                     valueDisplay.textContent = `${level} (${value}%)`;
                     
