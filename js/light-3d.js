@@ -13,7 +13,8 @@ class LightPollutionScene {
         this.cityLights = [];
         this.stars = [];
         this.milkyWay = null;
-        
+        this.handleResize = this.onWindowResize.bind(this);
+
         this.init();
     }
     
@@ -64,7 +65,8 @@ class LightPollutionScene {
             this.createMilkyWay();
             
             // Handle window resize
-            window.addEventListener('resize', () => this.onWindowResize());
+           window.addEventListener('resize', this.handleResize);
+
             
             // Set initialized flag
             this.isInitialized = true;
@@ -301,8 +303,8 @@ class LightPollutionScene {
         }
         
         // Remove event listeners
-        window.removeEventListener('resize', this.onWindowResize);
-        
+       window.removeEventListener('resize', this.handleResize);
+
         // Clear scene
         if (this.scene) {
             while(this.scene.children.length > 0) { 
