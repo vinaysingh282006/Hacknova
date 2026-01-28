@@ -27,15 +27,11 @@
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
- feat/live-countdown-sticky-cta
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 
     <!-- Chart.js for data visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="css/styles.css">
- feat/live-countdown-sticky-cta
 
     
 
@@ -71,7 +67,7 @@
   <div class="bg-gray-900 text-white max-w-lg w-[90%] rounded-2xl p-6 relative animate-fade-in">
     
     <button onclick="closePrecautions()"
-            class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl">
+            class="absolute top-3 right-3 text-gray-400 hover:text-white text-xl" aria-label="Close precautions modal">
       ✖
     </button>
 
@@ -82,10 +78,7 @@
 </div>
 
 <body class="bg-gray-900 text-white">
-feat/live-countdown-sticky-cta
-
     <!-- Skip to Content Link for Accessibility -->
-    
     <a href="#main-content" class="skip-link sr-only focus:not-sr-only" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Navigation Header -->
@@ -99,22 +92,9 @@ feat/live-countdown-sticky-cta
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-                    
                 </a>
 
-
-    <nav class="fixed top-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-800" id="navbar">
-        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-gradient-to-r from-eco-blue to-eco-green rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">E</span>
-                </div>
- feat/live-countdown-sticky-cta
-                <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-            </a>
-
-
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white" aria-label="Toggle mobile menu">
                     
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -156,10 +136,10 @@ feat/live-countdown-sticky-cta
                 </div>
                 <div class="hero-particles"></div>
                 <div class="precaution-buttons">
-  <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
-  <button onclick="openPrecautions('water')">💧 Water Precautions</button>
-  <button onclick="openPrecautions('light')">💡 Light Precautions</button>
-  <button onclick="openPrecautions('noise')">🔊 Noise Precautions</button>
+  <button onclick="openPrecautions('air')" aria-label="View air pollution precautions">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')" aria-label="View water pollution precautions">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')" aria-label="View light pollution precautions">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')" aria-label="View noise pollution precautions">🔊 Noise Precautions</button>
 </div>
 
             </div>
@@ -186,10 +166,10 @@ feat/live-countdown-sticky-cta
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
                     <div class="hero-load hero-delay-4 mt-6 flex flex-wrap gap-3 justify-center">
-  <button onclick="openPrecautions('air')" class="btn-outline">🌬️ Air Precautions</button>
-  <button onclick="openPrecautions('water')" class="btn-outline">💧 Water Precautions</button>
-  <button onclick="openPrecautions('light')" class="btn-outline">💡 Light Precautions</button>
-  <button onclick="openPrecautions('noise')" class="btn-outline">🔊 Noise Precautions</button>
+  <button onclick="openPrecautions('air')" class="btn-outline" aria-label="View air pollution precautions">🌬️ Air Precautions</button>
+  <button onclick="openPrecautions('water')" class="btn-outline" aria-label="View water pollution precautions">💧 Water Precautions</button>
+  <button onclick="openPrecautions('light')" class="btn-outline" aria-label="View light pollution precautions">💡 Light Precautions</button>
+  <button onclick="openPrecautions('noise')" class="btn-outline" aria-label="View noise pollution precautions">🔊 Noise Precautions</button>
 </div>
 
 
@@ -229,10 +209,6 @@ feat/live-countdown-sticky-cta
             </div>
 
         </section>
- feat/live-countdown-sticky-cta
-
-
-
 
         <!-- Statistics Section -->
         <section class="py-20 bg-gray-800/50 border-y border-gray-700">
@@ -567,24 +543,6 @@ feat/live-countdown-sticky-cta
                     field work and quick sharing.
                 </p>
             </div>
-
-      <!-- Card 2 -->
-      <div class="card ecopulse-card text-center scroll-reveal">
-        <div
-          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Real Data</h3>
-        <p class="text-gray-300">
-          Based on WHO, EPA, and scientific research with regional breakdowns
-            
-        </p>
-      </div>
-
-
         </div>
 
         <div class="text-center mt-8">
@@ -913,16 +871,16 @@ feat/live-countdown-sticky-cta
                 
                 <!-- Dashboard Controls -->
                 <div class="flex flex-wrap justify-center gap-4 mb-10">
-                    <button id="dashboard-mode-all" class="dashboard-mode-btn active px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all">
+                    <button id="dashboard-mode-all" class="dashboard-mode-btn active px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all" aria-label="Show all pollution types">
                         All Pollution Types
                     </button>
-                    <button id="dashboard-mode-air" class="dashboard-mode-btn px-6 py-3 bg-eco-red/20 text-eco-red rounded-full border border-eco-red/30 hover:bg-eco-red/30 transition-all">
+                    <button id="dashboard-mode-air" class="dashboard-mode-btn px-6 py-3 bg-eco-red/20 text-eco-red rounded-full border border-eco-red/30 hover:bg-eco-red/30 transition-all" aria-label="Show air pollution only">
                         Air Only
                     </button>
-                    <button id="dashboard-mode-water" class="dashboard-mode-btn px-6 py-3 bg-eco-blue/20 text-eco-blue rounded-full border border-eco-blue/30 hover:bg-eco-blue/30 transition-all">
+                    <button id="dashboard-mode-water" class="dashboard-mode-btn px-6 py-3 bg-eco-blue/20 text-eco-blue rounded-full border border-eco-blue/30 hover:bg-eco-blue/30 transition-all" aria-label="Show water pollution only">
                         Water Only
                     </button>
-                    <button id="dashboard-mode-noise" class="dashboard-mode-btn px-6 py-3 bg-eco-purple/20 text-eco-purple rounded-full border border-eco-purple/30 hover:bg-eco-purple/30 transition-all">
+                    <button id="dashboard-mode-noise" class="dashboard-mode-btn px-6 py-3 bg-eco-purple/20 text-eco-purple rounded-full border border-eco-purple/30 hover:bg-eco-purple/30 transition-all" aria-label="Show noise pollution only">
                         Noise Only
                     </button>
                 </div>
@@ -1100,14 +1058,12 @@ feat/live-countdown-sticky-cta
     </main>
 
     <!-- ✅ STICKY REGISTER CTA -->
+    <!-- ✅ STICKY REGISTER CTA -->
     <a href="presentation.html" id="sticky-register-cta" class="sticky-register-cta">
         🚀 Register Now
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-feat/live-countdown-sticky-cta
-
-    <!-- ✅ MODULE SCRIPT -->
     <script type="module" src="js/script.js"></script>
 
    <script>
@@ -1138,13 +1094,5 @@ feat/live-countdown-sticky-cta
 <div id="cursor-glow"></div>
 
 </body>
-
-    <script src="js/script.js"></script>
-
-
-</body>
-
-
-
 </html>
 

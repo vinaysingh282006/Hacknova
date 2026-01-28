@@ -99,7 +99,7 @@
                         class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white" aria-label="Toggle mobile menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -136,7 +136,7 @@
         <section class="relative py-28 min-h-[60vh] flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1974"
-                    alt="Water Pollution" class="w-full h-full object-cover animate-fade-in">
+                    alt="Water pollution showing contaminated water body" class="w-full h-full object-cover animate-fade-in">
                 <div class="absolute inset-0 bg-gray-900/70 mix-blend-multiply"></div>
                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
             </div>
@@ -158,7 +158,7 @@
 
                 <div class="mt-8 flex justify-center gap-4">
                     <button onclick="document.getElementById('simulation-section').scrollIntoView({behavior: 'smooth'})"
-                        class="px-8 py-3 bg-eco-blue text-white rounded-full font-semibold hover:bg-blue-600 transition-all hover:scale-105 shadow-lg shadow-blue-500/30">
+                        class="px-8 py-3 bg-eco-blue text-white rounded-full font-semibold hover:bg-blue-600 transition-all hover:scale-105 shadow-lg shadow-blue-500/30" aria-label="Scroll to simulation section">
                         View Simulation
                     </button>
                 </div>
@@ -311,7 +311,7 @@
         </div>
     </footer>
 
-    <button id="scroll-to-top"
+    <button id="scroll-to-top" aria-label="Scroll to top"
         class="fixed bottom-8 right-8 p-3 bg-eco-blue text-white rounded-full shadow-lg shadow-blue-500/20 opacity-0 invisible transition-all duration-300 hover:bg-blue-600 transform translate-y-4 hover:-translate-y-1 z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
