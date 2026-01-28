@@ -1,16 +1,4 @@
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.getElementById('light-intensity-slider');
-            const valueDisplay = document.getElementById('light-intensity-value');
-            
-            slider?.addEventListener('input', (e) => {
-                const value = e.target.value;
-                const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
-                valueDisplay.textContent = `${level} (${value}%)`;
-                window.lightScene?.updateLightIntensity(value);
-            });
-        });
-    
 ;(() => {
   const scrollButton = document.getElementById("scroll-to-top")
 
@@ -40,18 +28,7 @@
   // Initial check
   toggleScrollButton()
 })()
- document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (!menuBtn || !mobileMenu) return;
-
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  });
-
-
+ 
 
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -61,7 +38,7 @@
             
             if(slider && valueDisplay) {
                 slider.addEventListener('input', (e) => {
-                    const value = e.target.value;
+                    const value = Number(e.target.value);
                     const level = value < 30 ? 'Low' : value < 70 ? 'Medium' : 'High';
                     valueDisplay.textContent = `${level} (${value}%)`;
                     
@@ -89,26 +66,3 @@
                 });
             }
         });
-
-        // Scroll To Top Logic
-        (() => {
-            const scrollButton = document.getElementById("scroll-to-top")
-            if (!scrollButton) return
-
-            function toggleScrollButton() {
-                if (window.scrollY > 300) {
-                    scrollButton.classList.remove("opacity-0", "invisible", "translate-y-4")
-                } else {
-                    scrollButton.classList.add("opacity-0", "invisible", "translate-y-4")
-                }
-            }
-
-            function scrollToTop() {
-                window.scrollTo({ top: 0, behavior: "smooth" })
-            }
-
-            window.addEventListener("scroll", toggleScrollButton, { passive: true })
-            scrollButton.addEventListener("click", scrollToTop)
-            toggleScrollButton()
-        })()
-   
