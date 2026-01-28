@@ -3,7 +3,6 @@
 
 ## 📄 `CODE_OF_CONDUCT.md`
 
-```md
 # Code of Conduct
 
 ## Our Commitment
