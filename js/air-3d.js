@@ -11,7 +11,7 @@ class AirPollutionScene {
         this.pollutionLevel = 156; // Default to unhealthy level
         this.animationId = null;
         this.isInitialized = false;
-        
+        this.handleResize = this.onWindowResize.bind(this);
         this.init();
     }
     
@@ -54,7 +54,8 @@ class AirPollutionScene {
             this.createPollutionParticles();
             
             // Handle window resize
-            window.addEventListener('resize', () => this.onWindowResize());
+           window.addEventListener('resize', this.handleResize);
+
             
             // Set initialized flag
             this.isInitialized = true;
@@ -207,7 +208,8 @@ class AirPollutionScene {
         }
         
         // Remove event listeners
-        window.removeEventListener('resize', this.onWindowResize);
+        window.removeEventListener('resize', this.handleResize);
+
         
         // Clear scene
         if (this.scene) {
