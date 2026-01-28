@@ -3,7 +3,8 @@
 export function startCountdown(targetDate, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
-
+  container.setAttribute("aria-live", "polite");
+  const pad = (num) => String(num).padStart(2, '0');
   function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
@@ -21,12 +22,14 @@ export function startCountdown(targetDate, containerId) {
 
     container.innerHTML = `
       <div class="countdown-item">${days}<span>Days</span></div>
-      <div class="countdown-item">${hours}<span>Hours</span></div>
-      <div class="countdown-item">${minutes}<span>Minutes</span></div>
-      <div class="countdown-item">${seconds}<span>Seconds</span></div>
-    `;
+      <div class="countdown-item">${pad(hours)}<span>Hours</span></div>
+      <div class="countdown-item">${pad(minutes)}<span>Minutes</span></div>
+      <div class="countdown-item">${pad(seconds)}<span>Seconds</span></div>
+`;
   }
 
   updateCountdown();
   const timer = setInterval(updateCountdown, 1000);
+
+  return () => clearInterval(timer);
 }
