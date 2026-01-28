@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
             let colorClass = "text-eco-green";
             let statusClass = "aqi-status-good";
 
-            if (value >= 50 && value < 100) {
+            if (value > 50 && value <= 100) {
                 level = 'Moderate';
                 colorClass = "text-yellow-400";
                 statusClass = "aqi-status-moderate";
             }
-            else if (value >= 100 && value < 200) {
+            else if (value > 100 && value <= 200) {
                 level = 'Unhealthy';
                 colorClass = "text-eco-orange";
                 statusClass = "aqi-status-unhealthy";
             }
-            else if (value >= 200) {
+            else if (value > 200) {
                 level = 'Hazardous';
                 colorClass = "text-eco-purple";
                 statusClass = "aqi-status-hazardous";
