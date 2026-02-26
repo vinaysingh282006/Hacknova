@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPulse | Sitemap</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-eco-green">EcoPulse</h1>
+
+            <button onclick="goHome()" 
+                class="bg-eco-blue text-white px-4 py-2 rounded-lg hover:bg-eco-purple transition duration-300">
+                ⬅ Back to Home
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-eco-green to-eco-blue text-white py-16 text-center">
+        <h2 class="text-4xl font-bold mb-4">Website Sitemap</h2>
+        <p class="opacity-90 text-lg">
+            Navigate through all major sections of EcoPulse easily.
+        </p>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Card 1 -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-eco-green mb-4">🌍 Main Pages</h3>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="hover:text-eco-blue">Home</a></li>
+                    <li><a href="presentation.html" class="hover:text-eco-blue">Presentation</a></li>
+                    <li><a href="feedback.html" class="hover:text-eco-blue">Feedback</a></li>
+                    <li><a href="offline.html" class="hover:text-eco-blue">Offline Mode</a></li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-eco-blue mb-4">🌫 Pollution Modules</h3>
+                <ul class="space-y-3">
+                    <li><a href="air.html" class="hover:text-eco-purple">Air Pollution</a></li>
+                    <li><a href="water.html" class="hover:text-eco-purple">Water Pollution</a></li>
+                    <li><a href="noise.html" class="hover:text-eco-purple">Noise Pollution</a></li>
+                    <li><a href="light.html" class="hover:text-eco-purple">Light Pollution</a></li>
+                    <li><a href="soil.html" class="hover:text-eco-purple">Soil Pollution</a></li>
+                    <li><a href="plastic.html" class="hover:text-eco-purple">Plastic Pollution</a></li>
+                    <li><a href="radioactive.html" class="hover:text-eco-purple">Radioactive Pollution</a></li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-eco-orange mb-4">🚀 Advanced Features</h3>
+                <ul class="space-y-3">
+                    <li><a href="ai-prediction.html" class="hover:text-eco-red">AI Prediction</a></li>
+                    <li><a href="test-dataset-loading.html" class="hover:text-eco-red">Dataset Testing</a></li>
+                    <li><a href="test-functionality.html" class="hover:text-eco-red">Functionality Testing</a></li>
+                </ul>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-eco-purple mb-4">📜 Legal & Policies</h3>
+                <ul class="space-y-3">
+                    <li><a href="terms.html" class="hover:text-eco-green">Terms & Conditions</a></li>
+                    <li><a href="privacy.html" class="hover:text-eco-green">Privacy Policy</a></li>
+                    <li><a href="cookies.html" class="hover:text-eco-green">Cookies Policy</a></li>
+                    <li><a href="sitemap.html" class="hover:text-eco-green">Sitemap</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 text-center">
+        <p class="mb-4">© 2026 EcoPulse. All rights reserved.</p>
+
+        <div class="flex justify-center space-x-6">
+            <a href="index.html" class="hover:text-eco-green transition">Home</a>
+            <a href="terms.html" class="hover:text-eco-blue transition">Terms</a>
+            <a href="privacy.html" class="hover:text-eco-purple transition">Privacy</a>
+            <a href="cookies.html" class="hover:text-eco-orange transition">Cookies</a>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
