@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPulse | Privacy Policy</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-eco-green">EcoPulse</h1>
+
+            <button onclick="goHome()" 
+                class="bg-eco-blue text-white px-4 py-2 rounded-lg hover:bg-eco-purple transition duration-300">
+                ⬅ Back to Home
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-eco-purple to-eco-blue text-white py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4">Privacy Policy</h2>
+            <p class="text-lg opacity-90">
+                Your privacy matters. Learn how EcoPulse handles and protects your data.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="max-w-5xl mx-auto px-6 py-12 space-y-10">
+
+        <!-- Section 1 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-green mb-3">1. Information We Collect</h3>
+            <p>
+                EcoPulse is primarily an educational and visualization platform.
+                We do not collect personal data unless explicitly provided by the user.
+            </p>
+            <ul class="list-disc ml-6 mt-3 space-y-2">
+                <li>Basic usage data (such as page visits)</li>
+                <li>Browser type and device information</li>
+                <li>Optional user preferences (if stored locally)</li>
+            </ul>
+        </div>
+
+        <!-- Section 2 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-blue mb-3">2. How We Use Information</h3>
+            <ul class="list-disc ml-6 space-y-2">
+                <li>To improve website performance and user experience</li>
+                <li>To analyze general usage patterns</li>
+                <li>To enhance accessibility and responsiveness</li>
+                <li>To maintain platform security</li>
+            </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-purple mb-3">3. Data Storage & Protection</h3>
+            <p>
+                EcoPulse does not store sensitive personal information.
+                Any temporary data (such as preferences) may be stored locally
+                in your browser and can be cleared at any time.
+            </p>
+            <p class="mt-3">
+                We follow best practices to ensure the platform remains secure
+                and protected from unauthorized access.
+            </p>
+        </div>
+
+        <!-- Section 4 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-orange mb-3">4. Third-Party Services</h3>
+            <p>
+                EcoPulse may integrate trusted third-party libraries such as
+                Three.js and Chart.js for visualization purposes.
+                These libraries operate within the browser and do not collect
+                personal user information directly through this platform.
+            </p>
+        </div>
+
+        <!-- Section 5 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-red mb-3">5. User Rights</h3>
+            <ul class="list-disc ml-6 space-y-2">
+                <li>You have the right to clear browser-stored data.</li>
+                <li>You can disable cookies via browser settings.</li>
+                <li>You may choose not to use the platform at any time.</li>
+            </ul>
+        </div>
+
+        <!-- Section 6 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-green mb-3">6. Policy Updates</h3>
+            <p>
+                This Privacy Policy may be updated periodically to reflect
+                changes in legal requirements or platform improvements.
+                Continued use of EcoPulse indicates acceptance of updates.
+            </p>
+        </div>
+
+        <!-- Section 7 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-blue mb-3">7. Contact Information</h3>
+            <p>
+                If you have any questions regarding this Privacy Policy,
+                please contact the EcoPulse development team through the
+                official GitHub repository.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="mb-3">© 2026 EcoPulse. All rights reserved.</p>
+
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="hover:text-eco-green transition">Home</a>
+                <a href="terms.html" class="hover:text-eco-blue transition">Terms</a>
+                <a href="cookies.html" class="hover:text-eco-purple transition">Cookies</a>
+                <a href="privacy.html" class="hover:text-eco-orange transition">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
