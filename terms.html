@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPulse | Terms and Conditions</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-eco-green">EcoPulse</h1>
+
+            <button onclick="goHome()" 
+                class="bg-eco-blue text-white px-4 py-2 rounded-lg hover:bg-eco-purple transition duration-300">
+                ⬅ Back to Home
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-eco-green to-eco-blue text-white py-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4">Terms and Conditions</h2>
+            <p class="text-lg opacity-90">
+                Please read these terms carefully before using EcoPulse.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="max-w-5xl mx-auto px-6 py-12 space-y-10">
+
+        <!-- Section 1 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-green mb-3">1. Acceptance of Terms</h3>
+            <p>
+                By accessing and using EcoPulse, you accept and agree to be bound by 
+                the terms and conditions outlined on this page. If you do not agree 
+                with any part of these terms, please do not use the platform.
+            </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-blue mb-3">2. Use of the Platform</h3>
+            <ul class="list-disc ml-6 space-y-2">
+                <li>EcoPulse is intended for educational and informational purposes.</li>
+                <li>You agree not to misuse the platform or attempt unauthorized access.</li>
+                <li>You must not copy or redistribute content without proper attribution.</li>
+            </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-purple mb-3">3. Intellectual Property</h3>
+            <p>
+                All content, 3D visualizations, graphics, and code are part of the 
+                EcoPulse open-source project. Usage is governed under the MIT License. 
+                Proper credit must be given when reusing or modifying the content.
+            </p>
+        </div>
+
+        <!-- Section 4 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-orange mb-3">4. Data & Privacy</h3>
+            <p>
+                EcoPulse may use sample or publicly available environmental datasets 
+                for visualization purposes. The platform does not collect personal user 
+                data unless explicitly stated in future updates.
+            </p>
+        </div>
+
+        <!-- Section 5 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-red mb-3">5. Limitation of Liability</h3>
+            <p>
+                EcoPulse is provided "as is" without warranties of any kind. 
+                The developers are not responsible for inaccuracies in data 
+                or any damages resulting from the use of this platform.
+            </p>
+        </div>
+
+        <!-- Section 6 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-green mb-3">6. Modifications</h3>
+            <p>
+                We reserve the right to update or modify these Terms and Conditions 
+                at any time without prior notice. Continued use of the platform 
+                indicates acceptance of updated terms.
+            </p>
+        </div>
+
+        <!-- Section 7 -->
+        <div>
+            <h3 class="text-2xl font-semibold text-eco-blue mb-3">7. Governing Law</h3>
+            <p>
+                These terms shall be governed in accordance with applicable 
+                laws and open-source contribution guidelines relevant to 
+                hackathon and community-driven projects.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="mb-3">© 2026 EcoPulse. All rights reserved.</p>
+
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="hover:text-eco-green transition">Home</a>
+                <a href="terms.html" class="hover:text-eco-blue transition">Terms</a>
+                <a href="#" class="hover:text-eco-purple transition">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
