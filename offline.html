@@ -2,52 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>You’re Offline</title>
+  <title>EcoPulse | Offline Mode</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      background: linear-gradient(135deg, #0f172a, #0a1f44);
+      color: #f1f5f9;
       text-align: center;
+      overflow: hidden;
     }
-    .box {
-      max-width: 420px;
-      padding: 30px;
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      padding: 50px 40px;
+      border-radius: 20px;
+      max-width: 450px;
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+      animation: fadeIn 1.2s ease-in-out;
     }
+
     h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #10B981;
     }
+
     p {
+      font-size: 16px;
       opacity: 0.85;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
-    button {
-      background: #22c55e;
+
+    .retry-btn {
+      background: #10B981;
       border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
+      padding: 12px 28px;
+      border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      color: #000;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .retry-btn:hover {
+      background: #3B82F6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .icon {
+      margin-bottom: 25px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        margin: 20px;
+        padding: 40px 25px;
+      }
+      h1 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="box">
+
+  <div class="card">
+
+    <!-- Eco SVG Illustration -->
+    <div class="icon">
+      <svg width="90" height="90" viewBox="0 0 24 24" fill="#10B981">
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z"/>
+      </svg>
+    </div>
+
     <h1>Offline Mode</h1>
+
     <p>
       You are currently offline. Previously visited pages and core features
-      remain available.
+      remain available. Please check your internet connection and try again.
     </p>
-    <button onclick="location.reload()">Retry</button>
+
+    <button class="retry-btn" onclick="retryConnection()">
+      Retry Connection
+    </button>
+
   </div>
+
+  <script>
+    function retryConnection() {
+      document.body.style.opacity = "0.6";
+      setTimeout(() => {
+        location.reload();
+      }, 500);
+    }
+  </script>
+
 </body>
 </html>
