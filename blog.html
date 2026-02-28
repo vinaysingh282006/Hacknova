@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">EcoPulse Blog</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-3">Environmental Awareness & Insights</h2>
+    <p class="opacity-90">Learn, Understand, and Take Action for a Sustainable Future</p>
+</section>
+
+<!-- Filter Buttons -->
+<section class="max-w-6xl mx-auto px-6 py-8 text-center">
+    <div class="flex flex-wrap justify-center gap-4">
+        <button class="filter-btn bg-eco-green text-white px-4 py-2 rounded" data-category="all">All</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded" data-category="Air">Air</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded" data-category="Water">Water</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded" data-category="Climate">Climate</button>
+        <button class="filter-btn bg-gray-200 px-4 py-2 rounded" data-category="Sustainability">Sustainability</button>
+    </div>
+</section>
+
+<!-- Blog Cards -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+    <div id="blogContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center p-6">
+    <div class="bg-white max-w-2xl w-full p-6 rounded-lg relative">
+        <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-600 text-xl">✖</button>
+        <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-eco-green"></h3>
+        <p id="modalContent" class="text-gray-700"></p>
+    </div>
+</div>
+
+<script>
+const blogs = [
+    {
+        title: "The Rising Impact of Air Pollution",
+        category: "Air",
+        image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d",
+        content: "Air pollution contributes to millions of premature deaths each year. Major cities are facing critical AQI levels affecting respiratory health and climate stability."
+    },
+    {
+        title: "Water Pollution and Marine Life",
+        category: "Water",
+        image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
+        content: "Industrial waste and plastic dumping are major causes of water pollution, severely impacting marine biodiversity and ecosystems worldwide."
+    },
+    {
+        title: "Climate Change & Global Warming",
+        category: "Climate",
+        image: "https://images.unsplash.com/photo-1473445730015-841f29a9490b",
+        content: "Global temperatures have risen significantly due to greenhouse gas emissions, causing melting glaciers, rising sea levels, and extreme weather events."
+    },
+    {
+        title: "Sustainable Living Tips",
+        category: "Sustainability",
+        image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1",
+        content: "Small changes like reducing plastic use, saving electricity, and using public transport can significantly reduce your carbon footprint."
+    },
+    {
+        title: "Urban Air Quality Crisis",
+        category: "Air",
+        image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
+        content: "Rapid urbanization and vehicle emissions are worsening air quality in metropolitan areas, leading to severe health consequences."
+    }
+];
+
+const container = document.getElementById("blogContainer");
+
+function renderBlogs(category) {
+    container.innerHTML = "";
+    const filtered = category === "all" ? blogs : blogs.filter(blog => blog.category === category);
+
+    filtered.forEach(blog => {
+        const card = document.createElement("div");
+        card.className = "bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition duration-300";
+
+        card.innerHTML = `
+            <img src="${blog.image}" class="h-48 w-full object-cover">
+            <div class="p-5">
+                <h3 class="text-xl font-bold mb-2 text-eco-blue">${blog.title}</h3>
+                <p class="text-gray-600 text-sm mb-3">${blog.content.substring(0, 100)}...</p>
+                <button onclick="openModal('${blog.title}', '${blog.content}')" 
+                        class="bg-eco-green text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+                    Read More
+                </button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function openModal(title, content) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalContent").innerText = content;
+    document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("modal").classList.add("flex");
+}
+
+function closeModal() {
+    document.getElementById("modal").classList.add("hidden");
+}
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(b => {
+            b.classList.remove("bg-eco-green", "text-white");
+            b.classList.add("bg-gray-200");
+        });
+        btn.classList.add("bg-eco-green", "text-white");
+        btn.classList.remove("bg-gray-200");
+
+        renderBlogs(btn.dataset.category);
+    });
+});
+
+renderBlogs("all");
+</script>
+
+</body>
+</html>
