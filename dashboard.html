@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Pollution Comparison Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Pollution Comparison Dashboard 📊</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-10 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-2">Compare Pollution Data</h2>
+    <p class="opacity-90">Analyze city trends and pollution types interactively</p>
+</section>
+
+<!-- Filters -->
+<section class="max-w-6xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl mt-10">
+
+    <div class="grid md:grid-cols-4 gap-6">
+
+        <div>
+            <label class="font-semibold text-eco-green">City 1</label>
+            <select id="city1" class="w-full mt-2 p-2 border rounded">
+                <option>Mumbai</option>
+                <option>Delhi</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="font-semibold text-eco-green">City 2</label>
+            <select id="city2" class="w-full mt-2 p-2 border rounded">
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Bangalore</option>
+                <option>Chennai</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="font-semibold text-eco-green">Year</label>
+            <select id="year" class="w-full mt-2 p-2 border rounded">
+                <option>2023</option>
+                <option>2024</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="font-semibold text-eco-green">Pollution Type</label>
+            <select id="type" class="w-full mt-2 p-2 border rounded">
+                <option>Air</option>
+                <option>Water</option>
+                <option>Noise</option>
+                <option>Soil</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-8 space-x-4">
+        <button onclick="updateChart('bar')" 
+            class="bg-eco-green text-white px-6 py-2 rounded hover:bg-eco-blue transition">
+            Bar Chart
+        </button>
+
+        <button onclick="updateChart('line')" 
+            class="bg-eco-purple text-white px-6 py-2 rounded hover:bg-eco-orange transition">
+            Line Chart
+        </button>
+    </div>
+
+</section>
+
+<!-- Chart -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <canvas id="comparisonChart"></canvas>
+    </div>
+</section>
+
+<script>
+
+// Sample Dataset
+const data = {
+    2023: {
+        Mumbai: { Air: 180, Water: 120, Noise: 90, Soil: 60 },
+        Delhi: { Air: 250, Water: 150, Noise: 110, Soil: 70 },
+        Bangalore: { Air: 140, Water: 100, Noise: 80, Soil: 50 },
+        Chennai: { Air: 160, Water: 110, Noise: 85, Soil: 55 }
+    },
+    2024: {
+        Mumbai: { Air: 200, Water: 130, Noise: 95, Soil: 65 },
+        Delhi: { Air: 280, Water: 170, Noise: 130, Soil: 80 },
+        Bangalore: { Air: 160, Water: 110, Noise: 85, Soil: 60 },
+        Chennai: { Air: 170, Water: 120, Noise: 90, Soil: 60 }
+    }
+};
+
+let chart;
+
+function updateChart(type) {
+
+    const city1 = document.getElementById("city1").value;
+    const city2 = document.getElementById("city2").value;
+    const year = document.getElementById("year").value;
+    const pollutionType = document.getElementById("type").value;
+
+    const value1 = data[year][city1][pollutionType];
+    const value2 = data[year][city2][pollutionType];
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(document.getElementById("comparisonChart"), {
+        type: type,
+        data: {
+            labels: [city1, city2],
+            datasets: [{
+                label: pollutionType + " Pollution Level",
+                data: [value1, value2],
+                backgroundColor: ['#10B981', '#3B82F6'],
+                borderColor: ['#10B981', '#3B82F6'],
+                borderWidth: 2
+            }]
+        }
+    });
+}
+
+// Initial Chart
+updateChart('bar');
+
+</script>
+
+</body>
+</html>
