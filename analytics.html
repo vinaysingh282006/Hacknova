@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Analytics Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Analytics Dashboard 📊</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-10 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-2">Environmental Monitoring System</h2>
+    <p class="opacity-90">Real-time insights and pollution analytics overview</p>
+</section>
+
+<!-- Summary Cards -->
+<section class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6">
+
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+        <h3 class="text-lg font-semibold text-eco-blue">Total Pollution Index</h3>
+        <p id="totalIndex" class="text-3xl font-bold text-eco-green mt-2"></p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+        <h3 class="text-lg font-semibold text-eco-blue">Highest Polluted City</h3>
+        <p id="highestCity" class="text-xl font-bold text-eco-red mt-2"></p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+        <h3 class="text-lg font-semibold text-eco-blue">Most Affected Type</h3>
+        <p id="worstType" class="text-xl font-bold text-eco-orange mt-2"></p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center">
+        <h3 class="text-lg font-semibold text-eco-blue">Select Year</h3>
+        <select id="yearFilter" class="mt-2 p-2 border rounded w-full">
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+        </select>
+    </div>
+
+</section>
+
+<!-- Charts -->
+<section class="max-w-6xl mx-auto px-6 pb-16 grid md:grid-cols-2 gap-8">
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h3 class="font-semibold mb-4 text-eco-green">City Pollution Comparison</h3>
+        <canvas id="cityChart"></canvas>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h3 class="font-semibold mb-4 text-eco-green">Pollution Type Distribution</h3>
+        <canvas id="typeChart"></canvas>
+    </div>
+
+</section>
+
+<script>
+
+// Sample Data
+const data = {
+    2023: {
+        cities: {
+            Mumbai: 180,
+            Delhi: 250,
+            Bangalore: 140,
+            Chennai: 160
+        },
+        types: {
+            Air: 300,
+            Water: 180,
+            Noise: 120,
+            Soil: 90
+        }
+    },
+    2024: {
+        cities: {
+            Mumbai: 200,
+            Delhi: 280,
+            Bangalore: 160,
+            Chennai: 170
+        },
+        types: {
+            Air: 350,
+            Water: 200,
+            Noise: 150,
+            Soil: 100
+        }
+    }
+};
+
+let cityChart;
+let typeChart;
+
+function updateDashboard(year) {
+
+    const yearData = data[year];
+
+    // Total Pollution Index
+    const total = Object.values(yearData.cities).reduce((a,b)=>a+b,0);
+    document.getElementById("totalIndex").innerText = total;
+
+    // Highest City
+    const highestCity = Object.entries(yearData.cities).sort((a,b)=>b[1]-a[1])[0][0];
+    document.getElementById("highestCity").innerText = highestCity;
+
+    // Worst Pollution Type
+    const worstType = Object.entries(yearData.types).sort((a,b)=>b[1]-a[1])[0][0];
+    document.getElementById("worstType").innerText = worstType;
+
+    // Update Charts
+    const cityLabels = Object.keys(yearData.cities);
+    const cityValues = Object.values(yearData.cities);
+
+    const typeLabels = Object.keys(yearData.types);
+    const typeValues = Object.values(yearData.types);
+
+    if(cityChart) cityChart.destroy();
+    if(typeChart) typeChart.destroy();
+
+    cityChart = new Chart(document.getElementById("cityChart"), {
+        type: 'bar',
+        data: {
+            labels: cityLabels,
+            datasets: [{
+                label: "Pollution Index",
+                data: cityValues,
+                backgroundColor: '#10B981'
+            }]
+        }
+    });
+
+    typeChart = new Chart(document.getElementById("typeChart"), {
+        type: 'line',
+        data: {
+            labels: typeLabels,
+            datasets: [{
+                label: "Pollution Level",
+                data: typeValues,
+                borderColor: '#3B82F6',
+                backgroundColor: '#3B82F6',
+                fill: false
+            }]
+        }
+    });
+}
+
+document.getElementById("yearFilter").addEventListener("change", function() {
+    updateDashboard(this.value);
+});
+
+// Initial Load
+updateDashboard("2023");
+
+</script>
+
+</body>
+</html>
