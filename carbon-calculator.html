@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Carbon Footprint Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Carbon Footprint Calculator 🌍</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-3">Calculate Your Carbon Impact</h2>
+    <p class="opacity-90">Understand your footprint and discover ways to reduce it.</p>
+</section>
+
+<!-- Calculator Form -->
+<section class="max-w-4xl mx-auto px-6 py-12 bg-white shadow-xl rounded-2xl mt-10">
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Travel Mode -->
+        <div>
+            <label class="font-semibold text-eco-green">🚗 Travel Mode (Daily)</label>
+            <select id="travel" class="w-full mt-2 p-2 border rounded">
+                <option value="2">Public Transport</option>
+                <option value="5">Car</option>
+                <option value="8">Flight (Frequent)</option>
+                <option value="1">Walk / Cycle</option>
+            </select>
+        </div>
+
+        <!-- Electricity Usage -->
+        <div>
+            <label class="font-semibold text-eco-green">⚡ Monthly Electricity Usage (kWh)</label>
+            <input type="number" id="electricity" placeholder="e.g. 250"
+                class="w-full mt-2 p-2 border rounded">
+        </div>
+
+        <!-- Diet Type -->
+        <div>
+            <label class="font-semibold text-eco-green">🥗 Diet Type</label>
+            <select id="diet" class="w-full mt-2 p-2 border rounded">
+                <option value="2">Vegetarian</option>
+                <option value="4">Mixed</option>
+                <option value="6">Non-Vegetarian</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+        <button onclick="calculateFootprint()"
+            class="bg-eco-green hover:bg-eco-blue transition text-white px-8 py-3 rounded-lg font-semibold shadow-lg">
+            Calculate Footprint
+        </button>
+    </div>
+
+</section>
+
+<!-- Result Section -->
+<section id="resultSection" class="max-w-4xl mx-auto px-6 py-12 hidden">
+
+    <div class="bg-white shadow-lg rounded-xl p-8 text-center">
+        <h3 class="text-2xl font-bold text-eco-purple mb-4">Your Carbon Footprint Score</h3>
+        <p id="score" class="text-5xl font-bold text-eco-red mb-6"></p>
+
+        <p id="impactLevel" class="text-lg font-semibold mb-6"></p>
+
+        <div id="suggestions" class="text-left text-gray-700 space-y-2"></div>
+    </div>
+
+</section>
+
+<script>
+
+function calculateFootprint() {
+
+    const travel = parseFloat(document.getElementById("travel").value);
+    const electricity = parseFloat(document.getElementById("electricity").value) || 0;
+    const diet = parseFloat(document.getElementById("diet").value);
+
+    // Basic formula (simplified model)
+    const score = travel * 10 + electricity * 0.5 + diet * 15;
+
+    document.getElementById("score").innerText = Math.round(score) + " kg CO₂ / month";
+
+    let level = "";
+    let tips = [];
+
+    if (score < 300) {
+        level = "🟢 Low Impact – Great job! You are environmentally conscious.";
+        tips = [
+            "Continue using public transport.",
+            "Encourage others to adopt sustainable habits.",
+            "Consider solar energy installation."
+        ];
+    } else if (score < 600) {
+        level = "🟡 Moderate Impact – There is room for improvement.";
+        tips = [
+            "Reduce electricity consumption.",
+            "Switch to LED lighting.",
+            "Try reducing meat consumption."
+        ];
+    } else {
+        level = "🔴 High Impact – Consider lifestyle changes.";
+        tips = [
+            "Reduce air travel.",
+            "Shift to renewable energy sources.",
+            "Adopt a plant-based diet.",
+            "Use public transport more often."
+        ];
+    }
+
+    document.getElementById("impactLevel").innerText = level;
+
+    const suggestionBox = document.getElementById("suggestions");
+    suggestionBox.innerHTML = "<h4 class='font-bold mb-2'>Suggestions to Reduce Impact:</h4>";
+    tips.forEach(tip => {
+        suggestionBox.innerHTML += `<p>• ${tip}</p>`;
+    });
+
+    document.getElementById("resultSection").classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
