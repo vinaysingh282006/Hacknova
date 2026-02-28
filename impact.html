@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Impact Awareness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Impact Awareness 📈</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero Section -->
+<section class="text-center py-14 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-3">Understanding the Real Impact of Pollution</h2>
+    <p class="opacity-90 max-w-3xl mx-auto">
+        Pollution is not just data — it affects lives, ecosystems, and the future of our planet.
+        Here are key global and national impact indicators.
+    </p>
+</section>
+
+<!-- Animated Counters -->
+<section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-8 text-center">
+
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h3 class="text-4xl font-bold text-eco-red counter" data-target="7000000">0</h3>
+        <p class="mt-2 text-gray-600">Annual deaths due to air pollution (Global)</p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h3 class="text-4xl font-bold text-eco-orange counter" data-target="80">0</h3>
+        <p class="mt-2 text-gray-600">% Wastewater released untreated</p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h3 class="text-4xl font-bold text-eco-blue counter" data-target="110">0</h3>
+        <p class="mt-2 text-gray-600">Global temperature rise (1.1°C ×100)</p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h3 class="text-4xl font-bold text-eco-green counter" data-target="22">0</h3>
+        <p class="mt-2 text-gray-600">Indian cities in top polluted list</p>
+    </div>
+
+</section>
+
+<!-- India Trends Section -->
+<section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold text-eco-purple mb-6">🇮🇳 India Pollution Trends</h3>
+        <p class="text-gray-700 max-w-3xl mx-auto">
+            India continues to face severe air quality challenges in urban areas.
+            Rapid industrialization, vehicle emissions, and population density
+            contribute to high AQI levels in major metropolitan cities.
+            Sustainable policies and public awareness are essential for long-term improvement.
+        </p>
+    </div>
+</section>
+
+<!-- SDG Alignment -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold text-center text-eco-green mb-12">🎯 SDG Alignment</h3>
+
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition">
+            <h4 class="font-bold text-eco-blue mb-2">SDG 3</h4>
+            <p class="text-gray-600 text-sm">
+                Good Health & Well-being — Reducing pollution improves public health.
+            </p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition">
+            <h4 class="font-bold text-eco-orange mb-2">SDG 11</h4>
+            <p class="text-gray-600 text-sm">
+                Sustainable Cities & Communities — Cleaner urban environments.
+            </p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition">
+            <h4 class="font-bold text-eco-purple mb-2">SDG 13</h4>
+            <p class="text-gray-600 text-sm">
+                Climate Action — Promoting awareness for sustainable climate solutions.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-6 text-center">
+    <p>© 2026 EcoPulse. All rights reserved.</p>
+</footer>
+
+<script>
+// Counter Animation
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+    const updateCounter = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+        const increment = target / 200;
+
+        if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCounter, 15);
+        } else {
+            counter.innerText = target.toLocaleString();
+        }
+    };
+
+    updateCounter();
+});
+</script>
+
+</body>
+</html>
