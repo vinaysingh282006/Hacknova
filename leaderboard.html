@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Eco Champions Leaderboard</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero Section -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-3">Eco Champions Leaderboard 🏆</h2>
+    <p class="opacity-90">Celebrating individuals making a positive environmental impact</p>
+</section>
+
+<!-- Top 3 Section -->
+<section class="max-w-6xl mx-auto px-6 py-12">
+    <div id="topThree" class="grid md:grid-cols-3 gap-8 text-center"></div>
+</section>
+
+<!-- Leaderboard List -->
+<section class="max-w-4xl mx-auto px-6 pb-16">
+    <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-eco-green text-white">
+                <tr>
+                    <th class="p-4">Rank</th>
+                    <th class="p-4">Name</th>
+                    <th class="p-4">Eco Points</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboardBody"></tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+const users = [
+    { name: "Pratiksha Pawar", points: 980 },
+    { name: "Riya Kharade", points: 1200 },
+    { name: "Pratik Shejwal", points: 870 },
+    { name: "Kartik Pawar", points: 760 },
+    { name: "Shrvani Mahajan", points: 1100 },
+    { name: "Sneha Verma", points: 690 },
+    { name: "Arjun Nair", points: 850 }
+];
+
+// Sort users by eco points (descending)
+users.sort((a, b) => b.points - a.points);
+
+const topThreeContainer = document.getElementById("topThree");
+const leaderboardBody = document.getElementById("leaderboardBody");
+
+// Render Top 3
+function renderTopThree() {
+    const badges = ["🥇", "🥈", "🥉"];
+    const colors = ["eco-orange", "eco-blue", "eco-purple"];
+
+    for (let i = 0; i < 3; i++) {
+        const user = users[i];
+        const card = document.createElement("div");
+
+        card.className = `bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition transform hover:-translate-y-1`;
+
+        card.innerHTML = `
+            <div class="text-5xl mb-3">${badges[i]}</div>
+            <h3 class="text-2xl font-bold mb-2 text-${colors[i]}">${user.name}</h3>
+            <p class="text-gray-600 text-lg">Eco Points: <span class="font-semibold">${user.points}</span></p>
+        `;
+
+        topThreeContainer.appendChild(card);
+    }
+}
+
+// Render Remaining Leaderboard
+function renderLeaderboard() {
+    users.forEach((user, index) => {
+        if (index < 3) return; // Skip top 3
+
+        const row = document.createElement("tr");
+        row.className = "border-b hover:bg-gray-100 transition";
+
+        row.innerHTML = `
+            <td class="p-4 font-semibold">#${index + 1}</td>
+            <td class="p-4">${user.name}</td>
+            <td class="p-4 text-eco-green font-semibold">${user.points}</td>
+        `;
+
+        leaderboardBody.appendChild(row);
+    });
+}
+
+renderTopThree();
+renderLeaderboard();
+</script>
+
+</body>
+</html>
