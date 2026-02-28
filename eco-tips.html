@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Eco Tips</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Eco Tips 🌱</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-3">Small Actions, Big Impact</h2>
+    <p class="opacity-90">Simple daily habits can protect our planet.</p>
+</section>
+
+<!-- Tip of the Day -->
+<section class="max-w-4xl mx-auto px-6 py-12 text-center">
+    <div class="bg-white shadow-lg rounded-2xl p-8">
+        <h3 class="text-2xl font-bold text-eco-green mb-4">🌟 Tip of the Day</h3>
+        <p id="dailyTip" class="text-lg text-gray-700 mb-6"></p>
+        <button onclick="generateTip()" 
+            class="bg-eco-blue text-white px-6 py-2 rounded hover:bg-eco-purple transition">
+            Generate New Tip
+        </button>
+    </div>
+</section>
+
+<!-- Accordion Section -->
+<section class="max-w-4xl mx-auto px-6 pb-16">
+
+    <h3 class="text-2xl font-bold text-eco-blue mb-6 text-center">Explore Sustainability Tips</h3>
+
+    <div class="space-y-4">
+
+        <!-- Accordion Item -->
+        <div class="bg-white rounded-lg shadow">
+            <button class="accordion-btn w-full text-left p-4 font-semibold text-eco-green">
+                🚗 Travel & Transportation
+            </button>
+            <div class="accordion-content hidden p-4 text-gray-700">
+                Use public transport, carpool, cycle, or walk to reduce carbon emissions.
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <button class="accordion-btn w-full text-left p-4 font-semibold text-eco-green">
+                ⚡ Energy Saving
+            </button>
+            <div class="accordion-content hidden p-4 text-gray-700">
+                Turn off unused lights, use LED bulbs, and unplug devices to save electricity.
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <button class="accordion-btn w-full text-left p-4 font-semibold text-eco-green">
+                🥗 Sustainable Diet
+            </button>
+            <div class="accordion-content hidden p-4 text-gray-700">
+                Reduce meat consumption and support local organic food to lower emissions.
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <button class="accordion-btn w-full text-left p-4 font-semibold text-eco-green">
+                ♻ Waste Management
+            </button>
+            <div class="accordion-content hidden p-4 text-gray-700">
+                Recycle materials properly and avoid single-use plastics.
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow">
+            <button class="accordion-btn w-full text-left p-4 font-semibold text-eco-green">
+                💧 Water Conservation
+            </button>
+            <div class="accordion-content hidden p-4 text-gray-700">
+                Fix leaks and reduce water wastage to conserve natural resources.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+
+// Tip Dataset
+const tips = [
+    "Switch off appliances when not in use.",
+    "Carry a reusable water bottle.",
+    "Plant at least one tree every year.",
+    "Avoid fast fashion and choose sustainable brands.",
+    "Use public transportation whenever possible.",
+    "Reduce food waste at home.",
+    "Install solar panels if possible.",
+    "Compost organic waste.",
+    "Support local farmers and eco-friendly products.",
+    "Save water by taking shorter showers."
+];
+
+function generateTip() {
+    const randomIndex = Math.floor(Math.random() * tips.length);
+    document.getElementById("dailyTip").innerText = tips[randomIndex];
+}
+
+// Accordion Logic
+document.querySelectorAll(".accordion-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle("hidden");
+    });
+});
+
+// Generate initial tip
+generateTip();
+
+</script>
+
+</body>
+</html>
