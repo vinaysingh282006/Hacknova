@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #0f172a;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 3D Canvas -->
+<div id="bg"></div>
+
+<!-- Overlay Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white fade-in">
+    <h1 class="text-5xl font-bold mb-4">Explore Pollution in 3D 🌍</h1>
+    <p class="mb-8 opacity-80 max-w-xl">
+        Visualizing environmental impact through immersive data and interactive analytics.
+    </p>
+    <button onclick="enterSite()" 
+        class="bg-eco-green hover:bg-eco-blue transition px-8 py-3 rounded-lg text-lg font-semibold shadow-lg">
+        Enter EcoPulse →
+    </button>
+</div>
+
+<script>
+
+// Scene Setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById("bg").appendChild(renderer.domElement);
+
+// Earth Geometry
+const geometry = new THREE.SphereGeometry(2, 64, 64);
+
+// Earth Texture
+const textureLoader = new THREE.TextureLoader();
+const earthTexture = textureLoader.load(
+    "https://threejs.org/examples/textures/earth_atmos_2048.jpg"
+);
+
+const material = new THREE.MeshStandardMaterial({
+    map: earthTexture
+});
+
+const earth = new THREE.Mesh(geometry, material);
+scene.add(earth);
+
+// Light
+const light = new THREE.PointLight(0xffffff, 1.5);
+light.position.set(5, 3, 5);
+scene.add(light);
+
+camera.position.z = 5;
+
+// Animation Loop
+function animate() {
+    requestAnimationFrame(animate);
+    earth.rotation.y += 0.002;
+    renderer.render(scene, camera);
+}
+animate();
+
+// Resize Handling
+window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Enter Button
+function enterSite() {
+    document.body.style.opacity = "0";
+    document.body.style.transition = "opacity 1s";
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>in
