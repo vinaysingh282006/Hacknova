@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Pollution Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Pollution Awareness Quiz 🎮</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-10 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-3xl font-bold">Test Your Environmental Knowledge</h2>
+<p class="opacity-90">Answer 10 questions and discover your eco-awareness level.</p>
+</section>
+
+<!-- Quiz Container -->
+<section class="max-w-3xl mx-auto px-6 py-16">
+
+<div id="quizBox" class="bg-white shadow-lg rounded-xl p-8">
+
+<h3 id="question" class="text-xl font-semibold mb-6"></h3>
+
+<div id="options" class="space-y-4"></div>
+
+<button id="nextBtn" 
+class="mt-6 bg-eco-green text-white px-6 py-2 rounded hover:bg-eco-blue transition hidden">
+Next Question
+</button>
+
+</div>
+
+<div id="resultBox" class="hidden bg-white shadow-lg rounded-xl p-8 text-center mt-10">
+<h3 class="text-2xl font-bold text-eco-purple mb-4">Your Result</h3>
+<p id="scoreText" class="text-xl mb-4"></p>
+<p id="ecoLevel" class="text-lg font-semibold mb-6"></p>
+
+<button onclick="restartQuiz()" 
+class="bg-eco-green text-white px-6 py-2 rounded hover:bg-eco-blue transition mr-4">
+Restart Quiz
+</button>
+
+<button onclick="shareScore()" 
+class="bg-eco-purple text-white px-6 py-2 rounded hover:bg-eco-orange transition">
+Share Score
+</button>
+</div>
+
+</section>
+
+<script>
+
+const quizData = [
+{ question: "What does AQI stand for?", options:["Air Quality Index","Air Quantity Indicator","Atmospheric Quality Index","Air Quality Indicator"], answer:0 },
+{ question: "Which pollutant is most harmful to lungs?", options:["Oxygen","PM2.5","Nitrogen","Hydrogen"], answer:1 },
+{ question: "Which sector contributes most to urban air pollution?", options:["Agriculture","Vehicles","Forests","Oceans"], answer:1 },
+{ question: "What causes water pollution?", options:["Plastic waste","Rainwater","Sunlight","Wind"], answer:0 },
+{ question: "Noise pollution can cause?", options:["Better sleep","Hearing loss","Stronger immunity","Better memory"], answer:1 },
+{ question: "Which gas contributes to global warming?", options:["Oxygen","Carbon Dioxide","Nitrogen","Helium"], answer:1 },
+{ question: "Crop burning mainly affects?", options:["Water","Air","Noise","Soil"], answer:1 },
+{ question: "Which is a renewable energy source?", options:["Coal","Solar","Petrol","Diesel"], answer:1 },
+{ question: "PM2.5 refers to particles smaller than?", options:["2.5 mm","2.5 micrometers","2.5 cm","2.5 meters"], answer:1 },
+{ question: "Reducing plastic use helps reduce?", options:["Water pollution","Air pollution","Gravity","Sunlight"], answer:0 }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+
+function loadQuestion(){
+    const q = quizData[currentQuestion];
+    questionEl.innerText = `Q${currentQuestion+1}. ${q.question}`;
+    optionsEl.innerHTML = "";
+    nextBtn.classList.add("hidden");
+
+    q.options.forEach((option,index)=>{
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.className = "w-full bg-gray-100 p-3 rounded hover:bg-eco-green hover:text-white transition";
+        btn.onclick = ()=> selectAnswer(index);
+        optionsEl.appendChild(btn);
+    });
+}
+
+function selectAnswer(selected){
+    const correct = quizData[currentQuestion].answer;
+    if(selected === correct) score++;
+    nextBtn.classList.remove("hidden");
+}
+
+nextBtn.onclick = ()=>{
+    currentQuestion++;
+    if(currentQuestion < quizData.length){
+        loadQuestion();
+    } else {
+        showResult();
+    }
+};
+
+function showResult(){
+    document.getElementById("quizBox").classList.add("hidden");
+    document.getElementById("resultBox").classList.remove("hidden");
+
+    document.getElementById("scoreText").innerText =
+    `You scored ${score} out of ${quizData.length}`;
+
+    let level = "";
+    if(score <= 4) level = "🌱 Beginner – Keep Learning!";
+    else if(score <= 7) level = "🌿 Aware Citizen – Good Knowledge!";
+    else level = "🌍 Eco Expert – Excellent Awareness!";
+
+    document.getElementById("ecoLevel").innerText = level;
+}
+
+function restartQuiz(){
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById("resultBox").classList.add("hidden");
+    document.getElementById("quizBox").classList.remove("hidden");
+    loadQuestion();
+}
+
+function shareScore(){
+    alert("Share your eco-score with friends! 🌍");
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
