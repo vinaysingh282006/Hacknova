@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Pollution Sources</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Pollution Source Breakdown 🌍</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">Pollution Source Analysis</h2>
+<p class="opacity-90">
+Understand the major contributors behind environmental pollution.
+</p>
+</section>
+
+<!-- Filter Section -->
+<section class="max-w-5xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl mt-10">
+
+<div class="flex flex-wrap justify-between items-center gap-4">
+
+<div>
+<label class="font-semibold text-eco-green">Select Pollution Type:</label>
+<select id="pollutionType" class="ml-4 p-2 border rounded">
+<option>Air</option>
+<option>Water</option>
+<option>Noise</option>
+<option>Soil</option>
+</select>
+</div>
+
+<button onclick="updateChart()" 
+class="bg-eco-purple text-white px-6 py-2 rounded hover:bg-eco-orange transition">
+Update Breakdown
+</button>
+
+</div>
+
+</section>
+
+<!-- Chart Section -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+<canvas id="sourceChart"></canvas>
+</div>
+
+<div id="summary" class="mt-8 text-center text-lg font-semibold text-eco-blue"></div>
+
+</section>
+
+<script>
+
+const sourceData = {
+Air: { Vehicles: 40, Industries: 30, Construction: 20, Agriculture: 10 },
+Water: { Industries: 35, Sewage: 30, Agriculture: 20, Plastic: 15 },
+Noise: { Traffic: 50, Construction: 25, Industries: 15, PublicEvents: 10 },
+Soil: { Agriculture: 45, IndustrialWaste: 25, Landfills: 20, Mining: 10 }
+};
+
+let chart;
+
+function updateChart() {
+
+const type = document.getElementById("pollutionType").value;
+const dataObj = sourceData[type];
+
+const labels = Object.keys(dataObj);
+const values = Object.values(dataObj);
+
+if(chart) chart.destroy();
+
+chart = new Chart(document.getElementById("sourceChart"), {
+type: 'pie',
+data: {
+labels: labels,
+datasets: [{
+data: values,
+backgroundColor: [
+'#10B981',
+'#3B82F6',
+'#F97316',
+'#8B5CF6'
+]
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: { position: 'bottom' }
+}
+}
+});
+
+const highestSource = labels[values.indexOf(Math.max(...values))];
+
+document.getElementById("summary").innerText =
+`Major Contributor for ${type} Pollution: ${highestSource}`;
+}
+
+updateChart();
+
+</script>
+
+</body>
+</html>
