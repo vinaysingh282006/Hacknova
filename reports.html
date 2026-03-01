@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Export Reports</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Header -->
+<div class="bg-gradient-to-r from-eco-green to-eco-blue text-white p-6 text-center">
+<h1 class="text-3xl font-bold">Export Reports & Data Download 📤</h1>
+<p class="mt-2 opacity-90">Download pollution insights in multiple formats</p>
+</div>
+
+<section class="max-w-5xl mx-auto px-6 py-12">
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+<h2 class="text-xl font-semibold text-eco-green mb-6">
+Pollution Report Preview
+</h2>
+
+<canvas id="reportChart"></canvas>
+
+<div class="mt-8 flex flex-wrap gap-4">
+
+<button onclick="downloadPDF()"
+class="bg-eco-red text-white px-5 py-2 rounded hover:bg-red-600 transition">
+📄 Download PDF
+</button>
+
+<button onclick="exportPNG()"
+class="bg-eco-purple text-white px-5 py-2 rounded hover:bg-eco-orange transition">
+🖼 Export PNG
+</button>
+
+<button onclick="downloadCSV()"
+class="bg-eco-green text-white px-5 py-2 rounded hover:bg-eco-blue transition">
+📊 Download CSV
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+// Sample dataset (Standalone)
+const dataset = [
+{ year: 2021, AQI: 140 },
+{ year: 2022, AQI: 165 },
+{ year: 2023, AQI: 190 },
+{ year: 2024, AQI: 210 }
+];
+
+// Chart
+const chart = new Chart(document.getElementById("reportChart"), {
+type: "line",
+data: {
+labels: dataset.map(d => d.year),
+datasets: [{
+label: "AQI Trend",
+data: dataset.map(d => d.AQI),
+borderColor: "#10B981",
+backgroundColor: "rgba(16,185,129,0.2)",
+fill: true,
+tension: 0.4
+}]
+},
+options: {
+responsive: true
+}
+});
+
+// Export PNG
+function exportPNG() {
+const url = chart.toBase64Image();
+const link = document.createElement("a");
+link.href = url;
+link.download = "EcoPulse-Chart.png";
+link.click();
+}
+
+// Download CSV
+function downloadCSV() {
+let csv = "Year,AQI\n";
+dataset.forEach(row => {
+csv += `${row.year},${row.AQI}\n`;
+});
+
+const blob = new Blob([csv], { type: "text/csv" });
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "EcoPulse-Data.csv";
+link.click();
+}
+
+// Download PDF
+async function downloadPDF() {
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+doc.text("EcoPulse Pollution Report", 20, 20);
+
+doc.setFontSize(12);
+doc.text("AQI Summary:", 20, 35);
+
+let y = 45;
+dataset.forEach(row => {
+doc.text(`Year ${row.year}: AQI ${row.AQI}`, 20, y);
+y += 10;
+});
+
+doc.save("EcoPulse-Report.pdf");
+}
+
+</script>
+
+</body>
+</html>
