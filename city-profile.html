@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Smart City Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Smart City Profile 🏙</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">City Environmental Intelligence</h2>
+<p class="opacity-90">Explore pollution metrics and health impacts for selected cities.</p>
+</section>
+
+<!-- City Selector -->
+<section class="max-w-6xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl mt-10">
+<label class="font-semibold text-eco-green">Select City:</label>
+<select id="citySelect" class="ml-4 p-2 border rounded" onchange="updateCity()">
+<option>Mumbai</option>
+<option>Delhi</option>
+<option>Bangalore</option>
+<option>Chennai</option>
+</select>
+</section>
+
+<!-- Metrics Cards -->
+<section class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-6">
+
+<div class="bg-white shadow-lg rounded-xl p-6 text-center">
+<h3 class="text-lg font-semibold text-eco-blue">Air Quality (AQI)</h3>
+<p id="airValue" class="text-3xl font-bold mt-2"></p>
+<p id="airStatus" class="text-sm mt-1"></p>
+</div>
+
+<div class="bg-white shadow-lg rounded-xl p-6 text-center">
+<h3 class="text-lg font-semibold text-eco-green">Water Quality</h3>
+<p id="waterValue" class="text-3xl font-bold mt-2"></p>
+</div>
+
+<div class="bg-white shadow-lg rounded-xl p-6 text-center">
+<h3 class="text-lg font-semibold text-eco-orange">Noise Level</h3>
+<p id="noiseValue" class="text-3xl font-bold mt-2"></p>
+</div>
+
+<div class="bg-white shadow-lg rounded-xl p-6 text-center">
+<h3 class="text-lg font-semibold text-eco-purple">Soil Quality</h3>
+<p id="soilValue" class="text-3xl font-bold mt-2"></p>
+</div>
+
+</section>
+
+<!-- Trend Chart -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<div class="bg-white shadow-lg rounded-xl p-6">
+<h3 class="text-xl font-semibold mb-4 text-eco-green">Pollution Trend (Last 4 Years)</h3>
+<canvas id="trendChart"></canvas>
+</div>
+</section>
+
+<!-- Health Impact -->
+<section class="bg-gray-100 py-16">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<h3 class="text-2xl font-bold text-eco-red mb-4">Health Impact Overview</h3>
+<p id="healthImpact" class="text-gray-700"></p>
+</div>
+</section>
+
+<script>
+
+const cityData = {
+Mumbai: { Air:180, Water:120, Noise:90, Soil:60, Trend:[150,160,170,180] },
+Delhi: { Air:280, Water:170, Noise:130, Soil:80, Trend:[220,240,260,280] },
+Bangalore: { Air:150, Water:110, Noise:85, Soil:55, Trend:[130,140,145,150] },
+Chennai: { Air:170, Water:115, Noise:95, Soil:65, Trend:[140,150,160,170] }
+};
+
+let chart;
+
+function getAirStatus(value){
+if(value < 100) return "Good";
+if(value < 200) return "Moderate";
+if(value < 300) return "Unhealthy";
+return "Hazardous";
+}
+
+function updateCity(){
+
+const city = document.getElementById("citySelect").value;
+const data = cityData[city];
+
+document.getElementById("airValue").innerText = data.Air;
+document.getElementById("airStatus").innerText = getAirStatus(data.Air);
+document.getElementById("waterValue").innerText = data.Water;
+document.getElementById("noiseValue").innerText = data.Noise;
+document.getElementById("soilValue").innerText = data.Soil;
+
+document.getElementById("healthImpact").innerText =
+`High pollution exposure in ${city} increases risk of respiratory illnesses, cardiovascular diseases, and stress-related health issues. Vulnerable groups include children and elderly.`;
+
+// Update Chart
+if(chart) chart.destroy();
+
+chart = new Chart(document.getElementById("trendChart"), {
+type: 'line',
+data: {
+labels:["2021","2022","2023","2024"],
+datasets:[{
+label:"AQI Trend",
+data:data.Trend,
+borderColor:"#10B981",
+backgroundColor:"rgba(16,185,129,0.2)",
+fill:true,
+tension:0.4
+}]
+}
+});
+
+}
+
+updateCity();
+
+</script>
+
+</body>
+</html>
