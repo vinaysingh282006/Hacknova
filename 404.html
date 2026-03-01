@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 | Page Not Found</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-red': '#EF4444',
+                'eco-dark': '#7F1D1D'
+            }
+        }
+    }
+}
+</script>
+
+<style>
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 10px rgba(239,68,68,0.6); }
+    50% { text-shadow: 0 0 25px rgba(239,68,68,1); }
+    100% { text-shadow: 0 0 10px rgba(239,68,68,0.6); }
+}
+.glow {
+    animation: pulseGlow 2s infinite;
+}
+</style>
+
+</head>
+
+<body class="bg-gradient-to-br from-eco-dark via-black to-eco-red text-white flex items-center justify-center min-h-screen">
+
+<div class="text-center px-6">
+
+<h1 class="text-8xl font-bold glow">404</h1>
+
+<h2 class="text-3xl font-semibold mt-6 text-eco-red">
+Oops! Page Not Found
+</h2>
+
+<p class="mt-4 text-gray-300 max-w-md mx-auto">
+The page you’re looking for doesn’t exist or may have been moved.
+Let’s get you back to a safer place 🌍
+</p>
+
+<div class="mt-8 space-x-4">
+
+<a href="index.html" 
+class="bg-eco-red hover:bg-red-600 text-white px-6 py-3 rounded-lg transition shadow-lg">
+🏠 Back to Home
+</a>
+
+<button onclick="history.back()" 
+class="bg-white text-eco-red px-6 py-3 rounded-lg hover:bg-gray-200 transition shadow-lg">
+⬅ Go Back
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
