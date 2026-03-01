@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoPulse | Pollution Heatmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#10B981',
+                        'eco-blue': '#3B82F6',
+                        'eco-purple': '#8B5CF6',
+                        'eco-orange': '#F97316',
+                        'eco-red': '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .marker {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .marker:hover {
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-eco-green">Global Pollution Heatmap 🌍</h1>
+    <a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+        ⬅ Back Home
+    </a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-10 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+    <h2 class="text-4xl font-bold mb-2">Geographic Pollution Monitoring</h2>
+    <p class="opacity-90">Click on a city to explore pollution intensity and data breakdown.</p>
+</section>
+
+<!-- Filter -->
+<div class="max-w-6xl mx-auto px-6 py-6">
+    <label class="font-semibold text-eco-green">Filter by Pollution Type:</label>
+    <select id="pollutionType" class="ml-4 p-2 border rounded">
+        <option>Air</option>
+        <option>Water</option>
+        <option>Noise</option>
+        <option>Soil</option>
+    </select>
+</div>
+
+<!-- Main Layout -->
+<div class="max-w-6xl mx-auto px-6 py-6 grid md:grid-cols-2 gap-10">
+
+    <!-- Map Section -->
+    <div class="bg-white shadow-lg rounded-xl p-6 relative">
+
+        <svg viewBox="0 0 500 400" class="w-full">
+
+            <!-- Background rectangle as map -->
+            <rect x="0" y="0" width="500" height="400" fill="#e5f4ff" />
+
+            <!-- City Markers -->
+            <circle cx="150" cy="150" r="10" class="marker" onclick="showData('Mumbai')" />
+            <circle cx="250" cy="100" r="10" class="marker" onclick="showData('Delhi')" />
+            <circle cx="200" cy="250" r="10" class="marker" onclick="showData('Bangalore')" />
+            <circle cx="300" cy="300" r="10" class="marker" onclick="showData('Chennai')" />
+
+        </svg>
+
+    </div>
+
+    <!-- Data Panel -->
+    <div class="bg-white shadow-lg rounded-xl p-6">
+        <h3 class="text-2xl font-bold text-eco-purple mb-4">City Pollution Data</h3>
+        <div id="cityData">
+            <p>Select a city to view pollution details.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const pollutionData = {
+    Mumbai: { Air: 180, Water: 120, Noise: 90, Soil: 60 },
+    Delhi: { Air: 280, Water: 170, Noise: 130, Soil: 80 },
+    Bangalore: { Air: 150, Water: 110, Noise: 85, Soil: 55 },
+    Chennai: { Air: 170, Water: 115, Noise: 95, Soil: 65 }
+};
+
+function getSeverityColor(value) {
+    if (value < 100) return "#10B981";     // Low
+    if (value < 180) return "#F97316";     // Moderate
+    if (value < 250) return "#8B5CF6";     // High
+    return "#EF4444";                      // Severe
+}
+
+function showData(city) {
+
+    const type = document.getElementById("pollutionType").value;
+    const value = pollutionData[city][type];
+    const color = getSeverityColor(value);
+
+    document.getElementById("cityData").innerHTML = `
+        <div class="space-y-4">
+            <h4 class="text-xl font-bold">${city}</h4>
+            <p><strong>${type} Pollution Level:</strong> 
+                <span style="color:${color}" class="font-semibold">${value}</span>
+            </p>
+            <p class="text-sm text-gray-600">
+                Severity Level: ${value < 100 ? "Low" :
+                value < 180 ? "Moderate" :
+                value < 250 ? "High" : "Severe"}
+            </p>
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
