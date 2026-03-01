@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Sustainability Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Personal Sustainability Tracker 🌱</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">Track Your Daily Eco Habits</h2>
+<p class="opacity-90">Small daily actions create a big environmental impact.</p>
+</section>
+
+<!-- Tracker Section -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+
+<div class="bg-white shadow-lg rounded-xl p-8">
+
+<h3 class="text-xl font-semibold mb-6 text-eco-green">Daily Checklist</h3>
+
+<div id="habitsList" class="space-y-4">
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="transport" class="habit">
+<span>🚍 Used public transport / carpool</span>
+</label>
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="water" class="habit">
+<span>💧 Conserved water</span>
+</label>
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="recycle" class="habit">
+<span>♻ Recycled waste properly</span>
+</label>
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="electricity" class="habit">
+<span>⚡ Reduced electricity consumption</span>
+</label>
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="plastic" class="habit">
+<span>🚫 Avoided single-use plastic</span>
+</label>
+
+<label class="flex items-center space-x-3">
+<input type="checkbox" value="plant" class="habit">
+<span>🥗 Ate a plant-based meal</span>
+</label>
+
+</div>
+
+<!-- Progress Bar -->
+<div class="mt-10">
+<h3 class="text-lg font-semibold text-eco-purple mb-3">Weekly Progress</h3>
+
+<div class="w-full bg-gray-200 rounded-full h-6">
+<div id="progressBar" class="bg-eco-green h-6 rounded-full text-white text-center text-sm leading-6" style="width:0%">
+0%
+</div>
+</div>
+
+<p id="ecoScore" class="mt-4 font-semibold text-eco-blue"></p>
+
+<button onclick="resetTracker()" 
+class="mt-6 bg-eco-red text-white px-6 py-2 rounded hover:bg-eco-orange transition">
+Reset Progress
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const habits = document.querySelectorAll(".habit");
+const progressBar = document.getElementById("progressBar");
+const ecoScoreText = document.getElementById("ecoScore");
+
+function updateProgress() {
+    const total = habits.length;
+    const checked = document.querySelectorAll(".habit:checked").length;
+    const percentage = Math.round((checked / total) * 100);
+
+    progressBar.style.width = percentage + "%";
+    progressBar.innerText = percentage + "%";
+
+    ecoScoreText.innerText = `Eco Score: ${checked} / ${total} habits completed`;
+
+    localStorage.setItem("ecoHabits", JSON.stringify([...habits].map(h => h.checked)));
+}
+
+function loadProgress() {
+    const saved = JSON.parse(localStorage.getItem("ecoHabits"));
+    if (saved) {
+        habits.forEach((habit, index) => {
+            habit.checked = saved[index];
+        });
+    }
+    updateProgress();
+}
+
+function resetTracker() {
+    habits.forEach(h => h.checked = false);
+    localStorage.removeItem("ecoHabits");
+    updateProgress();
+}
+
+habits.forEach(habit => habit.addEventListener("change", updateProgress));
+
+loadProgress();
+
+</script>
+
+</body>
+</html>
