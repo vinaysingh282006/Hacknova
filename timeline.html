@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Pollution Timeline</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Historical Pollution Timeline 📅</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">Pollution Trends (2015–2024)</h2>
+<p class="opacity-90">Explore how pollution levels have evolved over the years.</p>
+</section>
+
+<!-- Timeline Section -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+
+<div class="bg-white shadow-lg rounded-xl p-8">
+
+<label class="font-semibold text-eco-green">Select Year:</label>
+<input type="range" id="yearSlider" min="2015" max="2024" value="2015"
+class="w-full mt-4">
+
+<p class="mt-4 text-lg font-semibold text-eco-purple">
+Year: <span id="selectedYear">2015</span>
+</p>
+
+<p id="yearStory" class="mt-4 text-gray-700"></p>
+
+</div>
+
+<div class="bg-white shadow-lg rounded-xl p-8 mt-10">
+<h3 class="text-xl font-semibold mb-4 text-eco-blue">AQI Trend</h3>
+<canvas id="timelineChart"></canvas>
+</div>
+
+</section>
+
+<script>
+
+const pollutionHistory = {
+2015: { value: 140, story: "Industrial growth increased urban pollution significantly." },
+2016: { value: 155, story: "Vehicle emissions surged due to urban expansion." },
+2017: { value: 170, story: "Construction boom impacted air quality." },
+2018: { value: 190, story: "Air quality deteriorated due to crop burning." },
+2019: { value: 210, story: "Record high pollution levels observed in major cities." },
+2020: { value: 120, story: "COVID-19 lockdown led to temporary pollution drop." },
+2021: { value: 160, story: "Gradual return of industrial activities increased pollution." },
+2022: { value: 180, story: "Urbanization and transport growth raised AQI." },
+2023: { value: 200, story: "Extreme weather patterns worsened air quality." },
+2024: { value: 220, story: "High urban density maintained elevated pollution levels." }
+};
+
+const years = Object.keys(pollutionHistory);
+const values = years.map(y => pollutionHistory[y].value);
+
+let chart = new Chart(document.getElementById("timelineChart"), {
+type: 'line',
+data: {
+labels: years,
+datasets: [{
+label: "AQI Levels",
+data: values,
+borderColor: "#10B981",
+backgroundColor: "rgba(16,185,129,0.2)",
+fill: true,
+tension: 0.4
+}]
+},
+options: {
+responsive: true
+}
+});
+
+const slider = document.getElementById("yearSlider");
+const selectedYear = document.getElementById("selectedYear");
+const yearStory = document.getElementById("yearStory");
+
+function updateYear() {
+const year = slider.value;
+selectedYear.innerText = year;
+yearStory.innerText = pollutionHistory[year].story;
+}
+
+slider.addEventListener("input", updateYear);
+
+updateYear();
+
+</script>
+
+</body>
+</html>
