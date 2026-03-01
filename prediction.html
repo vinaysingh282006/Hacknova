@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Pollution Prediction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Pollution Prediction 📊</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">AI-Based Pollution Forecast</h2>
+<p class="opacity-90">Predict next year’s pollution trends using simulated data modeling.</p>
+</section>
+
+<!-- Filters -->
+<section class="max-w-5xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl mt-10">
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div>
+<label class="font-semibold text-eco-green">Select City</label>
+<select id="city" class="w-full mt-2 p-2 border rounded">
+<option>Mumbai</option>
+<option>Delhi</option>
+<option>Bangalore</option>
+<option>Chennai</option>
+</select>
+</div>
+
+<div>
+<label class="font-semibold text-eco-green">Pollution Type</label>
+<select id="type" class="w-full mt-2 p-2 border rounded">
+<option>Air</option>
+<option>Water</option>
+<option>Noise</option>
+<option>Soil</option>
+</select>
+</div>
+
+<div class="flex items-end">
+<button onclick="generatePrediction()" 
+class="bg-eco-green text-white px-6 py-2 rounded hover:bg-eco-blue transition w-full">
+Generate Prediction
+</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- Chart Section -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+<canvas id="predictionChart"></canvas>
+</div>
+
+<div id="confidence" class="text-center mt-6 text-lg font-semibold text-eco-purple"></div>
+
+</section>
+
+<script>
+
+const historicalData = {
+Mumbai: { Air:[160,170,180,190], Water:[100,110,120,130], Noise:[80,85,90,95], Soil:[50,55,60,65] },
+Delhi: { Air:[220,240,260,280], Water:[130,150,170,190], Noise:[100,110,120,130], Soil:[60,70,80,90] },
+Bangalore: { Air:[130,140,150,160], Water:[90,100,110,120], Noise:[70,75,80,85], Soil:[45,50,55,60] },
+Chennai: { Air:[150,160,170,180], Water:[95,105,115,125], Noise:[75,85,90,95], Soil:[48,52,57,62] }
+};
+
+let chart;
+
+function generatePrediction(){
+
+const city = document.getElementById("city").value;
+const type = document.getElementById("type").value;
+
+const data = historicalData[city][type];
+const lastValue = data[data.length - 1];
+
+// Simple mock prediction logic
+const predicted = lastValue + Math.floor(Math.random() * 20 - 10);
+
+const labels = ["2021","2022","2023","2024","2025 (Predicted)"];
+const dataset = [...data, predicted];
+
+if(chart) chart.destroy();
+
+chart = new Chart(document.getElementById("predictionChart"), {
+type: 'line',
+data: {
+labels: labels,
+datasets: [{
+label: `${type} Pollution Trend`,
+data: dataset,
+borderColor: '#10B981',
+backgroundColor: 'rgba(16,185,129,0.2)',
+fill: true,
+tension: 0.4
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: { display: true }
+}
+}
+});
+
+const confidenceLevel = Math.floor(Math.random() * 10 + 85);
+
+document.getElementById("confidence").innerHTML =
+`Prediction Confidence Level: ${confidenceLevel}%`;
+
+}
+
+</script>
+
+</body>
+</html>
