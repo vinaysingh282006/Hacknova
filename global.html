@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EcoPulse | Global Comparison</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'eco-green': '#10B981',
+                'eco-blue': '#3B82F6',
+                'eco-purple': '#8B5CF6',
+                'eco-orange': '#F97316',
+                'eco-red': '#EF4444',
+            }
+        }
+    }
+}
+</script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md p-4 flex justify-between items-center">
+<h1 class="text-2xl font-bold text-eco-green">Global Pollution Comparison 🌍</h1>
+<a href="index.html" class="bg-eco-blue text-white px-4 py-2 rounded hover:bg-eco-purple transition">
+⬅ Back Home
+</a>
+</nav>
+
+<!-- Hero -->
+<section class="text-center py-12 bg-gradient-to-r from-eco-green to-eco-blue text-white">
+<h2 class="text-4xl font-bold mb-3">Country-Level Pollution Dashboard</h2>
+<p class="opacity-90">Compare pollution levels across countries and identify high-risk regions.</p>
+</section>
+
+<!-- Filter Section -->
+<section class="max-w-6xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl mt-10">
+
+<div class="flex flex-wrap gap-6 items-center justify-between">
+
+<div>
+<label class="font-semibold text-eco-green">Select Pollution Type:</label>
+<select id="pollutionType" class="ml-4 p-2 border rounded">
+<option>Air</option>
+<option>Water</option>
+<option>Noise</option>
+<option>Soil</option>
+</select>
+</div>
+
+<button onclick="sortData()" 
+class="bg-eco-purple text-white px-6 py-2 rounded hover:bg-eco-orange transition">
+Sort by Highest
+</button>
+
+</div>
+
+</section>
+
+<!-- Table Section -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+
+<div class="bg-white shadow-lg rounded-xl overflow-x-auto">
+<table class="min-w-full text-left">
+<thead class="bg-eco-green text-white">
+<tr>
+<th class="px-6 py-3">Rank</th>
+<th class="px-6 py-3">Country</th>
+<th class="px-6 py-3">Pollution Level</th>
+<th class="px-6 py-3">Severity</th>
+</tr>
+</thead>
+<tbody id="tableBody" class="divide-y"></tbody>
+</table>
+</div>
+
+<div id="topCountry" class="text-center mt-8 text-xl font-semibold text-eco-red"></div>
+
+</section>
+
+<script>
+
+const pollutionData = [
+{ country: "India", Air: 280, Water: 170, Noise: 130, Soil: 90 },
+{ country: "China", Air: 260, Water: 150, Noise: 120, Soil: 80 },
+{ country: "USA", Air: 180, Water: 120, Noise: 95, Soil: 60 },
+{ country: "Germany", Air: 140, Water: 100, Noise: 75, Soil: 50 },
+{ country: "Brazil", Air: 200, Water: 130, Noise: 100, Soil: 70 }
+];
+
+function getSeverity(value){
+if(value < 150) return "Low";
+if(value < 220) return "Moderate";
+if(value < 270) return "High";
+return "Severe";
+}
+
+function renderTable(data){
+
+const type = document.getElementById("pollutionType").value;
+const tableBody = document.getElementById("tableBody");
+tableBody.innerHTML = "";
+
+data.forEach((item,index)=>{
+const value = item[type];
+const severity = getSeverity(value);
+
+tableBody.innerHTML += `
+<tr>
+<td class="px-6 py-4">${index+1}</td>
+<td class="px-6 py-4 font-semibold">${item.country}</td>
+<td class="px-6 py-4">${value}</td>
+<td class="px-6 py-4">${severity}</td>
+</tr>
+`;
+});
+
+document.getElementById("topCountry").innerText =
+`🌎 Most Polluted Country (${type}): ${data[0].country}`;
+}
+
+function sortData(){
+
+const type = document.getElementById("pollutionType").value;
+
+const sorted = [...pollutionData].sort((a,b)=> b[type] - a[type]);
+
+renderTable(sorted);
+}
+
+document.getElementById("pollutionType").addEventListener("change", sortData);
+
+// Initial Render
+sortData();
+
+</script>
+
+</body>
+</html>
