@@ -207,12 +207,14 @@ EcoPulse.initMobileMenu = () => {
     updatedMenuBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       mobileMenu.classList.toggle("hidden");
+      updatedMenuBtn.setAttribute("aria-expanded", String(!mobileMenu.classList.contains("hidden")));
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!updatedMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
         mobileMenu.classList.add('hidden');
+        updatedMenuBtn.setAttribute("aria-expanded", "false");
       }
     });
   }

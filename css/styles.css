@@ -437,23 +437,19 @@ footer {
   );
 }
 
+.reviews-header {
+  text-align: center;
+  padding: 0 1.5rem 2.5rem;
+}
+
 .reviews-header h2 {
-
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #38bdf8, #22c55e);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   background: linear-gradient(to right, #38bdf8, #22c55e);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-
 }
 
 .reviews-header p {
@@ -639,6 +635,285 @@ footer {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transform: translateY(-6px);
 }
+/* ===============================
+   MISSING KEYFRAMES
+================================ */
+@keyframes slowZoom {
+  0%   { transform: scale(1);    }
+  100% { transform: scale(1.12); }
+}
+
+@keyframes floatUp {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 -200px; }
+}
+
+@keyframes spinSlow {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   HERO ANIMATION CLASSES
+================================ */
+.hero-load {
+  opacity: 0;
+  animation: heroFadeUp 0.7s ease forwards;
+}
+.hero-delay-1 { animation-delay: 0.15s; }
+.hero-delay-2 { animation-delay: 0.3s;  }
+.hero-delay-3 { animation-delay: 0.45s; }
+.hero-delay-4 { animation-delay: 0.6s;  }
+.hero-delay-5 { animation-delay: 0.75s; }
+.hero-delay-6 { animation-delay: 0.9s;  }
+
+/* Hero scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  z-index: 3;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.hero-scroll:hover { opacity: 0.75; }
+
+/* Hero tags */
+.hero-tags {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.45);
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+/* Precaution buttons in hero-bg — hide floating layer */
+.precaution-buttons {
+  display: none;
+}
+
+/* ===============================
+   BUTTON STYLES
+================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #10B981, #3B82F6);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+  letter-spacing: 0.01em;
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 36px rgba(16, 185, 129, 0.5);
+  opacity: 0.95;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 26px;
+  background: transparent;
+  color: #e2e8f0;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+/* AI prediction button */
+.btn-ai {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7C3AED, #4F46E5);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.4);
+  letter-spacing: 0.01em;
+}
+.btn-ai::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-ai:hover::before { opacity: 1; }
+.btn-ai:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.6);
+}
+.btn-ai-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, #7C3AED, #38bdf8, #10B981, #7C3AED);
+  opacity: 0;
+  transition: opacity 0.35s;
+  z-index: -1;
+  filter: blur(8px);
+}
+.btn-ai:hover .btn-ai-glow { opacity: 0.7; }
+.btn-ai-text { position: relative; z-index: 1; }
+
+/* ===============================
+   SKIP LINK (ACCESSIBILITY)
+================================ */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #10B981;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 10000;
+  font-weight: 700;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+/* ===============================
+   SCROLL TO TOP BUTTON
+================================ */
+.scroll-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #10B981, #3B82F6);
+  box-shadow: 0 8px 20px rgba(16,185,129,0.4);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(16,185,129,0.55);
+}
+
+/* ===============================
+   REVIEWS SECTION
+================================ */
+.reviews-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #0f172a, #111827);
+  overflow: hidden;
+  border-top: 1px solid rgba(55,65,81,0.6);
+  border-bottom: 1px solid rgba(55,65,81,0.6);
+}
+
+.reviews-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  overflow: hidden;
+}
+
+/* ===============================
+   SECTION HEADING GRADIENT
+================================ */
+.section-heading {
+  background: linear-gradient(90deg, #f8fafc, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===============================
+   STAT ITEM ENHANCEMENT
+================================ */
+.stat-item {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  background: rgba(17,24,39,0.5);
+  border: 1px solid rgba(55,65,81,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.stat-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(56,189,248,0.25);
+}
+
+/* ===============================
+   TOPIC CARD GRID ENHANCEMENT
+================================ */
+@media (max-width: 640px) {
+  .hero-glass { padding: 28px 18px; }
+  .hero-glass h1 { font-size: 2.2rem; }
+  .btn-primary, .btn-outline, .btn-ai { font-size: 0.9rem; padding: 10px 20px; }
+}
+
+/* ===============================
+   LIGHT THEME BUTTON OVERRIDES
+================================ */
+[data-theme="light"] .btn-outline {
+  color: #0f172a;
+  border-color: rgba(15,23,42,0.3);
+}
+[data-theme="light"] .btn-outline:hover {
+  background: rgba(15,23,42,0.08);
+  border-color: rgba(15,23,42,0.5);
+}
+[data-theme="light"] .hero-tags { color: rgba(15,23,42,0.5); }
+
+/* ===============================
+   CURSOR DOT
+================================ */
 .cursor-dot {
   position: fixed;
   border-radius: 50%;

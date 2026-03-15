@@ -95,37 +95,25 @@
                         <span class="text-white font-bold text-xl">E</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-                    
                 </a>
 
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-6">
                     <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
                     <a href="air.html" class="text-gray-300 hover:text-eco-red transition-colors">Air</a>
                     <a href="water.html" class="text-gray-300 hover:text-eco-blue transition-colors">Water</a>
                     <a href="light.html" class="text-gray-300 hover:text-eco-orange transition-colors">Light</a>
                     <a href="noise.html" class="text-gray-300 hover:text-eco-purple transition-colors">Noise</a>
-
-                    <a href="soil.html" class="text-gray-300 hover:text-amber-700 transition-colors">
-                        Soil
-                    </a>
-                    <a href="plastic.html" class="text-gray-300 hover:text-eco-blue transition-colors relative group">
-                        Plastic
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-cyan"></span>
-                    </a>
-
-                    <a href="radioactive.html" class="text-gray-300 hover:text-eco-green transition-colors relative group">
-                        Radioactive
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-eco-lime"></span>
-                    </a>
-
-
-
-                
+                    <a href="soil.html" class="text-gray-300 hover:text-amber-400 transition-colors">Soil</a>
+                    <a href="plastic.html" class="text-gray-300 hover:text-teal-400 transition-colors">Plastic</a>
+                    <a href="radioactive.html" class="text-gray-300 hover:text-lime-400 transition-colors">Radioactive</a>
+                    <a href="feedback.html" class="text-gray-300 hover:text-eco-green transition-colors">Feedback</a>
                     <a href="presentation.html"
                         class="px-5 py-2 bg-eco-green/20 text-eco-green rounded-full hover:bg-eco-green/30 transition-all hover:scale-105 border border-eco-green/30">Demo</a>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+                        <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+                        <span class="theme-toggle__text">Dark</span>
+                    </button>
                 </div>
-                <span class="text-2xl font-bold gradient-text">EcoPulse</span>
-            </a>
 
 
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
@@ -140,24 +128,17 @@
 
         <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800 absolute w-full shadow-2xl">
             <div class="px-4 py-4 space-y-3">
-                <a href="#home" class="block py-2 text-gray-300 hover:text-white">Home</a>
-                <a href="air.html" class="block py-2 text-gray-300 hover:text-eco-red">Air Pollution</a>
-                <a href="water.html" class="block py-2 text-gray-300 hover:text-eco-blue">Water Pollution</a>
-                <a href="light.html" class="block py-2 text-gray-300 hover:text-eco-orange">Light Pollution</a>
-                <a href="noise.html" class="block py-2 text-gray-300 hover:text-eco-purple">Noise Pollution</a>
-
-                <a href="soil.html" class="block py-2 text-gray-300 hover:text-eco-amber">Soil Pollution</a>
-
-                <a href="plastic.html" class="block py-2 text-gray-300 hover:text-eco-cyan">Plastic Pollution</a>
-                <a href="radioactive.html"
-                    class="block py-2 text-gray-300 hover:text-eco-orange">Radioactive
-                    Waste</a>
-                
-                <a href="presentation.html"
-                    class="block py-3 px-4 rounded-lg hover:bg-gray-800 hover:text-eco-green transition-colors">Demo</a>
-            <li><a href="feedback.html" class="hover:text-eco-green transition-colors">Feedback</a></li>
-
-                </div>
+                <a href="#home" class="block py-2 text-gray-300 hover:text-white transition-colors">Home</a>
+                <a href="air.html" class="block py-2 text-gray-300 hover:text-red-400 transition-colors">Air Pollution</a>
+                <a href="water.html" class="block py-2 text-gray-300 hover:text-blue-400 transition-colors">Water Pollution</a>
+                <a href="light.html" class="block py-2 text-gray-300 hover:text-orange-400 transition-colors">Light Pollution</a>
+                <a href="noise.html" class="block py-2 text-gray-300 hover:text-purple-400 transition-colors">Noise Pollution</a>
+                <a href="soil.html" class="block py-2 text-gray-300 hover:text-amber-400 transition-colors">Soil Pollution</a>
+                <a href="plastic.html" class="block py-2 text-gray-300 hover:text-teal-400 transition-colors">Plastic Pollution</a>
+                <a href="radioactive.html" class="block py-2 text-gray-300 hover:text-lime-400 transition-colors">Radioactive Waste</a>
+                <a href="feedback.html" class="block py-2 text-gray-300 hover:text-eco-green transition-colors">Feedback</a>
+                <a href="presentation.html" class="block py-3 px-4 rounded-lg bg-eco-green/10 text-eco-green hover:bg-eco-green/20 transition-colors font-semibold">Demo</a>
+            </div>
 
         </div>
     </nav>
@@ -177,13 +158,6 @@
                     <span class="ring ring-2"></span>
                 </div>
                 <div class="hero-particles"></div>
-                <div class="precaution-buttons">
-  <button onclick="openPrecautions('air')">🌬️ Air Precautions</button>
-  <button onclick="openPrecautions('water')">💧 Water Precautions</button>
-  <button onclick="openPrecautions('light')">💡 Light Precautions</button>
-  <button onclick="openPrecautions('noise')">🔊 Noise Precautions</button>
-</div>
-
             </div>
 
             <div class="hero-content">
@@ -207,13 +181,6 @@
                         <a href="air.html" class="btn-primary">Explore Now</a>
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
-                    <div class="hero-load hero-delay-4 mt-6 flex flex-wrap gap-3 justify-center">
-  <button onclick="openPrecautions('air')" class="btn-outline">🌬️ Air Precautions</button>
-  <button onclick="openPrecautions('water')" class="btn-outline">💧 Water Precautions</button>
-  <button onclick="openPrecautions('light')" class="btn-outline">💡 Light Precautions</button>
-  <button onclick="openPrecautions('noise')" class="btn-outline">🔊 Noise Precautions</button>
-</div>
-
 
                     <div class="hero-load hero-delay-4">
                         <a href="ai-prediction.html" class="btn-ai">
@@ -222,19 +189,15 @@
                         </a>
                     </div>
 
-                    <!-- ✅ COUNTDOWN -->
-                    <div class="hero-load hero-delay-5">
-                        <div id="event-countdown" class="event-countdown"></div>
+                    <div class="hero-load hero-delay-5 mt-5 flex flex-wrap gap-2 justify-center">
+                        <button onclick="openPrecautions('air')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">🌬️ Air</button>
+                        <button onclick="openPrecautions('water')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">💧 Water</button>
+                        <button onclick="openPrecautions('light')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">💡 Light</button>
+                        <button onclick="openPrecautions('noise')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">🔊 Noise</button>
                     </div>
 
-                    <!-- ✅ HERO REGISTER ANCHOR -->
-                    <a href="presentation.html" id="hero-register-btn"
-                        class="btn-primary mt-6 inline-block">
-                        Register Now
-                    </a>
-
                     <div class="hero-load hero-delay-6 hero-tags">
-                        Air • Water • Light • Noise • AI Prediction
+                        Air • Water • Light • Noise • Soil • Plastic • Radioactive • AI
                     </div>
 
                 </div>
@@ -292,11 +255,9 @@
             
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Explore Pollution Topics</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4" style="background:linear-gradient(90deg,#38bdf8,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Explore Pollution Topics</h2>
                     <p class="text-xl text-gray-300 max-w-2xl mx-auto">
                       Explore air, water, light, and noise pollution using location-based data, 3D simulations, and interactive insights.
-                        
-                        
                     </p>
                 </div>
 
@@ -441,7 +402,7 @@
                     </a>
 
                     <!-- Soil Pollution Card -->
-                    <a href="#"
+                    <a href="soil.html"
                         class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-amber-900/30 to-yellow-800/20 border-amber-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
                         <div
                             class="flex items-center justify-center w-16 h-16 bg-amber-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
@@ -467,7 +428,7 @@
                     </a>
 
                     <!-- Plastic Pollution Card -->
-                    <a href="#"
+                    <a href="plastic.html"
                         class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-teal-900/30 to-cyan-800/20 border-teal-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
                         <div
                             class="flex items-center justify-center w-16 h-16 bg-teal-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
@@ -494,7 +455,7 @@
                     </a>
 
                     <!-- Radioactive Pollution Card -->
-                    <a href="#"
+                    <a href="radioactive.html"
                         class="card group cursor-pointer transform hover:scale-105 transition-all duration-300 scroll-reveal bg-gradient-to-br from-lime-900/30 to-green-800/20 border-lime-500/30 rounded-3xl p-8 min-h-[320px] flex flex-col">
                         <div
                             class="flex items-center justify-center w-16 h-16 bg-lime-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform">
@@ -523,14 +484,12 @@
             </div>
         </section>
 
-       <section class="py-20 bg-gray-900">
-
         <!-- Features Section -->
- <section class="py-20 bg-gray-900">
+        <section class="py-20 bg-gray-900">
   <div class="container mx-auto px-4">
 
         <div class="text-center mb-16 scroll-reveal">
-            <h2 id="why-ecopulse-title" class="text-4xl md:text-5xl font-bold mb-4">Why EcoPulse?</h2>
+            <h2 id="why-ecopulse-title" class="text-4xl md:text-5xl font-bold mb-4" style="background:linear-gradient(90deg,#38bdf8,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Why EcoPulse?</h2>
             <p class="text-xl text-gray-300 max-w-2xl mx-auto">
                 Turn complex environmental data into clear, actionable insight — with immersive visuals, trusted sources,
                 and tools built for decision-makers and curious learners alike.
@@ -591,37 +550,13 @@
                 </p>
             </div>
 
-      <!-- Card 2 -->
-      <div class="card ecopulse-card text-center scroll-reveal">
-        <div
-          class="w-16 h-16 bg-gradient-to-r from-eco-green to-eco-blue rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">Real Data</h3>
-        <p class="text-gray-300">
-          Based on WHO, EPA, and scientific research with regional breakdowns
-            
-        </p>
-      </div>
-
-
-        </div>
+            </div>
 
         <div class="text-center mt-8">
             <a href="presentation.html" class="inline-block px-6 py-3 bg-eco-green/20 text-eco-green rounded-full border border-eco-green/30 hover:bg-eco-green/30 transition-all">Learn how EcoPulse helps</a>
         </div>
     </div>
 </section>
-
-
-    </div>
-  </div>
-</section>
-
-
         <!-- Reviews Section -->
         <section class="reviews-section scroll-reveal">
             <div class="reviews-container">
@@ -933,7 +868,7 @@
         <section class="py-20 bg-gray-900 border-t border-gray-700">
             <div class="container mx-auto px-4 scroll-reveal">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Real-time Environmental Data</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" style="background:linear-gradient(90deg,#38bdf8,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Real-time Environmental Data</h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                         Live pollution monitoring with interactive visualizations and predictive analytics
                     </p>
@@ -1110,7 +1045,7 @@
         <!-- Call to Action Section -->
         <section class="py-20 bg-gradient-to-r from-eco-blue/20 to-eco-green/20 border-t border-gray-700">
             <div class="container mx-auto px-4 text-center scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Make a Difference?</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="background:linear-gradient(90deg,#38bdf8,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ready to Make a Difference?</h2>
                 <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                     Explore the data, understand the impact, and discover actionable solutions
                 </p>
@@ -1126,21 +1061,7 @@
         </section>
     </main>
 
-   <footer class="bg-gray-900 border-t border-gray-800 py-12">
-  <div class="container mx-auto px-4">
-
-    <!-- Footer Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-12 mb-8 w-full text-center md:text-left">
-
-      <!-- About -->
-      <div>
-        <h3 class="text-xl font-bold mb-4 gradient-text">
-          <i class="fa-solid fa-leaf mr-2"></i>About EcoPulse
-        </h3>
-        <p class="text-gray-400 mb-4">
-          Environmental awareness through interactive 3D data visualization.
-          Built for Hackathon 2024.
-    <!-- Footer -->
+   <!-- Footer -->
 <footer class="bg-gray-900 border-t border-gray-800 py-12">
   <div class="max-w-7xl mx-auto px-6">
     
@@ -1228,11 +1149,11 @@
   </div>
 </footer>
 
+    <!-- Network status banner -->
+    <div id="network-status" role="alert" aria-live="polite"></div>
 
-    <!-- Added scroll-to-top button -->
-    <button id="scroll-to-top"
-        class="scroll-to-top fixed bottom-4 right-4 p-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors"
-        aria-label="Scroll to top" title="Back to top">
+    <!-- Scroll to top button -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top" title="Back to top">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -1240,6 +1161,7 @@
     </button>
 
     <!-- Scripts -->
+    <script src="js/theme.js"></script>
     <script src="js/footer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
