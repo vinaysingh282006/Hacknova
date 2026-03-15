@@ -146,7 +146,7 @@
     <main id="main-content">
 
         <!-- HERO SECTION -->
-        <section class="hero-section">
+        <section class="hero-section" id="home">
             
 
             <div class="hero-bg">
@@ -163,6 +163,11 @@
             <div class="hero-content">
                 <div class="hero-glass">
 
+                    <div class="hero-load hero-delay-1 hero-live-badge">
+                        <span class="hero-live-dot"></span>
+                        Live Environmental Intelligence
+                    </div>
+
                     <div class="hero-load hero-delay-1">
                         <h1>
                             Visualize Our<br />
@@ -177,19 +182,27 @@
                         </p>
                     </div>
 
+                    <div class="hero-stats-strip hero-load hero-delay-2">
+                        <div class="hero-stat-chip"><strong>91%</strong><span>Breathe polluted air</span></div>
+                        <div class="hero-stat-chip"><strong>2B</strong><span>Lack safe water</span></div>
+                        <div class="hero-stat-chip"><strong>80%</strong><span>Lost night sky</span></div>
+                    </div>
+
+                    <div class="hero-divider"></div>
+
                     <div class="hero-load hero-delay-3 hero-actions">
                         <a href="air.html" class="btn-primary">Explore Now</a>
                         <a href="presentation.html" class="btn-outline">View Demo</a>
                     </div>
 
-                    <div class="hero-load hero-delay-4">
+                    <div class="hero-load hero-delay-4" style="margin-bottom:18px;">
                         <a href="ai-prediction.html" class="btn-ai">
                             <span class="btn-ai-glow"></span>
                             <span class="btn-ai-text">⚡ Predict Future Pollution</span>
                         </a>
                     </div>
 
-                    <div class="hero-load hero-delay-5 mt-5 flex flex-wrap gap-2 justify-center">
+                    <div class="hero-load hero-delay-5 mt-5 flex flex-wrap gap-3" style="margin-bottom:18px;">
                         <button onclick="openPrecautions('air')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">🌬️ Air</button>
                         <button onclick="openPrecautions('water')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">💧 Water</button>
                         <button onclick="openPrecautions('light')" class="btn-outline" style="padding:8px 16px;font-size:0.85rem;">💡 Light</button>
@@ -1162,7 +1175,6 @@
 
     <!-- Scripts -->
     <script src="js/theme.js"></script>
-    <script src="js/footer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- ✅ MODULE SCRIPT -->
