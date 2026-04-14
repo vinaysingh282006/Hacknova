@@ -1,7 +1,10 @@
 name: Close All Issues
 
 on:
-  workflow_dispatch:  # manual trigger button
+  workflow_dispatch:
+
+permissions:
+  issues: write   # 🔥 THIS IS THE FIX
 
 jobs:
   close-issues:
@@ -23,7 +26,6 @@ jobs:
             );
 
             for (const issue of issues) {
-              // Skip pull requests
               if (issue.pull_request) continue;
 
               await github.rest.issues.update({
